@@ -1,4 +1,6 @@
 import { Html, Head, Main, NextScript } from 'next/document'
+import { Analytics } from '@vercel/analytics/react';
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 export default function Document() {
   const meta = {
@@ -20,7 +22,9 @@ export default function Document() {
       <body>
         <Main />
         <NextScript />
+        <Analytics />
       </body>
+      <GoogleAnalytics gaId="G-JTP5KZ6L2C" />
     </Html>
   )
 }
