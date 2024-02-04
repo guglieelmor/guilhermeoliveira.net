@@ -1,6 +1,4 @@
 import { Html, Head, Main, NextScript } from 'next/document'
-import { Analytics } from '@vercel/analytics/react';
-import Script from 'next/script';
 
 export default function Document() {
   const meta = {
@@ -22,21 +20,7 @@ export default function Document() {
       <body>
         <Main />
         <NextScript />
-        <Analytics />
       </body>
-      <Script
-        strategy="lazyOnload"
-        src={`https://www.googletagmanager.com/gtag/js?id=G-JTP5KZ6L2C`}
-      />
-
-      <Script strategy="lazyOnload">
-        {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-JTP5KZ6L2C');
-        `}
-      </Script>
     </Html>
   )
 }
