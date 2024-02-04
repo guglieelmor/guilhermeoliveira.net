@@ -1,6 +1,6 @@
 import { Html, Head, Main, NextScript } from 'next/document'
 import { Analytics } from '@vercel/analytics/react';
-import { GoogleAnalytics } from '@next/third-parties/google'
+import Script from 'next/script';
 
 export default function Document() {
   const meta = {
