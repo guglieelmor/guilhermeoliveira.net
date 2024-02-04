@@ -24,7 +24,19 @@ export default function Document() {
         <NextScript />
         <Analytics />
       </body>
-      <GoogleAnalytics gaId="G-JTP5KZ6L2C" />
+      <Script
+        strategy="lazyOnload"
+        src={`https://www.googletagmanager.com/gtag/js?id=G-JTP5KZ6L2C`}
+      />
+
+      <Script strategy="lazyOnload">
+        {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-JTP5KZ6L2C');
+        `}
+      </Script>
     </Html>
   )
 }
