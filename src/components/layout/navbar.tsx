@@ -1,12 +1,7 @@
-import * as React from "react";
-import Link from "next/link";
-import Image from "next/image";
+import * as React from "react"; 
 import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  NavigationMenuContent,
+  NavigationMenu, 
+  NavigationMenuList, 
 } from "@/components/ui/navigation-menu";
 import { Button } from "@/components/ui/button";
 import {
