@@ -4,25 +4,23 @@ import path from "path";
 import { remark } from "remark";
 import html from "remark-html";
 
+const POSTS_DIRECTORY = path.join(process.cwd(), "_content");
+
 export default async function Page({
   params,
 }: {
   params: { year: string; month: string; day: string; slug: string };
 }) {
-  const { year, month, day, slug } = params;
-
-  console.log("params:", { year, month, day, slug });
+  const { year, month, day, slug } = await params;
 
   const filePath = path.join(
-    process.cwd(),
-    "_content",
+    POSTS_DIRECTORY,
     year,
     month,
     day,
     slug,
     "index.md"
   );
-
   if (!fs.existsSync(filePath)) {
     return <div>Post não encontrado</div>;
   }
