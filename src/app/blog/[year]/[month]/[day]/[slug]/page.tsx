@@ -6,12 +6,18 @@ import html from "remark-html";
 
 const POSTS_DIRECTORY = path.join(process.cwd(), "_content");
 
-export default async function Page({
-  params,
-}: {
-  params: { year: string; month: string; day: string; slug: string };
-}) {
+type BlogProps = {
+  params: Promise<{
+    year: string;
+    month: string;
+    day: string;
+    slug: string;
+  }>;
+};
+
+export default async function Blog({ params }: BlogProps) {
   const { year, month, day, slug } = await params;
+  // console.log("params", params);
 
   const filePath = path.join(
     POSTS_DIRECTORY,
@@ -35,6 +41,13 @@ export default async function Page({
   return (
     <article className="prose prose-lg mx-auto py-10">
       <h1>{data.title}</h1>
+      <div>
+        <h1>Página do Blog Post</h1>
+        <p>Ano: {year}</p>
+        <p>Mês: {month}</p>
+        <p>Dia: {day}</p>
+        <p>Slug: {slug}</p>
+      </div>
       <p>
         <em>{data.date}</em>
       </p>
