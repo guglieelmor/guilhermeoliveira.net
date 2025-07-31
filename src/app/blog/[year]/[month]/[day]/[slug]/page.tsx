@@ -55,7 +55,7 @@ export default async function Blog({ params }: BlogProps) {
                 data-slot="breadcrumb-item"
                 className="inline-flex items-center gap-1.5"
               >
-                <a
+                {/* <a
                   data-slot="breadcrumb-link"
                   className="hover:text-foreground transition-colors"
                   href="/"
@@ -76,7 +76,7 @@ export default async function Blog({ params }: BlogProps) {
                     <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path>
                     <path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                   </svg>
-                </a>
+                </a> */}
               </li>
               <li
                 data-slot="breadcrumb-separator"
@@ -104,13 +104,13 @@ export default async function Blog({ params }: BlogProps) {
                 data-slot="breadcrumb-item"
                 className="inline-flex items-center gap-1.5"
               >
-                <a
+                {/* <a
                   data-slot="breadcrumb-link"
                   className="hover:text-foreground transition-colors"
                   href="/"
                 >
                   Components
-                </a>
+                </a> */}
               </li>
               <li
                 data-slot="breadcrumb-separator"
@@ -202,28 +202,28 @@ export default async function Blog({ params }: BlogProps) {
               <nav className="mt-4 text-sm">
                 <ul className="space-y-1">
                   <li>
-                    <a
+                    {/* <a
                       href="#section1"
                       className="block py-1 transition-colors duration-200 text-primary"
                     >
                       How Taxes Work and Why They Matter
-                    </a>
+                    </a> */}
                   </li>
                   <li>
-                    <a
+                    {/* <a
                       href="#section2"
                       className="block py-1 transition-colors duration-200 text-muted-foreground hover:text-primary"
                     >
                       The Great People's Rebellion
-                    </a>
+                    </a> */}
                   </li>
                   <li>
-                    <a
+                    {/* <a
                       href="#section3"
                       className="block py-1 transition-colors duration-200 text-muted-foreground hover:text-primary"
                     >
                       The King's Plan
-                    </a>
+                    </a> */}
                   </li>
                 </ul>
               </nav>
@@ -237,7 +237,7 @@ export default async function Blog({ params }: BlogProps) {
                 <p className="text-sm font-medium">Share this article</p>
                 <ul className="flex gap-2">
                   <li>
-                    <a
+                    {/* <a
                       href="#"
                       className="hover:bg-muted inline-flex rounded-full border p-2 transition-colors"
                     >
@@ -256,10 +256,10 @@ export default async function Blog({ params }: BlogProps) {
                       >
                         <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
                       </svg>
-                    </a>
+                    </a> */}
                   </li>
                   <li>
-                    <a
+                    {/* <a
                       href="#"
                       className="hover:bg-muted inline-flex rounded-full border p-2 transition-colors"
                     >
@@ -278,10 +278,10 @@ export default async function Blog({ params }: BlogProps) {
                       >
                         <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
                       </svg>
-                    </a>
+                    </a> */}
                   </li>
                   <li>
-                    <a
+                    {/* <a
                       href="#"
                       className="hover:bg-muted inline-flex rounded-full border p-2 transition-colors"
                     >
@@ -302,10 +302,10 @@ export default async function Blog({ params }: BlogProps) {
                         <rect width="4" height="12" x="2" y="9"></rect>
                         <circle cx="4" cy="4" r="2"></circle>
                       </svg>
-                    </a>
+                    </a> */}
                   </li>
                   <li>
-                    <a
+                    {/* <a
                       href="#"
                       className="hover:bg-muted inline-flex rounded-full border p-2 transition-colors"
                     >
@@ -333,7 +333,7 @@ export default async function Blog({ params }: BlogProps) {
                         <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
                         <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
                       </svg>
-                    </a>
+                    </a> */}
                   </li>
                 </ul>
               </div>
