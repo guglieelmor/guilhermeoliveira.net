@@ -25,7 +25,7 @@ export default function Navbar() {
   const { setTheme } = useTheme()
 
   return (
-    <header className="fixed top-5 left-1/2 z-50 w-[min(90%,700px)] -translate-x-1/2 rounded-full border bg-background/70 backdrop-blur-md lg:top-12">
+    <header className="shadow-md fixed top-5 left-1/2 z-50 w-[min(90%,700px)] -translate-x-1/2 rounded-full border bg-background/70 backdrop-blur-md lg:top-12">
       <div className="flex items-center justify-between px-6 py-3">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>

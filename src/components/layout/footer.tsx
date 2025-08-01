@@ -1,7 +1,38 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
+const formatDate = (data: Date) => {
+  const hours = String(data.getHours()).padStart(2, "0");
+  const minutes = String(data.getMinutes()).padStart(2, "0");
+  const seconds = String(data.getSeconds()).padStart(2, "0");
+  return `${hours}:${minutes}:${seconds}`;
+};
+
 export default function Footer() {
+  const data = new Date();
+  const [now, setNow] = useState(data);
+  const year = data.getFullYear();
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setNow(new Date());
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
-    <header className="flex h-16 shrink-0 items-center justify-between gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
-      teste
-    </header>
+    <section className="bg-black dark:bg-white dark:text-black light:text-white">
+      <div className="container mx-auto">
+        <footer>
+          <div></div>
+          <div className="border-[#404040] dark:border-[#dbdbdb] flex flex-col items-center justify-between py-32 text-muted-foreground md:flex-row bordered-div-padding space-x-6 border-x border-b text-sm mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div>© guilhermeoliveira.net {year}</div>
+            <div>Time → {formatDate(now)}</div>
+            <div>Gulliver</div>
+          </div>
+        </footer>
+      </div>
+    </section>
   );
 }
