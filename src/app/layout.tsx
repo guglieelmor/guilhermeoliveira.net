@@ -4,6 +4,8 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 
 import Script from "next/script";
+import Navbar from "@/components/layout/navbar";
+import Footer from "@/components/layout/footer";
 // import Navbar from "@/components/layout/navbar";
 
 const geistSans = Geist({
@@ -28,10 +30,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      {/* Script do Google Analytics */}
       <Script
         src="https://www.googletagmanager.com/gtag/js?id=G-JTP5KZ6L2C"
-        strategy="afterInteractive" // carrega após a página estar interativa
+        strategy="afterInteractive"
       />
       <Script id="google-analytics" strategy="afterInteractive">
         {`
@@ -50,9 +51,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {/* <Navbar /> */}
+          <Navbar />
           {children}
-          {/* <Footer /> */}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
