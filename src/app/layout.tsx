@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+
+import Script from "next/script";
 // import Navbar from "@/components/layout/navbar";
 
 const geistSans = Geist({
@@ -26,6 +28,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      {/* Script do Google Analytics */}
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-JTP5KZ6L2C"
+        strategy="afterInteractive" // carrega após a página estar interativa
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-JTP5KZ6L2C');
+        `}
+      </Script>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
