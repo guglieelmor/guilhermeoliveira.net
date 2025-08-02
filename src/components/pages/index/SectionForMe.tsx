@@ -2,25 +2,33 @@
 
 import { cn } from "@/lib/utils";
 import { DirectionAwareHover } from "@/components/ui/direction-aware-hover";
-import { TypewriterEffectSmooth } from "@/components/ui/typewriter-effect";
 import ColourfulText from "@/components/ui/colourful-text";
 
+import { FloatingDock } from "@/components/ui/floating-dock";
+import { Github, Instagram, Linkedin } from "lucide-react";
+
 export default function SectionForMe() {
-  const words = [
+  const links = [
     {
-      text: "Tech",
+      title: "Linkedin",
+      icon: (
+        <Linkedin className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      ),
+      href: "https://www.linkedin.com/in/guglieelmor/",
     },
     {
-      text: "Lead",
+      title: "GitHub",
+      icon: (
+        <Github className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      ),
+      href: "https://github.com/guglieelmor",
     },
     {
-      text: "& ",
-    },
-    {
-      text: "Problem",
-    },
-    {
-      text: "Solver",
+      title: "Instagram",
+      icon: (
+        <Instagram className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      ),
+      href: "https://www.instagram.com/guilhermegulliver/",
     },
   ];
 
@@ -51,15 +59,15 @@ export default function SectionForMe() {
         <span className="text-2xl md:text-5xl lg:text-[3.9em] font-bold text-center text-black dark:text-white relative z-2 font-sans">
           Full-Stack <ColourfulText text="Developer" />
           <br />
-          <TypewriterEffectSmooth
-            words={words}
-            className="text-2xl md:text-5xl lg:text-6xl font-bold text-center text-black dark:text-white relative z-2 font-sans"
-          />
+          Tech Lead & Problem Solver
         </span>
-        <p className="text-muted-foreground mx-auto max-w-[700px] text-sm leading-relaxed md:text-lg lg:text-xl">
+        <p className="mt-5 text-muted-foreground mx-auto max-w-[700px] text-sm leading-relaxed md:text-lg lg:text-xl">
           Muito prazer, eu sou o Guilherme Oliveira, um desenvolvedor full-stack
           apaixonado por tecnologia e inovação.
         </p>
+        <div className="flex items-center justify-center w-full">
+          <FloatingDock mobileClassName="translate-y-20" items={links} />
+        </div>
       </div>
     </div>
   );
