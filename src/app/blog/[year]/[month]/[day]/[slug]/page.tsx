@@ -33,7 +33,7 @@ export default async function Blog({ params }: BlogProps) {
 
   const fileContent = fs.readFileSync(filePath, "utf8");
 
-  const { data, content } = matter(fileContent);
+  const { content } = matter(fileContent);
 
   const processedContent = await remark()
     .use(remarkGfm)

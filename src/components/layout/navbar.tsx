@@ -1,32 +1,78 @@
 "use client";
 
-import {
-  NavigationMenu,
-  NavigationMenuList,
-} from "@/components/ui/navigation-menu";
-import { Button } from "@/components/ui/button";
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+import React, { useState } from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Menu, Moon, Sun } from "lucide-react";
-import { useTheme } from "next-themes"
+import {
+  HoveredLink,
+  Menu,
+  MenuItem,
+  ProductItem,
+} from "@/components/ui/navbar-menu";
+import { useTheme } from "next-themes";
+import { cn } from "@/lib/utils";
+import { Button } from "../ui/button";
+import { Moon, Sun } from "lucide-react";
 
-export default function Navbar() {
-  const { setTheme } = useTheme()
-
+export default function Navbar({ className }: { className?: string }) {
+  const { setTheme } = useTheme();
+  const [active, setActive] = useState<string | null>(null);
   return (
-    <header className="shadow-md fixed top-5 left-1/2 z-50 w-[min(90%,700px)] -translate-x-1/2 rounded-full border bg-background/70 backdrop-blur-md lg:top-12">
-      <div className="flex items-center justify-between px-6 py-3">
+    <div
+      className={cn(
+        "shadow-md  rounded-full border bg-background/70 backdrop-blur-md fixed top-10 inset-x-0 max-w-2xl mx-auto z-50",
+        className
+      )}
+    >
+      <Menu setActive={setActive}>
+        <MenuItem setActive={setActive} active={active} item="Services">
+          <div className="flex flex-col space-y-4 text-sm">
+            <HoveredLink href="/web-dev">Web Development</HoveredLink>
+            <HoveredLink href="/interface-design">Interface Design</HoveredLink>
+            <HoveredLink href="/seo">Search Engine Optimization</HoveredLink>
+            <HoveredLink href="/branding">Branding</HoveredLink>
+          </div>
+        </MenuItem>
+        <MenuItem setActive={setActive} active={active} item="Products">
+          <div className="  text-sm grid grid-cols-2 gap-10 p-4">
+            <ProductItem
+              title="Algochurn"
+              href="https://algochurn.com"
+              src="https://assets.aceternity.com/demos/algochurn.webp"
+              description="Prepare for tech interviews like never before."
+            />
+            <ProductItem
+              title="Tailwind Master Kit"
+              href="https://tailwindmasterkit.com"
+              src="https://assets.aceternity.com/demos/tailwindmasterkit.webp"
+              description="Production ready Tailwind css components for your next project"
+            />
+            <ProductItem
+              title="Moonbeam"
+              href="https://gomoonbeam.com"
+              src="https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.51.31%E2%80%AFPM.png"
+              description="Never write from scratch again. Go from idea to blog in minutes."
+            />
+            <ProductItem
+              title="Rogue"
+              href="https://userogue.com"
+              src="https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.47.07%E2%80%AFPM.png"
+              description="Respond to government RFPs, RFIs and RFQs 10x faster using AI"
+            />
+          </div>
+        </MenuItem>
+        <MenuItem setActive={setActive} active={active} item="Pricing">
+          <div className="flex flex-col space-y-4 text-sm">
+            <HoveredLink href="/hobby">Hobby</HoveredLink>
+            <HoveredLink href="/individual">Individual</HoveredLink>
+            <HoveredLink href="/team">Team</HoveredLink>
+            <HoveredLink href="/enterprise">Enterprise</HoveredLink>
+          </div>
+        </MenuItem>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" size="icon">
@@ -47,88 +93,7 @@ export default function Navbar() {
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
-        {/* <Link href="/" className="flex shrink-0 items-center gap-2">
-          <Image
-            src="/images/block/block-1.svg"
-            alt="logo"
-            width={40}
-            height={40}
-          />
-        </Link> */}
-        <NavigationMenu className="hidden lg:flex">
-          <NavigationMenuList>
-            {/* <NavigationMenuItem>
-              <NavigationMenuTrigger>Features</NavigationMenuTrigger>
-              <NavigationMenuContent className="p-4 space-y-3">
-                <Link href="#" className="block font-medium hover:underline">
-                  Modern product teams
-                </Link>
-                <Link href="#" className="block font-medium hover:underline">
-                  Resource Allocation
-                </Link>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-            {menus.map((item) => (
-              <NavigationMenuItem key={item}>
-                <Link
-                  href="#"
-                  className="px-3 text-sm font-medium text-muted-foreground hover:text-primary"
-                >
-                  {item}
-                </Link>
-              </NavigationMenuItem>
-            ))} */}
-          </NavigationMenuList>
-        </NavigationMenu>
-
-        <div className="flex items-center gap-2.5">
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="lg:hidden">
-                <Menu className="size-5" />
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="top">
-              <SheetHeader>
-                <SheetTitle>Menu</SheetTitle>
-                <div className="flex flex-col gap-4 py-4">
-                  {/* <NavigationMenu>
-                    <NavigationMenuList className="flex flex-col space-y-2">
-                      <NavigationMenuItem>
-                        <NavigationMenuTrigger>Features</NavigationMenuTrigger>
-                        <NavigationMenuContent className="p-4 space-y-2">
-                          <Link
-                            href="#"
-                            className="block font-medium hover:underline"
-                          >
-                            Modern product teams
-                          </Link>
-                          <Link
-                            href="#"
-                            className="block font-medium hover:underline"
-                          >
-                            Resource Allocation
-                          </Link>
-                        </NavigationMenuContent>
-                      </NavigationMenuItem>
-                      {["About Us", "Pricing", "FAQ", "Contact"].map((item) => (
-                        <NavigationMenuItem key={item}>
-                          <Link
-                            href="#"
-                            className="text-base font-medium text-primary hover:underline"
-                          >
-                            {item}
-                          </Link>
-                        </NavigationMenuItem>
-                      ))}
-                    </NavigationMenuList>
-                  </NavigationMenu> */}
-                </div>
-              </SheetHeader>
-            </SheetContent>
-          </Sheet>
-        </div>
-      </div>
-    </header>
+      </Menu>
+    </div>
   );
 }

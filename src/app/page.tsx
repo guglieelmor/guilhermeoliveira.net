@@ -1,62 +1,65 @@
+"use client";
+
+import SectionForMe from "@/components/pages/index/SectionForMe";
+// import { WobbleCard } from "@/components/ui/wobble-card";
+
 export default function Home() {
   return (
-    <main className="bordered-div-padding text-muted-foreground space-x-6 border-x border-b text-sm mx-auto flex min-h-screen max-w-7xl flex-col items-center justify-between px-4 sm:px-6 lg:px-8">
+    <main className="bordered-div-padding text-muted-foreground space-x-6 border-x border-b text-sm mx-auto flex min-h-screen max-w-7xl flex-col items-center justify-between">
       <div className="container">
-        <header className="pt-56">
-          {/* <div className="bordered-div-padding relative flex flex-col items-center gap-8 border-x text-center md:gap-10 lg:gap-16 lg:!py-25">
-            <div className="max-w-4xl space-y-6 md:space-y-8 lg:space-y-12">
-              <a
-                className="relative inline-flex items-center overflow-hidden rounded-sm p-[1px]"
-                href="#"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  preserveAspectRatio="none"
-                  className="absolute h-full w-full"
-                  width="100%"
-                  height="100%"
-                >
-                  <rect fill="none" width="100%" height="100%"></rect>
-                </svg>
-                <div
-                // style="position: absolute; top: 0px; left: 0px; display: inline-block; transform: translateX(34.4257px) translateY(0px) translateX(-50%) translateY(-50%);"
-                >
-                  <div className="h-18 w-25 bg-[radial-gradient(#00A656_40%,transparent_60%)] opacity-[0.8]"></div>
-                </div>
-                <button
-                  data-slot="button"
-                  className="inline-flex items-center cursor-pointer justify-center tracking-normal whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([className*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border bg-card hover:bg-accent hover:text-accent-foreground dark:bg-[#232222] dark:border-input dark:hover:bg-[#232222] h-8 rounded-sm gap-1.5 px-3 has-[&gt;svg]:px-2.5 relative border-none"
-                >
-                  Public beta is starting next week
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    className="lucide lucide-arrow-right ml-1"
-                    aria-hidden="true"
-                  >
-                    <path d="M5 12h14"></path>
-                    <path d="m12 5 7 7-7 7"></path>
-                  </svg>
-                </button>
-              </a>
-              <h1 className="font-weight-display text-2xl leading-snug tracking-tighter md:text-3xl lg:text-5xl">
-                Fast, flexible, and{" "}
-                <span className="block">developer-first CMS.</span>
-              </h1>
-              <p className="text-muted-foreground mx-auto max-w-[700px] text-sm leading-relaxed md:text-lg lg:text-xl">
-                Scalar CMS gives you full control over content with a
-                streamlined, API-first experience—perfect for teams who want
-                speed without sacrificing flexibility.
+        <SectionForMe />
+        {/* <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 max-w-7xl mx-auto w-full">
+          <WobbleCard
+            containerClassName="col-span-1 lg:col-span-2 h-full bg-pink-800 min-h-[500px] lg:min-h-[300px]"
+            className=""
+          >
+            <div className="max-w-xs">
+              <h2 className="text-left text-balance text-base md:text-xl lg:text-3xl font-semibold tracking-[-0.015em] text-white">
+                Gippity AI powers the entire universe
+              </h2>
+              <p className="mt-4 text-left  text-base/6 text-neutral-200">
+                With over 100,000 mothly active bot users, Gippity AI is the
+                most popular AI platform for developers.
               </p>
             </div>
-            <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6">
+            <img
+              src="/linear.webp"
+              width={500}
+              height={500}
+              alt="linear demo image"
+              className="absolute -right-4 lg:-right-[40%] grayscale filter -bottom-10 object-contain rounded-2xl"
+            />
+          </WobbleCard>
+          <WobbleCard containerClassName="col-span-1 min-h-[300px]">
+            <h2 className="max-w-80  text-left text-balance text-base md:text-xl lg:text-3xl font-semibold tracking-[-0.015em] text-white">
+              No shirt, no shoes, no weapons.
+            </h2>
+            <p className="mt-4 max-w-[26rem] text-left  text-base/6 text-neutral-200">
+              If someone yells “stop!”, goes limp, or taps out, the fight is
+              over.
+            </p>
+          </WobbleCard>
+          <WobbleCard containerClassName="col-span-1 lg:col-span-3 bg-blue-900 min-h-[500px] lg:min-h-[600px] xl:min-h-[300px]">
+            <div className="max-w-sm">
+              <h2 className="max-w-sm md:max-w-lg  text-left text-balance text-base md:text-xl lg:text-3xl font-semibold tracking-[-0.015em] text-white">
+                Signup for blazing-fast cutting-edge state of the art Gippity AI
+                wrapper today!
+              </h2>
+              <p className="mt-4 max-w-[26rem] text-left  text-base/6 text-neutral-200">
+                With over 100,000 mothly active bot users, Gippity AI is the
+                most popular AI platform for developers.
+              </p>
+            </div>
+            <img
+              src="/linear.webp"
+              width={500}
+              height={500}
+              alt="linear demo image"
+              className="absolute -right-10 md:-right-[40%] lg:-right-[20%] -bottom-10 object-contain rounded-2xl"
+            />
+          </WobbleCard>
+        </div> */}
+        {/* <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6">
               <a
                 data-slot="button"
                 className="inline-flex items-center cursor-pointer justify-center tracking-normal whitespace-nowrap font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([className*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-primary text-primary-foreground hover:bg-primary/90 h-10 md:h-12 px-6 md:px-7 py-2 rounded-full gap-3.5 text-sm md:text-base font-weight-display"
@@ -83,14 +86,7 @@ export default function Home() {
                 </svg>
                 Community
               </a>
-            </div>
-            <div
-              className="pointer-events-none absolute top-0 left-full hidden h-[calc(100%+1px)] w-screen overflow-hidden border-b text-start select-none lg:block"
-              aria-hidden="true"
-              role="presentation"
-            ></div>
-          </div> */}
-        </header>
+            </div> */}
       </div>
     </main>
   );
