@@ -44,7 +44,7 @@ export default function SectionForMe() {
     >
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-black"></div>
 
-      <div className="pt-45 max-w-4xl space-y-6 md:space-y-8 lg:space-y-12">
+      <div className="px-10 pt-45 max-w-4xl space-y-6 md:space-y-8 lg:space-y-12">
         <div>
           <div className="flex items-center justify-center">
             <DirectionAwareHover
@@ -66,7 +66,7 @@ export default function SectionForMe() {
           apaixonado por tecnologia e inovação.
         </p>
         <div className="flex items-center justify-center w-full">
-          <FloatingDock mobileClassName="translate-y-20" items={links} />
+          <FloatingDock mobileClassName="z-50" items={links} />
         </div>
       </div>
     </div>
