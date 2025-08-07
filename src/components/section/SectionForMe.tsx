@@ -39,12 +39,12 @@ export default function SectionForMe() {
         "[background-size:56px_56px]",
         "[background-image:linear-gradient(to_right,#e4e4e7_1px,transparent_1px),linear-gradient(to_bottom,#e4e4e7_1px,transparent_1px)]",
         "dark:[background-image:linear-gradient(to_right,#262626_1px,transparent_1px),linear-gradient(to_bottom,#262626_1px,transparent_1px)]",
-        "bordered-div-padding relative flex flex-col items-center gap-8 border-x text-center md:gap-10 lg:gap-16 lg:!py-25"
+        "bordered-div-padding relative flex flex-col items-center gap-8 text-center md:gap-10 lg:gap-16 lg:!py-25"
       )}
     >
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-black"></div>
 
-      <div className="px-10 pt-45 max-w-4xl space-y-6 md:space-y-8 lg:space-y-12">
+      <div className="px-10 max-w-4xl space-y-6 md:space-y-8 lg:space-y-12">
         <div>
           <div className="flex items-center justify-center">
             <DirectionAwareHover
