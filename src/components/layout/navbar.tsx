@@ -2,7 +2,7 @@
 
 import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
+// import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Moon, Sun } from "lucide-react";
 
@@ -28,24 +28,24 @@ export default function Navbar({ className }: { className?: string }) {
     >
       <nav className="py-2 relative rounded-full border border-transparent bg-white shadow-input dark:bg-black dark:border-white/20 flex justify-center">
         <div className="flex flex-row gap-6 text-[1em] font-medium text-black dark:text-white">
-          <Link
+          {/* <Link
             href="/"
             className="self-center cursor-pointer text-black dark:text-white hover:text-neutral-700 dark:hover:text-neutral-300 transition-colors font-medium tracking-wide"
           >
             Home
-          </Link>
-          <Link
+          </Link> */}
+          {/* <Link
             href="/sobre"
             className="self-center cursor-pointer text-black dark:text-white hover:text-neutral-700 dark:hover:text-neutral-300 transition-colors font-medium tracking-wide"
           >
             Sobre
-          </Link>
-          <Link
+          </Link> */}
+          {/* <Link
             href="/blog"
             className="self-center cursor-pointer text-black dark:text-white hover:text-neutral-700 dark:hover:text-neutral-300 transition-colors font-medium tracking-wide"
           >
             Blog
-          </Link>
+          </Link> */}
           <button
             onClick={toggleTheme}
             className="p-2 cursor-pointer rounded-full hover:bg-muted transition-colors"
