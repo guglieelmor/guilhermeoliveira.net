@@ -44,7 +44,7 @@ export default async function Blog({ params }: BlogProps) {
 
   return (
     <article className="min-h-screen mx-auto container">
-      <section className="py-32">
+      <section>
         <div>
           <nav aria-label="breadcrumb" data-slot="breadcrumb">
             <ol

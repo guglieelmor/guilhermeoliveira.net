@@ -23,7 +23,7 @@ export default function Curriculum() {
 
   return (
     <section className="mx-auto max-w-4xl bg-white p-10 text-gray-900 dark:bg-zinc-900 dark:text-zinc-100">
-      <header className="flex items-start justify-between">
+      <header className="flex lg:flex-row flex-col items-start justify-between">
         <div>
           <div className="flex gap-5 items-center">
             <Image
@@ -47,7 +47,7 @@ export default function Curriculum() {
             </div>
           </div>
         </div>
-        <div className="text-right text-sm leading-relaxed text-gray-700 dark:text-zinc-300">
+        <div className="lg:text-right text-left mt-10 lg:mt-0 text-sm leading-relaxed text-gray-700 dark:text-zinc-300">
           <p>
             <Link href="https://guilhermeoliveira.net/" target="_blank">
               guilhermeoliveira.net
@@ -134,10 +134,10 @@ export default function Curriculum() {
               Tempo integral · {yearsBrudam} a {monthsBrudam} m
             </p>
 
-            <div className="relative mt-4 pl-6">
-              <div className="absolute left-[5px] top-0 bottom-0 w-px bg-gray-300 dark:bg-zinc-600" />
+            <div className="relative mt-4 lg:pl-6 pl-0">
+              <div className="hidden lg:block absolute left-[5px] top-0 bottom-0 w-px bg-gray-300 dark:bg-zinc-600" />
               <div className="relative pb-8">
-                <span className="absolute left-[-23px] top-[6px] h-[10px] w-[10px] rounded-full bg-gray-400 dark:bg-zinc-500" />
+                <span className="hidden lg:block absolute left-[-23px] top-[6px] h-[10px] w-[10px] rounded-full bg-gray-400 dark:bg-zinc-500" />
 
                 <h4 className="font-semibold">Tech Lead</h4>
 
@@ -159,7 +159,7 @@ export default function Curriculum() {
                 </p>
 
                 <p className="mt-2 flex items-center gap-2 text-sm font-medium">
-                  <span className="text-gray-500">◆</span>
+                  <span className="hidden lg:block text-gray-500">◆</span>
                   JavaScript · Laravel · Node.js · Atendimento ao cliente ·
                   Amazon Web Services · Docker · Linux · MySQL · Scrum · Vue.js
                   · PHP · Análise de dados · Habilidades analíticas · MongoDB ·
@@ -171,7 +171,7 @@ export default function Curriculum() {
               </div>
 
               <div className="relative">
-                <span className="absolute left-[-23px] top-[6px] h-[10px] w-[10px] rounded-full bg-gray-400 dark:bg-zinc-500" />
+                <span className="hidden lg:block absolute left-[-23px] top-[6px] h-[10px] w-[10px] rounded-full bg-gray-400 dark:bg-zinc-500" />
 
                 <h4 className="font-semibold">Full Stack Developer</h4>
 
@@ -191,7 +191,7 @@ export default function Curriculum() {
                 </p>
 
                 <p className="mt-2 flex items-center gap-2 text-sm font-medium">
-                  <span className="text-gray-500">◆</span>
+                  <span className="hidden lg:block text-gray-500">◆</span>
                   PHP · Laravel · MySQL · JQuery · Vue.js · AngularJS · Phalcon
                 </p>
               </div>
@@ -217,10 +217,10 @@ export default function Curriculum() {
               Tempo integral · {yearsGuilmor} a {monthsGuilmor} m
             </p>
 
-            <div className="relative mt-4 pl-6">
-              <div className="absolute left-[5px] top-0 bottom-0 w-px bg-gray-300 dark:bg-zinc-600" />
+            <div className="relative mt-4 lg:pl-6 pl-0">
+              <div className="hidden lg:block absolute left-[5px] top-0 bottom-0 w-px bg-gray-300 dark:bg-zinc-600" />
               <div className="relative pb-8">
-                <span className="absolute left-[-23px] top-[6px] h-[10px] w-[10px] rounded-full bg-gray-400 dark:bg-zinc-500" />
+                <span className="hidden lg:block absolute left-[-23px] top-[6px] h-[10px] w-[10px] rounded-full bg-gray-400 dark:bg-zinc-500" />
 
                 <h4 className="font-semibold">Founder & Creator</h4>
 
@@ -241,7 +241,7 @@ export default function Curriculum() {
                 </p>
 
                 <p className="mt-2 flex items-center gap-2 text-sm font-medium">
-                  <span className="text-gray-500">◆</span>
+                  <span className="hidden lg:block text-gray-500">◆</span>
                   JavaScript · Laravel · Node.js · Atendimento ao cliente ·
                   Amazon Web Services · Docker · Linux · MySQL · Scrum · Vue.js
                   · PHP · Análise de dados · Habilidades analíticas · MongoDB ·
