@@ -12,11 +12,11 @@ export default function Footer() {
     <section className="bg-black dark:bg-white dark:text-black light:text-white">
       <div className="container mx-auto">
         <footer>
-          <div>
+          {/* <div>
             <div className="h-[10rem] xl:h-[30rem] flex items-center justify-center">
               <TextHoverEffect text="Gulliver" />
             </div>
-          </div>
+          </div> */}
           <div className="sm:px-0 px-10 pb-20 text-muted-foreground mt-24 flex flex-col justify-between sm:gap-4 gap-9 border-t pt-8 text-sm font-medium md:flex-row md:items-center">
             <p>© {year} guilhermeoliveira.net. Todos os direitos reservados.</p>
             <ul className="flex gap-4 justify-center">

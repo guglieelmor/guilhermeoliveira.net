@@ -22,11 +22,11 @@ export default function Navbar({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "shadow-md rounded-full border bg-background/70 backdrop-blur-md fixed top-10 inset-x-0 max-w-2xs mx-auto z-50",
+        "shadow-md rounded-full border bg-background/70 backdrop-blur-md fixed top-10 inset-x-0 w-24 mx-auto z-50",
         className
       )}
     >
-      <nav className="py-2 relative rounded-full border border-transparent bg-white shadow-input dark:bg-black dark:border-white/20 flex justify-center">
+      <nav className="py-2 container relative rounded-full border border-transparent bg-white shadow-input dark:bg-black dark:border-white/20 flex justify-center">
         <div className="flex flex-row gap-6 text-[1em] font-medium text-black dark:text-white">
           {/* <Link
             href="/"
