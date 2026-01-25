@@ -28,7 +28,9 @@ export default function Curriculum() {
           <div className="flex gap-5 items-center">
             <Image
               alt="image"
-              className={"object-cover scale-[1.11] w-25 h-25 rounded-full"}
+              className={
+                "object-cover scale-[1.11] w-25 h-25 rounded-full border"
+              }
               width="100"
               height="100"
               src={`https://avatars.githubusercontent.com/u/52608353?v=5`}
@@ -62,6 +64,14 @@ export default function Curriculum() {
               target="_blank"
             >
               linkedin.com/in/guglieelmor/
+            </Link>
+          </p>
+          <p>
+            <Link
+              href="https://cursos.alura.com.br/user/guglieelmor"
+              target="_blank"
+            >
+              cursos.alura.com.br/user/guglieelmor
             </Link>
           </p>
         </div>
@@ -112,7 +122,7 @@ export default function Curriculum() {
             alt="Brudam - Software TMS"
             width={48}
             height={48}
-            className="h-12 w-12 rounded-xl object-cover"
+            className="h-12 w-12 rounded-xl object-cover border"
           />
 
           <div className="flex-1">
@@ -195,7 +205,7 @@ export default function Curriculum() {
             alt="GUILMOR - Tecnologia, Desenvolvimento e Inovação"
             width={48}
             height={48}
-            className="h-12 w-12 rounded-xl object-cover"
+            className="h-12 w-12 rounded-xl object-cover border"
           />
 
           <div className="flex-1">
@@ -260,24 +270,43 @@ export default function Curriculum() {
         </h2>
 
         <div className="space-y-4 text-sm leading-relaxed">
-          <div>
-            <p className="font-semibold">
-              IFSUL – Tecnologia em Sistemas para Internet
-            </p>
-            <p className="text-gray-600 dark:text-zinc-400">2020 – 2025</p>
-            <p>
-              Formação focada em desenvolvimento full-stack, arquitetura de
-              sistemas, bancos de dados, redes, testes e manutenção de sistemas.
-            </p>
+          <div className="flex gap-4 mb-7">
+            <Image
+              src="/images/ifsul.jpeg"
+              alt=" IFSUL – Instituto Federal Sul-rio-grandense"
+              width={48}
+              height={48}
+              className="h-12 w-12 rounded-xl object-cover border"
+            />
+            <div>
+              <p className="font-semibold">
+                IFSUL – Tecnologia em Sistemas para Internet
+              </p>
+              <p className="text-gray-600 dark:text-zinc-400">2020 – 2025</p>
+              <p>
+                Formação focada em desenvolvimento full-stack, arquitetura de
+                sistemas, bancos de dados, redes, testes e manutenção de
+                sistemas.
+              </p>
+            </div>
           </div>
 
-          <div>
-            <p className="font-semibold">IFSUL – Técnico em Informática</p>
-            <p className="text-gray-600 dark:text-zinc-400">2016 – 2019</p>
-            <p>
-              Formação prática em suporte técnico, programação, infraestrutura
-              de TI e redes locais.
-            </p>
+          <div className="flex gap-4 mb-7">
+            <Image
+              src="/images/ifsul.jpeg"
+              alt=" IFSUL – Instituto Federal Sul-rio-grandense"
+              width={48}
+              height={48}
+              className="h-12 w-12 rounded-xl object-cover border"
+            />
+            <div>
+              <p className="font-semibold">IFSUL – Técnico em Informática</p>
+              <p className="text-gray-600 dark:text-zinc-400">2016 – 2019</p>
+              <p>
+                Formação prática em suporte técnico, programação, infraestrutura
+                de TI e redes locais.
+              </p>
+            </div>
           </div>
         </div>
       </section>
