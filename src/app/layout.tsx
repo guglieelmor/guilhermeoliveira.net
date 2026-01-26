@@ -18,8 +18,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Guilherme Oliveira - Full Stack Developer",
-  description: "Guilherme Oliveira - Full Stack Developer",
+  title: "Guilherme Oliveira - Tech Lead | Software Engineer | Full Stack | SRE",
+  description: "Guilherme Oliveira - Tech Lead | Software Engineer | Full Stack | SRE",
 };
 
 export default function RootLayout({
