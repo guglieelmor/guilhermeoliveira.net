@@ -344,13 +344,17 @@ export default function Curriculum() {
             2022 (31h)
           </li>
           <li>Formação SEO — 2024 (36h)</li>
-          <li>Formação Gestão da biblioteca de infraestrutura de TI — 2024 (43h)</li>
+          <li>
+            Formação Gestão da biblioteca de infraestrutura de TI — 2024 (43h)
+          </li>
           <li>Formação Tráfego Pago — 2024 (63h)</li>
           <li>Formação Laravel: crie aplicações web em PHP — 2024 (40h)</li>
-          <li>Formação Melhore sua experiência JavaScript com Svelte — 2025 (27h)</li>
+          <li>
+            Formação Melhore sua experiência JavaScript com Svelte — 2025 (27h)
+          </li>
           <li>Formação Começando em DevOps — 2026 (33h)</li>
           <li>AWS Academy Cloud Foundations — 2023</li>
-          <li>AWS Fundamentals: Going Cloud-Native — 2021</li> 
+          <li>AWS Fundamentals: Going Cloud-Native — 2021</li>
         </ul>
       </section>
 
@@ -366,8 +370,19 @@ export default function Curriculum() {
           PROJETOS
         </h2>
         <ul className="list-disc space-y-1 pl-5 text-sm text-gray-800 dark:text-zinc-200">
-          <li>COMOBIS – Ecossistema SaaS para Corretores Imobiliários: O COMOBIS é uma plataforma online que cria perfis para usuários (principalmente relacionados ao mercado imobiliário). Cada usuário pode ter um endereço único dentro do sistema onde apresenta seus dados e propriedades.</li>
-          <li>Automatic Fact Checker: É um projeto de extensão voltado ao desenvolvimento de uma solução tecnológica capaz de analisar automaticamente a veracidade de informações, auxiliando no combate à desinformação em ambientes digitais.</li>
+          <li>
+            COMOBIS – Ecossistema SaaS para Corretores Imobiliários: O COMOBIS é
+            uma plataforma online que cria perfis para usuários (principalmente
+            relacionados ao mercado imobiliário). Cada usuário pode ter um
+            endereço único dentro do sistema onde apresenta seus dados e
+            propriedades.
+          </li>
+          <li>
+            Automatic Fact Checker: É um projeto de extensão voltado ao
+            desenvolvimento de uma solução tecnológica capaz de analisar
+            automaticamente a veracidade de informações, auxiliando no combate à
+            desinformação em ambientes digitais.
+          </li>
         </ul>
       </section>
     </section>

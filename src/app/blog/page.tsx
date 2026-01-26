@@ -6,15 +6,16 @@ export default function Blog() {
       <section>
         <div className="container flex flex-col items-center gap-16">
           <div className="text-center">
-            <h2 className="mx-auto mb-6 text-3xl font-semibold text-pretty md:text-4xl lg:max-w-3xl">
+            <h2 className="mx-auto mb-6 text-3xl font-semibold text-pretty md:text-4xl lg:max-w-3xl text-black dark:text-zinc-300">
               Blog
             </h2>
-            <p className="mx-auto max-w-2xl text-muted-foreground md:text-lg">
+            <p className="mx-auto max-w-2xl md:text-lg text-black dark:text-zinc-300">
               Aqui você irá encontrar artigos legitimamente escritos por mim,
               sem a adição de IA. Com opiniões e insights sobre desenvolvimento
               web, design e tecnologia.
             </p>
           </div>
+          
           {/* <div className="grid gap-y-10 sm:grid-cols-12 sm:gap-y-12 md:gap-y-16 lg:gap-y-20">
             <div
               data-slot="card"
@@ -79,6 +80,8 @@ export default function Blog() {
               </div>
             </div>
           </div> */}
+
+
         </div>
       </section>
     </Container>
