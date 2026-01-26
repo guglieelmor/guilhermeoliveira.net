@@ -3,6 +3,17 @@
     {
       "title": "Teste",
       "date": "2025-07-30T02:30:00-03:00",
+      "path": "/2026/01/26/teste-do-teste",
+      "description": "Teste do teste.",
+      "tags": [
+        "Love",
+        "games",
+        "dale"
+      ]
+    },
+    {
+      "title": "Teste",
+      "date": "2025-07-30T02:30:00-03:00",
       "path": "/2025/07/30/teste",
       "description": "This is a test post to check the functionality of the blog.",
       "tags": [
@@ -10,6 +21,6 @@
         "llms",
         "technology"
       ]
-    } 
+    }
   ]
 }

@@ -5,7 +5,7 @@ import { remark } from "remark";
 import html from "remark-html";
 import remarkGfm from "remark-gfm";
 
-const POSTS_DIRECTORY = path.join(process.cwd(), "_content");
+const POSTS_DIRECTORY = path.join(process.cwd(), "/public/_content");
 
 type BlogProps = {
   params: Promise<{

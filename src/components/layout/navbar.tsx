@@ -12,7 +12,7 @@ export default function Navbar({ className }: { className?: string }) {
   const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
   const isHome = pathname === "/";
-  const isBlog = pathname === "/blog";
+  const isBlog = pathname.includes("blog");
 
   useEffect(() => {
     setMounted(true);
