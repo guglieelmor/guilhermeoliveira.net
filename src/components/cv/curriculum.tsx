@@ -26,7 +26,7 @@ export default function Curriculum() {
     const hiddenPrint = document.getElementsByClassName("hiddenPrint");
 
     for (const element of hiddenPrint) {
-      element.style.display = "none";
+      (element as HTMLElement).style.display = "none";
     }
     window.print();
   };
@@ -36,7 +36,7 @@ export default function Curriculum() {
       const hiddenPrint = document.getElementsByClassName("hiddenPrint");
 
       for (const element of hiddenPrint) {
-        element.style.display = "";
+        (element as HTMLElement).style.display = "none";
       }
     };
 
