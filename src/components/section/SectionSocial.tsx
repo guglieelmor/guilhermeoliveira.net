@@ -4,7 +4,7 @@ import { ArrowUpRight, Github, Instagram, Linkedin } from "lucide-react";
 
 export default function SectionSocial() {
   return (
-    <div className="container">
+    <div className="container hiddenPrint">
       <div className="mx-auto max-w-6xl space-y-16">
         <div className="mt-10 grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
           <a

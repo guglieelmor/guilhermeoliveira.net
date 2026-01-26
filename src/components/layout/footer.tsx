@@ -9,7 +9,7 @@ export default function Footer() {
   const year = data.getFullYear();
 
   return (
-    <section className="bg-black dark:bg-white dark:text-black light:text-white">
+    <section className="hiddenPrint bg-black dark:bg-white dark:text-black light:text-white">
       <div className="container mx-auto">
         <footer>
           {/* <div>

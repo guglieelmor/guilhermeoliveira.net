@@ -2,7 +2,6 @@
 
 import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
-// import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Moon, Sun } from "lucide-react";
 import Link from "next/link";
@@ -11,25 +10,24 @@ import { usePathname } from "next/navigation";
 export default function Navbar({ className }: { className?: string }) {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+  const isBlog = pathname === "/blog";
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  if (!mounted) return null;
-
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
   };
 
-  const pathname = usePathname();
-  const isHome = pathname === "/";
-  const isBlog = pathname === "/blog";
+  if (!mounted) return null;
 
   return (
     <div
       className={cn(
-        "shadow-md rounded-full border bg-background/70 backdrop-blur-md fixed top-3 inset-x-0 w-54 mx-auto z-50",
+        "hiddenPrint shadow-md rounded-full border bg-background/70 backdrop-blur-md fixed top-3 inset-x-0 w-54 mx-auto z-50",
         className,
       )}
     >

@@ -3,6 +3,7 @@
 import { diffYearsAndMonths } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect } from "react";
 
 export default function Curriculum() {
   const { years: yearsBrudam, months: monthsBrudam } = diffYearsAndMonths(
@@ -21,8 +22,33 @@ export default function Curriculum() {
     new Date(),
   );
 
+  const generatePDF = async () => {
+    const hiddenPrint = document.getElementsByClassName("hiddenPrint");
+
+    for (const element of hiddenPrint) {
+      element.style.display = "none";
+    }
+    window.print();
+  };
+
+  useEffect(() => {
+    const afterPrint = () => {
+      const hiddenPrint = document.getElementsByClassName("hiddenPrint");
+
+      for (const element of hiddenPrint) {
+        element.style.display = "";
+      }
+    };
+
+    window.addEventListener("afterprint", afterPrint);
+
+    return () => {
+      window.removeEventListener("afterprint", afterPrint);
+    };
+  }, []);
+
   return (
-    <section className="mx-auto max-w-4xl p-10 ">
+    <section className="mx-auto max-w-4xl p-10">
       <header className="flex lg:flex-row flex-col items-start justify-between">
         <div>
           <div className="flex gap-5 items-center">
@@ -385,6 +411,15 @@ export default function Curriculum() {
           </li>
         </ul>
       </section>
+
+      <div className="flex justify-end hiddenPrint">
+        <button
+          onClick={generatePDF}
+          className="mt-10 rounded-md cursor-pointer bg-black px-4 py-2 text-sm font-medium text-white hover:bg-zinc-800 dark:bg-zinc-200 dark:text-black dark:hover:bg-zinc-300"
+        >
+          Baixar currículo (PDF)
+        </button>
+      </div>
     </section>
   );
 }
