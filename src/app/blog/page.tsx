@@ -15,7 +15,7 @@ export default function Blog() {
               web, design e tecnologia.
             </p>
           </div>
-          <div className="grid gap-y-10 sm:grid-cols-12 sm:gap-y-12 md:gap-y-16 lg:gap-y-20">
+          {/* <div className="grid gap-y-10 sm:grid-cols-12 sm:gap-y-12 md:gap-y-16 lg:gap-y-20">
             <div
               data-slot="card"
               className="text-card-foreground flex flex-col gap-6 rounded-xl py-6 order-last border-0 bg-transparent shadow-none sm:order-first sm:col-span-12 lg:col-span-10 lg:col-start-2"
@@ -78,7 +78,7 @@ export default function Blog() {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
     </Container>

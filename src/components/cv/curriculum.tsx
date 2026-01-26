@@ -22,21 +22,21 @@ export default function Curriculum() {
   );
 
   return (
-    <section className="mx-auto max-w-4xl bg-white p-10 text-gray-900 dark:bg-zinc-900 dark:text-zinc-100">
+    <section className="mx-auto max-w-4xl p-10 ">
       <header className="flex lg:flex-row flex-col items-start justify-between">
         <div>
           <div className="flex gap-5 items-center">
             <Image
               alt="image"
               className={
-                "object-cover scale-[1.11] w-25 h-25 rounded-full border"
+                "object-cover scale-[1.11] w-25 h-25 rounded-full border border-zinc-700 dark:border-zinc-300"
               }
               width="100"
               height="100"
               src={`https://avatars.githubusercontent.com/u/52608353?v=5`}
             />
             <div>
-              <h1 className="text-4xl font-extrabold leading-none tracking-tight">
+              <h1 className="text-4xl font-extrabold leading-none tracking-tight text-black dark:text-zinc-300">
                 GUILHERME
                 <br />
                 OLIVEIRA
@@ -122,11 +122,11 @@ export default function Curriculum() {
             alt="Brudam - Software TMS"
             width={48}
             height={48}
-            className="h-12 w-12 rounded-xl object-cover border"
+            className="h-12 w-12 rounded-xl object-cover border border-zinc-700 dark:border-zinc-300"
           />
 
           <div className="flex-1">
-            <h3 className="font-semibold leading-tight">
+            <h3 className="font-semibold leading-tight text-gray-800 dark:text-zinc-200">
               Brudam - Software TMS
             </h3>
 
@@ -139,7 +139,9 @@ export default function Curriculum() {
               <div className="relative pb-8">
                 <span className="hidden lg:block absolute left-[-23px] top-[6px] h-[10px] w-[10px] rounded-full bg-gray-400 dark:bg-zinc-500" />
 
-                <h4 className="font-semibold">Tech Lead</h4>
+                <h4 className="font-semibold text-gray-800 dark:text-zinc-200">
+                  Tech Lead
+                </h4>
 
                 <p className="text-sm text-gray-600 dark:text-zinc-400">
                   dez de 2021 – o momento · {yearsBrudamTechLead} anos{" "}
@@ -150,7 +152,7 @@ export default function Curriculum() {
                   Porto Alegre, Rio Grande do Sul
                 </p>
 
-                <p className="mt-2 text-sm leading-relaxed">
+                <p className="mt-2 text-sm leading-relaxed text-gray-800 dark:text-zinc-200">
                   Atuo como líder técnico e desenvolvedor em projetos
                   estratégicos de desenvolvimento de software, conduzindo
                   decisões arquiteturais e técnicas críticas, organizando as
@@ -158,8 +160,10 @@ export default function Curriculum() {
                   alinhadas aos objetivos do produto.
                 </p>
 
-                <p className="mt-2 flex items-center gap-2 text-sm font-medium">
-                  <span className="hidden lg:block text-gray-500">◆</span>
+                <p className="mt-2 flex items-center gap-2 text-sm font-medium text-gray-800 dark:text-zinc-200">
+                  <span className="hidden lg:block text-gray-800 dark:text-zinc-200">
+                    ◆
+                  </span>
                   JavaScript · Laravel · Node.js · Atendimento ao cliente ·
                   Amazon Web Services · Docker · Linux · MySQL · Scrum · Vue.js
                   · PHP · Análise de dados · Habilidades analíticas · MongoDB ·
@@ -173,7 +177,9 @@ export default function Curriculum() {
               <div className="relative">
                 <span className="hidden lg:block absolute left-[-23px] top-[6px] h-[10px] w-[10px] rounded-full bg-gray-400 dark:bg-zinc-500" />
 
-                <h4 className="font-semibold">Full Stack Developer</h4>
+                <h4 className="font-semibold text-gray-800 dark:text-zinc-200">
+                  Full Stack Developer
+                </h4>
 
                 <p className="text-sm text-gray-600 dark:text-zinc-400">
                   mar de 2020 – dez de 2021 · {yearsBrudamFullStack} ano{" "}
@@ -184,14 +190,16 @@ export default function Curriculum() {
                   Eldorado do Sul, Rio Grande do Sul, Brasil
                 </p>
 
-                <p className="mt-2 text-sm leading-relaxed">
+                <p className="mt-2 text-sm leading-relaxed text-gray-800 dark:text-zinc-200">
                   Fui responsável pelo desenvolvimento de soluções completas,
                   atuando no front-end, no back-end e colaborando em tarefas de
                   ciência de dados.
                 </p>
 
-                <p className="mt-2 flex items-center gap-2 text-sm font-medium">
-                  <span className="hidden lg:block text-gray-500">◆</span>
+                <p className="mt-2 flex items-center gap-2 text-sm font-medium text-gray-800 dark:text-zinc-200">
+                  <span className="hidden lg:block text-gray-800 dark:text-zinc-200">
+                    ◆
+                  </span>
                   PHP · Laravel · MySQL · JQuery · Vue.js · AngularJS · Phalcon
                 </p>
               </div>
@@ -205,11 +213,11 @@ export default function Curriculum() {
             alt="GUILMOR - Tecnologia, Desenvolvimento e Inovação"
             width={48}
             height={48}
-            className="h-12 w-12 rounded-xl object-cover border"
+            className="h-12 w-12 rounded-xl object-cover border border-zinc-700 dark:border-zinc-300"
           />
 
           <div className="flex-1">
-            <h3 className="font-semibold leading-tight">
+            <h3 className="font-semibold leading-tight text-gray-800 dark:text-zinc-200">
               GUILMOR - Tecnologia, Desenvolvimento e Inovação
             </h3>
 
@@ -222,7 +230,9 @@ export default function Curriculum() {
               <div className="relative pb-8">
                 <span className="hidden lg:block absolute left-[-23px] top-[6px] h-[10px] w-[10px] rounded-full bg-gray-400 dark:bg-zinc-500" />
 
-                <h4 className="font-semibold">Founder & Creator</h4>
+                <h4 className="font-semibold text-gray-800 dark:text-zinc-200">
+                  Founder & Creator
+                </h4>
 
                 <p className="text-sm text-gray-600 dark:text-zinc-400">
                   ago de 2025 – o momento · {yearsGuilmor} a {monthsGuilmor} m
@@ -232,7 +242,7 @@ export default function Curriculum() {
                   Curitiba, Paraná
                 </p>
 
-                <p className="mt-2 text-sm leading-relaxed">
+                <p className="mt-2 text-sm leading-relaxed text-gray-800 dark:text-zinc-200">
                   Transformo necessidades de negócio em produtos digitais
                   eficientes e escaláveis. Trabalho como desenvolvedor
                   freelance, oferecendo apoio estratégico, visão técnica e
@@ -240,8 +250,10 @@ export default function Curriculum() {
                   até a manutenção e evolução contínua das aplicações.
                 </p>
 
-                <p className="mt-2 flex items-center gap-2 text-sm font-medium">
-                  <span className="hidden lg:block text-gray-500">◆</span>
+                <p className="mt-2 flex items-center gap-2 text-sm font-medium text-gray-800 dark:text-zinc-200">
+                  <span className="hidden lg:block text-gray-800 dark:text-zinc-200">
+                    ◆
+                  </span>
                   JavaScript · Laravel · Node.js · Atendimento ao cliente ·
                   Amazon Web Services · Docker · Linux · MySQL · Scrum · Vue.js
                   · PHP · Análise de dados · Habilidades analíticas · MongoDB ·
@@ -276,14 +288,14 @@ export default function Curriculum() {
               alt=" IFSUL – Instituto Federal Sul-rio-grandense"
               width={48}
               height={48}
-              className="h-12 w-12 rounded-xl object-cover border"
+              className="h-12 w-12 rounded-xl object-cover border border-zinc-700 dark:border-zinc-300"
             />
             <div>
-              <p className="font-semibold">
+              <p className="font-semibold text-gray-800 dark:text-zinc-200">
                 IFSUL – Tecnologia em Sistemas para Internet
               </p>
               <p className="text-gray-600 dark:text-zinc-400">2020 – 2025</p>
-              <p>
+              <p className="text-gray-800 dark:text-zinc-200">
                 Formação focada em desenvolvimento full-stack, arquitetura de
                 sistemas, bancos de dados, redes, testes e manutenção de
                 sistemas.
@@ -297,12 +309,14 @@ export default function Curriculum() {
               alt=" IFSUL – Instituto Federal Sul-rio-grandense"
               width={48}
               height={48}
-              className="h-12 w-12 rounded-xl object-cover border"
+              className="h-12 w-12 rounded-xl object-cover border border-zinc-700 dark:border-zinc-300"
             />
             <div>
-              <p className="font-semibold">IFSUL – Técnico em Informática</p>
+              <p className="font-semibold text-gray-800 dark:text-zinc-200">
+                IFSUL – Técnico em Informática
+              </p>
               <p className="text-gray-600 dark:text-zinc-400">2016 – 2019</p>
-              <p>
+              <p className="text-gray-800 dark:text-zinc-200">
                 Formação prática em suporte técnico, programação, infraestrutura
                 de TI e redes locais.
               </p>
@@ -322,7 +336,7 @@ export default function Curriculum() {
         >
           CURSOS
         </h2>
-        <ul className="list-disc space-y-1 pl-5 text-sm">
+        <ul className="list-disc space-y-1 pl-5 text-sm text-gray-800 dark:text-zinc-200">
           <li>Formação TypeScript</li>
           <li>Formação Vue.js</li>
           <li>Formação SEO</li>
@@ -345,7 +359,7 @@ export default function Curriculum() {
         >
           PROJETOS
         </h2>
-        <ul className="list-disc space-y-1 pl-5 text-sm">
+        <ul className="list-disc space-y-1 pl-5 text-sm text-gray-800 dark:text-zinc-200">
           <li>COMOBIS – Ecossistema SaaS para Corretores Imobiliários</li>
           <li>Projeto de Extensão: Automatic Fact Checker</li>
         </ul>
