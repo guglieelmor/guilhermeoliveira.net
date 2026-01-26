@@ -1,23 +1,26 @@
 "use client";
- 
+
 import { TextHoverEffect } from "@/components/ui/text-hover-effect";
 import { Github, Instagram, Linkedin } from "lucide-react";
-import Link from "next/link"; 
+import Link from "next/link";
 
 export default function Footer() {
   const data = new Date();
   const year = data.getFullYear();
 
   return (
-    <section className="hiddenPrint bg-black dark:bg-white dark:text-black light:text-white">
-      <div className="container mx-auto">
+    <section className="hiddenPrint bg-white dark:bg-black dark:text-black light:text-white">
+      <div className="h-px bg-black dark:bg-zinc-700">
+        <div className="h-1.5 w-10 bg-black dark:bg-zinc-700"> &nbsp;</div>
+      </div>
+      <div className="container mx-auto max-w-7xl">
         <footer>
           {/* <div>
             <div className="h-[10rem] xl:h-[30rem] flex items-center justify-center">
               <TextHoverEffect text="Gulliver" />
             </div>
           </div> */}
-          <div className="sm:px-0 px-10 pb-20 text-muted-foreground mt-24 flex flex-col justify-between sm:gap-4 gap-9 border-t pt-8 text-sm font-medium md:flex-row md:items-center">
+          <div className="sm:px-0 px-10 pb-20 text-muted-foreground mt-10 flex flex-col justify-between sm:gap-4 gap-9 pt-8 text-sm font-medium md:flex-row md:items-center">
             <p>© {year} guilhermeoliveira.net. Todos os direitos reservados.</p>
             <ul className="flex gap-4 justify-center">
               <li className="hover:text-primary underline">

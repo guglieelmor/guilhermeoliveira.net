@@ -4,7 +4,7 @@ interface ContainerProps {
 
 export default function Container({ children }: ContainerProps) {
   return (
-    <main className="bordered-div-padding text-muted-foreground space-x-6 border-x border-b text-sm mx-auto flex min-h-screen max-w-7xl flex-col items-center justify-between">
+    <main className="dark:bg-black bordered-div-padding text-muted-foreground space-x-6 border-x border-black dark:border-zinc-700 text-sm mx-auto flex min-h-screen max-w-7xl flex-col items-center justify-between">
       <div className="container dark:bg-black">
         <section className="py-20">{children}</section>
       </div>

@@ -12,7 +12,7 @@ export default function Home() {
       <Curriculum />
       {/* <SectionForMe /> */}
       {/* <SectionAbout /> */}
-      <SectionSocial />
+      {/* <SectionSocial /> */}
     </Container>
   );
 }
