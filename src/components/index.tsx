@@ -1,12 +1,9 @@
 "use client";
 
-import { diffYearsAndMonths } from "@/lib/utils";
-import Image from "next/image";
-import { useEffect } from "react";
 import Header from "@/components/cv/header";
-import Article from "./article";
+import ListPosts from "./blog/list-posts";
 
-export default function Curriculum() {
+export default function Index() {
   return (
     <section className="mx-auto max-w-4xl p-10">
       <Header></Header>
@@ -15,7 +12,7 @@ export default function Curriculum() {
         <div className="h-1.5 w-10 bg-black dark:bg-zinc-700"> &nbsp;</div>
       </div>
 
-      <Article></Article>
+      <ListPosts></ListPosts>
     </section>
   );
 }

@@ -13,6 +13,7 @@ export default function Navbar({ className }: { className?: string }) {
   const pathname = usePathname();
   const isHome = pathname === "/";
   const isBlog = pathname.includes("blog");
+  const isSobre = pathname.includes("sobre");
 
   useEffect(() => {
     setMounted(true);
@@ -27,11 +28,11 @@ export default function Navbar({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "hiddenPrint shadow-md rounded-full border bg-background/70 backdrop-blur-md fixed top-3 inset-x-0 w-54 mx-auto z-50",
+        "hiddenPrint shadow-md rounded-full border bg-background/70 backdrop-blur-md fixed top-3 inset-x-0 w-72 mx-auto z-50",
         className,
       )}
     >
-      <nav className="py-1.5 container relative rounded-full border border-transparent bg-white shadow-input dark:bg-black dark:border-white/20 flex justify-center">
+      <nav className="py-2 container relative rounded-full border border-transparent bg-white shadow-input dark:bg-black dark:border-white/20 flex justify-center">
         <div className="flex flex-row gap-6 text-[1em] font-medium text-black dark:text-white">
           <Link
             href="/"
@@ -54,6 +55,17 @@ export default function Navbar({ className }: { className?: string }) {
               }`}
           >
             /blog
+          </Link>
+          <Link
+            href="/sobre"
+            className={`self-center cursor-pointer transition-colors font-medium tracking-wide
+              ${
+                isSobre
+                  ? "text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300"
+                  : "text-black dark:text-white hover:text-neutral-700 dark:hover:text-neutral-300"
+              }`}
+          >
+            /sobre
           </Link>
           <button
             onClick={toggleTheme}
