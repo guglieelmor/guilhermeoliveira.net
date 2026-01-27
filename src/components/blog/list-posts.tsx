@@ -14,11 +14,11 @@ type Post = {
 export default function ListPosts() {
   const [dados, setDados] = useState<{ posts: Post[] } | null>(null);
 
-  useEffect(() => {
-    fetch("/_content/posts.json")
-      .then((res) => res.json())
-      .then((data) => setDados(data));
-  }, []);
+  // useEffect(() => {
+  //   fetch("/_content/posts.json")
+  //     .then((res) => res.json())
+  //     .then((data) => setDados(data));
+  // }, []);
 
   return (
     <>
