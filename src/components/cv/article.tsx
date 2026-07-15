@@ -1,26 +1,12 @@
 "use client";
 
-import { diffYearsAndMonths } from "@/lib/utils";
 import Image from "next/image";
 import { useEffect } from "react";
+import { profile } from "@/lib/profile";
+import { formatPeriod } from "@/lib/utils";
+import Divider from "./divider";
 
 export default function Article() {
-  const { years: yearsBrudam, months: monthsBrudam } = diffYearsAndMonths(
-    new Date(2020, 1, 16),
-    new Date(),
-  );
-
-  const { years: yearsBrudamFullStack, months: monthsBrudamFullStack } =
-    diffYearsAndMonths(new Date(2020, 1, 16), new Date(2021, 12, 1));
-
-  const { years: yearsBrudamTechLead, months: monthsBrudamTechLead } =
-    diffYearsAndMonths(new Date(2021, 12, 1), new Date());
-
-  const { years: yearsGuilmor, months: monthsGuilmor } = diffYearsAndMonths(
-    new Date(2025, 8, 15),
-    new Date(),
-  );
-
   const generatePDF = async () => {
     const hiddenPrint = document.getElementsByClassName("hiddenPrint");
 
@@ -49,287 +35,153 @@ export default function Article() {
   return (
     <>
       <section>
-        <h2
-          style={{ fontFamily: "Arial, Helvetica, sans-serif" }}
-          className="mb-3 text-sm font-bold tracking-widest text-black dark:text-zinc-400"
-        >
-          EXPERIÊNCIA PROFISSIONAL
+        <h2 className="mb-3 text-xs font-bold tracking-[0.3em] text-violet-600 uppercase dark:text-violet-400">
+          Experiência Profissional
         </h2>
 
-        <li className="flex gap-4 mb-7">
-          <Image
-            src="/images/brudam.jpeg"
-            alt="Brudam - Software TMS"
-            width={48}
-            height={48}
-            className="h-12 w-12 rounded-xl object-cover border border-zinc-700 dark:border-zinc-300"
-          />
+        <ul>
+          {profile.experience.map((item) => (
+            <li key={`${item.company}-${item.role}`} className="mb-7 flex gap-4">
+              <Image
+                src={item.image}
+                alt={item.company}
+                width={48}
+                height={48}
+                className="h-12 w-12 rounded-xl border border-black/10 object-cover dark:border-white/10"
+              />
 
-          <div className="flex-1">
-            <h3 className="font-semibold leading-tight text-gray-800 dark:text-zinc-200">
-              Brudam - Software TMS
-            </h3>
-
-            <p className="text-sm text-gray-600 dark:text-zinc-400">
-              Tempo integral · {yearsBrudam} a {monthsBrudam} m
-            </p>
-
-            <div className="relative mt-4 lg:pl-6 pl-0">
-              <div className="hidden lg:block absolute left-[5px] top-0 bottom-0 w-px bg-gray-300 dark:bg-zinc-600" />
-              <div className="relative pb-8">
-                <span className="hidden lg:block absolute left-[-23px] top-[6px] h-[10px] w-[10px] rounded-full bg-gray-400 dark:bg-zinc-500" />
-
-                <h4 className="font-semibold text-gray-800 dark:text-zinc-200">
-                  Tech Lead
-                </h4>
-
-                <p className="text-sm text-gray-600 dark:text-zinc-400">
-                  dez de 2021 – o momento · {yearsBrudamTechLead} anos{" "}
-                  {monthsBrudamTechLead} meses
+              <div className="flex-1">
+                <h3 className="font-semibold text-foreground">
+                  {item.role}
+                </h3>
+                <p className="text-sm text-muted-foreground">
+                  {item.company} · {item.location}
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  {formatPeriod(item.start, item.end)}
                 </p>
 
-                <p className="text-xs text-gray-600 dark:text-zinc-400">
-                  Porto Alegre, Rio Grande do Sul
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  {item.description}
                 </p>
 
-                <p className="mt-2 text-sm leading-relaxed text-gray-800 dark:text-zinc-200">
-                  Atuo como líder técnico e desenvolvedor em projetos
-                  estratégicos de desenvolvimento de software, conduzindo
-                  decisões arquiteturais e técnicas críticas, organizando as
-                  tarefas da equipe e garantindo que as entregas estejam
-                  alinhadas aos objetivos do produto.
-                </p>
-
-                <p className="mt-2 flex items-center gap-2 text-sm font-medium text-gray-800 dark:text-zinc-200">
-                  <span className="hidden lg:block text-gray-800 dark:text-zinc-200">
-                    ◆
-                  </span>
-                  JavaScript · Laravel · Node.js · Atendimento ao cliente ·
-                  Amazon Web Services · Docker · Linux · MySQL · Scrum · Vue.js
-                  · PHP · Análise de dados · Habilidades analíticas · MongoDB ·
-                  TypeScript · JIRA · JQuery · Next.js · Servidor Linux · TDD ·
-                  Otimização para mecanismos de busca (SEO) · Cloudflare · Nginx
-                  · Redis · CSS3 · HTML5 · GitHub · Integração e entrega
-                  contínuas (CI/CD) · AngularJS · Phalcon
+                <p className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm font-medium text-muted-foreground">
+                  {item.tags.join(" · ")}
                 </p>
               </div>
-
-              <div className="relative">
-                <span className="hidden lg:block absolute left-[-23px] top-[6px] h-[10px] w-[10px] rounded-full bg-gray-400 dark:bg-zinc-500" />
-
-                <h4 className="font-semibold text-gray-800 dark:text-zinc-200">
-                  Full Stack Developer
-                </h4>
-
-                <p className="text-sm text-gray-600 dark:text-zinc-400">
-                  mar de 2020 – dez de 2021 · {yearsBrudamFullStack} ano{" "}
-                  {monthsBrudamFullStack} meses
-                </p>
-
-                <p className="text-xs text-gray-600 dark:text-zinc-400">
-                  Eldorado do Sul, Rio Grande do Sul, Brasil
-                </p>
-
-                <p className="mt-2 text-sm leading-relaxed text-gray-800 dark:text-zinc-200">
-                  Fui responsável pelo desenvolvimento de soluções completas,
-                  atuando no front-end, no back-end e colaborando em tarefas de
-                  ciência de dados.
-                </p>
-
-                <p className="mt-2 flex items-center gap-2 text-sm font-medium text-gray-800 dark:text-zinc-200">
-                  <span className="hidden lg:block text-gray-800 dark:text-zinc-200">
-                    ◆
-                  </span>
-                  PHP · Laravel · MySQL · JQuery · Vue.js · AngularJS · Phalcon
-                </p>
-              </div>
-            </div>
-          </div>
-        </li>
-
-        <li className="flex gap-4 mb-7">
-          <Image
-            src="/images/guilmor.jpg"
-            alt="GUILMOR - Tecnologia, Desenvolvimento e Inovação"
-            width={48}
-            height={48}
-            className="h-12 w-12 rounded-xl object-cover border border-zinc-700 dark:border-zinc-300"
-          />
-
-          <div className="flex-1">
-            <h3 className="font-semibold leading-tight text-gray-800 dark:text-zinc-200">
-              GUILMOR - Tecnologia, Desenvolvimento e Inovação
-            </h3>
-
-            <p className="text-sm text-gray-600 dark:text-zinc-400">
-              Tempo integral · {yearsGuilmor} a {monthsGuilmor} m
-            </p>
-
-            <div className="relative mt-4 lg:pl-6 pl-0">
-              <div className="hidden lg:block absolute left-[5px] top-0 bottom-0 w-px bg-gray-300 dark:bg-zinc-600" />
-              <div className="relative pb-8">
-                <span className="hidden lg:block absolute left-[-23px] top-[6px] h-[10px] w-[10px] rounded-full bg-gray-400 dark:bg-zinc-500" />
-
-                <h4 className="font-semibold text-gray-800 dark:text-zinc-200">
-                  Founder & Creator
-                </h4>
-
-                <p className="text-sm text-gray-600 dark:text-zinc-400">
-                  ago de 2025 – o momento · {yearsGuilmor} a {monthsGuilmor} m
-                </p>
-
-                <p className="text-xs text-gray-600 dark:text-zinc-400">
-                  Curitiba, Paraná
-                </p>
-
-                <p className="mt-2 text-sm leading-relaxed text-gray-800 dark:text-zinc-200">
-                  Transformo necessidades de negócio em produtos digitais
-                  eficientes e escaláveis. Trabalho como desenvolvedor
-                  freelance, oferecendo apoio estratégico, visão técnica e
-                  execução completa em projetos de software, desde a concepção
-                  até a manutenção e evolução contínua das aplicações.
-                </p>
-
-                <p className="mt-2 flex items-center gap-2 text-sm font-medium text-gray-800 dark:text-zinc-200">
-                  <span className="hidden lg:block text-gray-800 dark:text-zinc-200">
-                    ◆
-                  </span>
-                  JavaScript · Laravel · Node.js · Atendimento ao cliente ·
-                  Amazon Web Services · Docker · Linux · MySQL · Scrum · Vue.js
-                  · PHP · Análise de dados · Habilidades analíticas · MongoDB ·
-                  TypeScript · JIRA · JQuery · Next.js · Servidor Linux · TDD ·
-                  Otimização para mecanismos de busca (SEO) · Cloudflare · Nginx
-                  · Redis · CSS3 · HTML5 · GitHub · Integração e entrega
-                  contínuas (CI/CD) · AngularJS · Phalcon · Svelte · Next.js ·
-                  Node.js
-                </p>
-              </div>
-            </div>
-          </div>
-        </li>
+            </li>
+          ))}
+        </ul>
       </section>
 
-      <div className="my-8 h-px bg-black dark:bg-zinc-700">
-        <div className="h-1.5 w-10 bg-black dark:bg-zinc-700"> &nbsp;</div>
-      </div>
+      <Divider />
 
       <section>
-        <h2
-          style={{ fontFamily: "Arial, Helvetica, sans-serif" }}
-          className="mb-3 text-sm font-bold tracking-widest text-black dark:text-zinc-400"
-        >
-          FORMAÇÃO ACADÊMICA
+        <h2 className="mb-3 text-xs font-bold tracking-[0.3em] text-violet-600 uppercase dark:text-violet-400">
+          Formação Acadêmica
         </h2>
 
         <div className="space-y-4 text-sm leading-relaxed">
-          <div className="flex gap-4 mb-7">
-            <Image
-              src="/images/ifsul.jpeg"
-              alt=" IFSUL – Instituto Federal Sul-rio-grandense"
-              width={48}
-              height={48}
-              className="h-12 w-12 rounded-xl object-cover border border-zinc-700 dark:border-zinc-300"
-            />
-            <div>
-              <p className="font-semibold text-gray-800 dark:text-zinc-200">
-                IFSUL – Tecnologia em Sistemas para Internet
-              </p>
-              <p className="text-gray-600 dark:text-zinc-400">2020 – 2025</p>
-              <p className="text-gray-800 dark:text-zinc-200">
-                Formação focada em desenvolvimento full-stack, arquitetura de
-                sistemas, bancos de dados, redes, testes e manutenção de
-                sistemas.
-              </p>
+          {profile.education.map((item) => (
+            <div key={`${item.school}-${item.degree}`} className="mb-7 flex gap-4">
+              <Image
+                src={item.image}
+                alt={item.school}
+                width={48}
+                height={48}
+                className="h-12 w-12 rounded-xl border border-black/10 object-cover dark:border-white/10"
+              />
+              <div>
+                <p className="font-semibold text-foreground">{item.degree}</p>
+                <p className="text-muted-foreground">{item.school}</p>
+                <p className="text-muted-foreground">{item.period}</p>
+                <p className="mt-1 text-muted-foreground">
+                  {item.description}
+                </p>
+              </div>
             </div>
-          </div>
-
-          <div className="flex gap-4 mb-7">
-            <Image
-              src="/images/ifsul.jpeg"
-              alt=" IFSUL – Instituto Federal Sul-rio-grandense"
-              width={48}
-              height={48}
-              className="h-12 w-12 rounded-xl object-cover border border-zinc-700 dark:border-zinc-300"
-            />
-            <div>
-              <p className="font-semibold text-gray-800 dark:text-zinc-200">
-                IFSUL – Técnico em Informática
-              </p>
-              <p className="text-gray-600 dark:text-zinc-400">2016 – 2019</p>
-              <p className="text-gray-800 dark:text-zinc-200">
-                Formação prática em suporte técnico, programação, infraestrutura
-                de TI e redes locais.
-              </p>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
 
-      <div className="my-8 h-px bg-black dark:bg-zinc-700">
-        <div className="h-1.5 w-10 bg-black dark:bg-zinc-700"> &nbsp;</div>
-      </div>
+      <Divider />
 
       <section>
-        <h2
-          style={{ fontFamily: "Arial, Helvetica, sans-serif" }}
-          className="mb-3 text-sm font-bold tracking-widest text-black dark:text-zinc-400"
-        >
-          CURSOS
+        <h2 className="mb-3 text-xs font-bold tracking-[0.3em] text-violet-600 uppercase dark:text-violet-400">
+          Competências &amp; Idiomas
         </h2>
-        <ul className="list-disc space-y-1 pl-5 text-sm text-gray-800 dark:text-zinc-200">
-          <li>Formação Vue.js — 2021 (52h)</li>
-          <li>Formação Vue.js 2 — 2021 (49h)</li>
-          <li>
-            Formação Melhore sua experiência de desenvolvimento com TypeScript —
-            2022 (31h)
-          </li>
-          <li>Formação SEO — 2024 (36h)</li>
-          <li>
-            Formação Gestão da biblioteca de infraestrutura de TI — 2024 (43h)
-          </li>
-          <li>Formação Tráfego Pago — 2024 (63h)</li>
-          <li>Formação Laravel: crie aplicações web em PHP — 2024 (40h)</li>
-          <li>
-            Formação Melhore sua experiência JavaScript com Svelte — 2025 (27h)
-          </li>
-          <li>Formação Começando em DevOps — 2026 (33h)</li>
-          <li>AWS Academy Cloud Foundations — 2023</li>
-          <li>AWS Fundamentals: Going Cloud-Native — 2021</li>
+
+        <div className="flex flex-wrap gap-2">
+          {profile.topSkills.map((skill) => (
+            <span
+              key={skill}
+              className="rounded-full bg-violet-500/10 px-3 py-1 text-xs font-medium text-violet-600 dark:text-violet-400"
+            >
+              {skill}
+            </span>
+          ))}
+          {profile.techSkills.map((skill) => (
+            <span
+              key={skill}
+              className="rounded-full border border-black/10 px-3 py-1 text-xs text-muted-foreground dark:border-white/10"
+            >
+              {skill}
+            </span>
+          ))}
+        </div>
+
+        <p className="mt-4 flex flex-wrap gap-x-8 gap-y-1 text-sm text-muted-foreground">
+          {profile.languages.map((language) => (
+            <span key={language.name}>
+              <span className="font-medium text-foreground">
+                {language.name}
+              </span>{" "}
+              — {language.level}
+            </span>
+          ))}
+        </p>
+      </section>
+
+      <Divider />
+
+      <section>
+        <h2 className="mb-3 text-xs font-bold tracking-[0.3em] text-violet-600 uppercase dark:text-violet-400">
+          Certificações &amp; Cursos
+        </h2>
+        <ul className="list-disc space-y-1 pl-5 text-sm text-muted-foreground">
+          {profile.certifications.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+        <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-muted-foreground">
+          {profile.courses.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
         </ul>
       </section>
 
-      <div className="my-8 h-px bg-black dark:bg-zinc-700">
-        <div className="h-1.5 w-10 bg-black dark:bg-zinc-700"> &nbsp;</div>
-      </div>
+      <Divider />
 
       <section>
-        <h2
-          style={{ fontFamily: "Arial, Helvetica, sans-serif" }}
-          className="mb-3 text-sm font-bold tracking-widest text-black dark:text-zinc-400"
-        >
-          PROJETOS
+        <h2 className="mb-3 text-xs font-bold tracking-[0.3em] text-violet-600 uppercase dark:text-violet-400">
+          Projetos
         </h2>
-        <ul className="list-disc space-y-1 pl-5 text-sm text-gray-800 dark:text-zinc-200">
-          <li>
-            COMOBIS – Ecossistema SaaS para Corretores Imobiliários: O COMOBIS é
-            uma plataforma online que cria perfis para usuários (principalmente
-            relacionados ao mercado imobiliário). Cada usuário pode ter um
-            endereço único dentro do sistema onde apresenta seus dados e
-            propriedades.
-          </li>
-          <li>
-            Automatic Fact Checker: É um projeto de extensão voltado ao
-            desenvolvimento de uma solução tecnológica capaz de analisar
-            automaticamente a veracidade de informações, auxiliando no combate à
-            desinformação em ambientes digitais.
-          </li>
+        <ul className="list-disc space-y-1 pl-5 text-sm text-muted-foreground">
+          {profile.projects.map((project) => (
+            <li key={project.name}>
+              <span className="font-medium text-foreground">
+                {project.name}
+              </span>
+              : {project.description}
+            </li>
+          ))}
         </ul>
       </section>
 
-      <div className="flex justify-end hiddenPrint">
+      <div className="hiddenPrint flex justify-end">
         <button
           onClick={generatePDF}
-          className="mt-10 rounded-md cursor-pointer bg-black px-4 py-2 text-sm font-medium text-white hover:bg-zinc-800 dark:bg-zinc-200 dark:text-black dark:hover:bg-zinc-300"
+          className="mt-10 cursor-pointer rounded-full bg-violet-500 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-violet-400"
         >
           Baixar currículo (PDF)
         </button>

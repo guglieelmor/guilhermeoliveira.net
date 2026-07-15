@@ -20,3 +20,28 @@ export function diffYearsAndMonths(startDate: Date, endDate: Date) {
 
   return { years, months };
 }
+
+const MONTHS = [
+  "jan",
+  "fev",
+  "mar",
+  "abr",
+  "mai",
+  "jun",
+  "jul",
+  "ago",
+  "set",
+  "out",
+  "nov",
+  "dez",
+];
+
+export function formatPeriod(start: Date, end: Date | null) {
+  const { years, months } = diffYearsAndMonths(start, end ?? new Date());
+  const startLabel = `${MONTHS[start.getMonth()]} de ${start.getFullYear()}`;
+  const endLabel = end
+    ? `${MONTHS[end.getMonth()]} de ${end.getFullYear()}`
+    : "o momento";
+  const duration = `${years > 0 ? `${years} ano${years > 1 ? "s" : ""} ` : ""}${months} ${months === 1 ? "mês" : "meses"}`;
+  return `${startLabel} – ${endLabel} · ${duration}`;
+}

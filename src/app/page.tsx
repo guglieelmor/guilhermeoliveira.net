@@ -1,12 +1,7 @@
 "use client";
 
-import Index from "@/components"; 
-import Container from "@/components/layout/container"; 
+import Index from "@/components";
 
-export default function Home() { 
-  return (
-    <Container>
-      <Index /> 
-    </Container>
-  );
+export default function Home() {
+  return <Index />;
 }

@@ -2,27 +2,24 @@
 
 import ListPosts from "@/components/blog/list-posts";
 import Container from "@/components/layout/container";
+import { Reveal } from "@/components/ui/reveal";
+
 export default function Blog() {
   return (
     <Container>
-      <section className="mx-auto text-start max-w-4xl p-10">
-        <div>
-          <div className="items-start flex flex-col gap-4">
-            <h2 className="text-3xl font-bold md:text-4xl text-black dark:text-zinc-100">
-              Blog
-            </h2>
-            <p className="md:text-lg text-zinc-700 dark:text-zinc-200">
-              Aqui você irá encontrar artigos legitimamente escritos por mim,
-              sem a adição de IA. Com opiniões e insights sobre desenvolvimento
-              web, design e tecnologia.
-            </p>
-          </div>
-          <div className="mb-13 my-8 h-px bg-black dark:bg-zinc-700">
-            <div className="h-1.5 w-10 bg-black dark:bg-zinc-700"> &nbsp;</div>
-          </div>
-          <ListPosts />
-        </div>
-      </section>
+      <Reveal>
+        <h1 className="font-display text-3xl leading-tight text-foreground md:text-4xl">
+          Blog
+        </h1>
+        <p className="mt-4 max-w-xl text-lg text-muted-foreground">
+          Artigos legitimamente escritos por mim, sem a adição de IA. Opiniões
+          e insights sobre desenvolvimento web, design e tecnologia.
+        </p>
+      </Reveal>
+
+      <div className="mt-14 mb-14 h-px bg-black/10 dark:bg-white/10" />
+
+      <ListPosts />
     </Container>
   );
 }

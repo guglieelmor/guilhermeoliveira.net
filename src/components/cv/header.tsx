@@ -2,83 +2,78 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { profile } from "@/lib/profile";
 
 export default function Header() {
   return (
     <>
-      <header className="flex lg:flex-row flex-col items-start justify-between">
+      <header className="flex flex-col items-start justify-between lg:flex-row">
         <div>
-          <div className="flex gap-5 items-center">
+          <div className="flex items-center gap-5">
             <Image
-              alt="image"
-              className={
-                "object-cover scale-[1.11] w-20 h-20 rounded-full border border-zinc-700 dark:border-zinc-300"
-              }
+              alt={profile.name}
+              className="h-20 w-20 scale-[1.11] rounded-full border border-black/10 object-cover dark:border-white/10"
               width="100"
               height="100"
-              src={`https://avatars.githubusercontent.com/u/52608353?v=5`}
+              src={profile.avatar}
             />
             <div>
-              <h1 className="text-4xl font-extrabold leading-none tracking-tight text-black dark:text-zinc-300">
-                GUILHERME
+              <h1 className="font-display text-lg leading-loose text-foreground md:text-xl">
+                Guilherme
                 <br />
-                OLIVEIRA
+                Oliveira
               </h1>
-              <p className="mt-2 text-sm font-medium text-gray-700 dark:text-zinc-300">
-                Tech Lead | Software Engineer | Full Stack | SRE
+              <p className="mt-2 text-sm font-medium text-muted-foreground">
+                {profile.role}
               </p>
             </div>
           </div>
         </div>
-        <div className="lg:text-right text-left mt-10 lg:mt-0 text-sm leading-relaxed text-gray-700 dark:text-zinc-300">
+        <div className="mt-10 text-left text-sm leading-relaxed text-muted-foreground lg:mt-0 lg:text-right">
           <p>
-            <Link href="https://guilhermeoliveira.net/" target="_blank">
-              guilhermeoliveira.net
-            </Link>
-          </p>
-          <p>
-            <Link href="https://github.com/guglieelmor" target="_blank">
-              github.com/guglieelmor
+            <Link
+              href={profile.contact.site}
+              target="_blank"
+              className="hover:text-violet-600 dark:hover:text-violet-400"
+            >
+              {profile.contact.siteLabel}
             </Link>
           </p>
           <p>
             <Link
-              href="https://www.linkedin.com/in/guglieelmor/"
+              href={profile.contact.github}
               target="_blank"
+              className="hover:text-violet-600 dark:hover:text-violet-400"
             >
-              linkedin.com/in/guglieelmor/
+              {profile.contact.githubLabel}
             </Link>
           </p>
           <p>
             <Link
-              href="https://cursos.alura.com.br/user/guglieelmor"
+              href={profile.contact.linkedin}
               target="_blank"
+              className="hover:text-violet-600 dark:hover:text-violet-400"
             >
-              cursos.alura.com.br/user/guglieelmor
+              {profile.contact.linkedinLabel}
+            </Link>
+          </p>
+          <p>
+            <Link
+              href={profile.contact.alura}
+              target="_blank"
+              className="hover:text-violet-600 dark:hover:text-violet-400"
+            >
+              {profile.contact.auraLabel}
             </Link>
           </p>
         </div>
       </header>
-      <section>
-        <h2
-          style={{ fontFamily: "Arial, Helvetica, sans-serif" }}
-          className="mb-3 text-sm font-bold tracking-widest text-black dark:text-zinc-400"
-        >
-          RESUMO
+      <section className="mt-10">
+        <h2 className="mb-3 text-xs font-bold tracking-[0.3em] text-violet-600 uppercase dark:text-violet-400">
+          Resumo
         </h2>
-        <p className="text-sm leading-relaxed text-gray-800 dark:text-zinc-200">
-          Atuo como Tech Lead, conduzindo iniciativas técnicas estratégicas e
-          garantindo a entrega de soluções robustas, escaláveis e alinhadas às
-          necessidades do produto. Além de liderar equipes multidisciplinares e
-          definir padrões de arquitetura, mantenho atuação hands-on,
-          participando de decisões críticas e contribuindo diretamente no
-          desenvolvimento, sempre promovendo boas práticas e a adoção de
-          tecnologias modernas. Minha base técnica é fortalecida pela formação
-          no Instituto Federal Sul-rio-grandense (IFSUL), onde concluí o Técnico
-          em Informática com ênfase em programação e o curso superior de
-          Tecnologia em Sistemas para Internet, obtendo uma base sólida em
-          desenvolvimento full-stack, engenharia de software, integrações e
-          análise de sistemas.
+        <p className="text-sm leading-relaxed text-muted-foreground">
+          {profile.summary}
         </p>
       </section>
     </>

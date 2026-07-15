@@ -1,24 +1,24 @@
+import Link from "next/link";
+
 export default function NotFound() {
   return (
-    <main className="bordered-div-padding text-muted-foreground space-x-6 border-x border-b text-sm mx-auto flex min-h-screen max-w-7xl flex-col items-center justify-between">
-      <div className="container px-10 pt-45 max-w-4xl space-y-6 md:space-y-8 lg:space-y-12">
-        <section className="bg-white dark:bg-gray-900">
-          <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
-            <div className="mx-auto max-w-screen-sm text-center">
-              <h1 className="mb-4 text-7xl tracking-tight font-extrabold lg:text-9xl text-primary-600 dark:text-primary-500">
-                404
-              </h1>
-              <p className="mb-4 text-3xl tracking-tight font-bold text-gray-900 md:text-4xl dark:text-white">
-                Falta alguma coisa.
-              </p>
-              <p className="mb-4 text-lg font-light text-gray-500 dark:text-gray-400">
-                Desculpe, não conseguimos encontrar essa página. Você encontrará
-                muito para explorar na página inicial.
-              </p>
-            </div>
-          </div>
-        </section>
-      </div>
+    <main className="mx-auto flex min-h-screen max-w-4xl flex-col items-center justify-center px-6 text-center">
+      <h1 className="font-display text-5xl leading-tight text-violet-500 md:text-7xl">
+        404
+      </h1>
+      <p className="mt-8 font-display text-sm leading-loose text-foreground md:text-base">
+        Falta alguma coisa.
+      </p>
+      <p className="mt-4 max-w-md text-muted-foreground">
+        Desculpe, não conseguimos encontrar essa página. Você encontrará muito
+        para explorar na página inicial.
+      </p>
+      <Link
+        href="/"
+        className="mt-10 rounded-full bg-violet-500 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-violet-400"
+      >
+        Voltar para o início
+      </Link>
     </main>
   );
 }
