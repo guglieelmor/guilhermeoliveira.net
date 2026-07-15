@@ -120,10 +120,12 @@
 
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 
   body {
     @apply bg-background text-foreground;
+    overflow-x: hidden;
   }
 
   ::selection {
@@ -136,6 +138,10 @@
 }
 
 @media print {
+  @page {
+    margin: 1.4cm;
+  }
+
   html {
     color-scheme: light;
   }
@@ -144,6 +150,10 @@
     background: white !important;
     color: black !important;
     border-color: #ccc !important;
+  }
+
+  .hiddenPrint {
+    display: none !important;
   }
 }
 
@@ -243,8 +253,32 @@
   }
 }
 
+@keyframes glow-pulse {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .hero-scene * {
+  .hero-scene *,
+  .site-background *,
+  .skill-marquee *,
+  .abstract-mark * {
     animation: none !important;
   }
 }

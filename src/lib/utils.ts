@@ -36,6 +36,18 @@ const MONTHS = [
   "dez",
 ];
 
+export function groupByCompany<T extends { company: string }>(items: T[]) {
+  return items.reduce<{ company: string; roles: T[] }[]>((groups, item) => {
+    const group = groups.find((g) => g.company === item.company);
+    if (group) {
+      group.roles.push(item);
+    } else {
+      groups.push({ company: item.company, roles: [item] });
+    }
+    return groups;
+  }, []);
+}
+
 export function formatPeriod(start: Date, end: Date | null) {
   const { years, months } = diffYearsAndMonths(start, end ?? new Date());
   const startLabel = `${MONTHS[start.getMonth()]} de ${start.getFullYear()}`;

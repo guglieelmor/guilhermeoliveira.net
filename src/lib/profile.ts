@@ -18,7 +18,32 @@ export const profile = {
   summary: `Como Tech Lead na Brudam, lidero iniciativas técnicas estratégicas, colaborando com equipes multifuncionais no desenvolvimento de sistemas robustos, escaláveis e orientados a resultados. Atuo de forma ativa em todas as etapas do ciclo de desenvolvimento, desde a definição de arquiteturas e tomada de decisões técnicas até a implementação de soluções inovadoras que atendem às demandas do setor de transporte e logística. Sou graduado em Tecnólogo em Sistemas para Internet pelo Instituto Federal Sul-rio-grandense e aplico de forma prática meus conhecimentos em programação e tecnologia para otimizar processos e entregar soluções alinhadas às necessidades do mercado. Minha experiência abrange desenvolvimento back-end, front-end e ciência de dados, sempre com foco em inovação, performance e colaboração entre equipes. Atualmente, também atuo como professor substituto no Instituto Federal Sul-rio-grandense - Campus Charqueadas, ministrando disciplinas técnicas voltadas ao desenvolvimento de software, contribuindo para a formação de novos profissionais na área de tecnologia. Além disso, tenho pós-graduação em Arquitetura e Infraestrutura de TI, com o objetivo de aprofundar meus conhecimentos em sistemas distribuídos, escalabilidade e boas práticas de engenharia de software.`,
   summaryShort:
     "Tech Lead na Brudam, conduzindo decisões de arquitetura e liderança técnica no setor de transporte e logística. Professor substituto no IFSUL, formando novos desenvolvedores. Pós-graduado em Arquitetura e Infraestrutura de TI.",
+  bioHome:
+    "Tecnólogo em Sistemas para Internet, pós-graduado em Arquitetura e Infraestrutura de TI. Transito entre back-end, front-end e ciência de dados, unindo arquitetura sólida e liderança técnica a resultados reais de negócio.",
   topSkills: ["DevOps", "Desenvolvimento de produtos", "Marketing"],
+  skillCategories: [
+    {
+      label: "Linguagens & Frameworks",
+      skills: [
+        "TypeScript",
+        "JavaScript",
+        "Next.js",
+        "Vue.js",
+        "Node.js",
+        "PHP",
+        "Laravel",
+      ],
+    },
+    {
+      label: "Infraestrutura & Cloud",
+      skills: ["Docker", "AWS", "Linux", "Nginx"],
+    },
+    { label: "Dados", skills: ["MySQL", "MongoDB", "Redis"] },
+    {
+      label: "Práticas & Processos",
+      skills: ["CI/CD", "SEO", "Scrum", "TDD"],
+    },
+  ],
   techSkills: [
     "TypeScript",
     "JavaScript",

@@ -26,7 +26,7 @@ export default function AuroraBackground() {
   }, [mvX, mvY]);
 
   return (
-    <div className="pointer-events-none absolute inset-0 overflow-hidden">
+    <div className="site-background pointer-events-none fixed inset-0 -z-10 overflow-hidden">
       <motion.div
         style={{ x: x1, y: y1 }}
         className="absolute -top-1/3 -left-1/4 h-[38rem] w-[38rem]"
