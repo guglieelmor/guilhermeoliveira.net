@@ -1,0 +1,10 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.guilhermeoliveira.net" }],
+      "destination": "https://guilhermeoliveira.net/:path*",
+      "permanent": true
+    }
+  ]
+}

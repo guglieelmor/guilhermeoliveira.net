@@ -10,6 +10,7 @@ import { Counter } from "@/components/ui/counter";
 import HeroGlow from "@/components/home/hero-glow";
 import ListPosts from "@/components/blog/list-posts";
 import { profile } from "@/lib/profile";
+import type { PostMeta } from "@/lib/posts";
 import {
   companyTenure,
   diffYearsAndMonths,
@@ -43,7 +44,7 @@ const stats = [
   { label: "Certificações", value: profile.certifications.length, suffix: "" },
 ];
 
-export default function Index() {
+export default function Index({ posts }: { posts: PostMeta[] }) {
   return (
     <>
       {/* Hero */}
@@ -391,7 +392,7 @@ export default function Index() {
           </Reveal>
 
           <div>
-            <ListPosts limit={3} compact />
+            <ListPosts posts={posts} limit={3} compact />
             <Reveal>
               <Link
                 href="/blog"
