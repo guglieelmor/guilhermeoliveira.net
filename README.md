@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# guilhermeoliveira.net
 
-## Getting Started
+Site pessoal de Guilherme Oliveira — currículo, projetos e blog. Construído com [Next.js](https://nextjs.org) (App Router), [Tailwind CSS v4](https://tailwindcss.com) e [Motion](https://motion.dev).
 
-First, run the development server:
+## Stack
+
+- **Next.js 16** (App Router, Turbopack)
+- **TypeScript**
+- **Tailwind CSS v4** + [`@tailwindcss/typography`](https://github.com/tailwindlabs/tailwindcss-typography)
+- **Motion** para animações
+- **next-themes** para o toggle claro/escuro
+- Posts do blog em Markdown, processados com `gray-matter` + `remark`
+
+## Rodando localmente
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abra [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Outros scripts:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build   # build de produção
+npm run start   # sobe o build de produção
+npm run lint    # eslint
+```
 
-## Learn More
+## Estrutura
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+  app/                  rotas (App Router): home, /blog, /sobre, [year]/[month]/[day]/[slug]
+  components/
+    home/                seções e efeitos visuais da home
+    cv/                  currículo (usado em /sobre)
+    blog/                listagem de posts
+    layout/              navbar, footer, container
+    ui/                  componentes de UI reutilizáveis
+  lib/
+    profile.ts           todos os dados de currículo (experiência, formação, skills, contato)
+    nav-links.ts         links da navegação
+    utils.ts             helpers de data/duração (períodos, tempo de casa por empresa)
+public/
+  _content/
+    posts.json           índice dos posts do blog (título, data, tags, tempo de leitura)
+    {ano}/{mes}/{dia}/{slug}/index.md   conteúdo de cada post
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Dados do currículo
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Toda a informação de perfil, experiência, formação e skills vive em `src/lib/profile.ts`. Datas usam objetos `Date` reais — durações e "tempo até o momento" são calculados dinamicamente (`src/lib/utils.ts`), nunca digitados como texto fixo.
 
-## Deploy on Vercel
+### Adicionando um post no blog
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Crie uma pasta em `public/_content/{ano}/{mes}/{dia}/{slug}/` com um `index.md` (frontmatter: `title`, `date`, `slug`, `tags`).
+2. Adicione uma entrada correspondente em `public/_content/posts.json` (`title`, `date`, `path`, `description`, `tags`, `readingMinutes`).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deploy
+
+Hospedado na [Vercel](https://vercel.com). Qualquer push para `main` gera um novo deploy.
