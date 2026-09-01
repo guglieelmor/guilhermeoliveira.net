@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Press_Start_2P } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 
@@ -15,12 +15,6 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
-});
-
-const pressStart = Press_Start_2P({
-  variable: "--font-retro",
-  subsets: ["latin", "latin-ext"],
-  weight: "400",
 });
 
 export const metadata: Metadata = {
@@ -50,7 +44,7 @@ export default function RootLayout({
         `}
       </Script>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${pressStart.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider
           attribute="class"

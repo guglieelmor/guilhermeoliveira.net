@@ -48,12 +48,49 @@ export function groupByCompany<T extends { company: string }>(items: T[]) {
   }, []);
 }
 
+function formatDuration(years: number, months: number) {
+  return `${years > 0 ? `${years} ano${years > 1 ? "s" : ""} ` : ""}${months} ${months === 1 ? "mês" : "meses"}`;
+}
+
 export function formatPeriod(start: Date, end: Date | null) {
   const { years, months } = diffYearsAndMonths(start, end ?? new Date());
   const startLabel = `${MONTHS[start.getMonth()]} de ${start.getFullYear()}`;
   const endLabel = end
     ? `${MONTHS[end.getMonth()]} de ${end.getFullYear()}`
     : "o momento";
-  const duration = `${years > 0 ? `${years} ano${years > 1 ? "s" : ""} ` : ""}${months} ${months === 1 ? "mês" : "meses"}`;
-  return `${startLabel} – ${endLabel} · ${duration}`;
+  return `${startLabel} – ${endLabel} · ${formatDuration(years, months)}`;
+}
+
+export function companyTenure<T extends { start: Date; end: Date | null }>(
+  roles: T[],
+) {
+  const start = roles.reduce(
+    (min, role) => (role.start < min ? role.start : min),
+    roles[0].start,
+  );
+  const ongoing = roles.some((role) => role.end === null);
+  const end = ongoing
+    ? null
+    : roles.reduce<Date>(
+        (max, role) => (role.end && role.end > max ? role.end : max),
+        roles[0].end as Date,
+      );
+  const { years, months } = diffYearsAndMonths(start, end ?? new Date());
+  return formatDuration(years, months);
+}
+
+export function formatEducationPeriod(
+  start: Date,
+  end: Date | null,
+  yearOnly = false,
+) {
+  if (yearOnly) {
+    const endLabel = end ? `${end.getFullYear()}` : "o momento";
+    return `${start.getFullYear()} – ${endLabel}`;
+  }
+  const startLabel = `${MONTHS[start.getMonth()]} de ${start.getFullYear()}`;
+  const endLabel = end
+    ? `${MONTHS[end.getMonth()]} de ${end.getFullYear()}`
+    : "o momento";
+  return `${startLabel} – ${endLabel}`;
 }

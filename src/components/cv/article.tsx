@@ -3,7 +3,12 @@
 import Image from "next/image";
 import { Download } from "lucide-react";
 import { profile } from "@/lib/profile";
-import { formatPeriod, groupByCompany } from "@/lib/utils";
+import {
+  companyTenure,
+  formatEducationPeriod,
+  formatPeriod,
+  groupByCompany,
+} from "@/lib/utils";
 import Divider from "./divider";
 
 const experienceGroups = groupByCompany(profile.experience);
@@ -14,7 +19,7 @@ export default function Article() {
   return (
     <>
       <section>
-        <h2 className="mb-3 text-xs font-bold tracking-[0.3em] text-violet-600 uppercase dark:text-violet-400">
+        <h2 className="mb-3 text-xs font-medium tracking-[0.3em] text-muted-foreground uppercase">
           Experiência Profissional
         </h2>
 
@@ -28,15 +33,20 @@ export default function Article() {
                   alt={group.company}
                   width={48}
                   height={48}
-                  className="h-12 w-12 shrink-0 rounded-xl border border-black/10 object-cover dark:border-white/10"
+                  className="h-12 w-12 shrink-0 rounded-xl border border-border object-cover"
                 />
 
                 <div className="flex-1">
-                  <p className="font-semibold text-foreground">
-                    {group.company} · {primary.location}
-                  </p>
+                  <div className="flex flex-wrap items-baseline justify-between gap-x-3">
+                    <p className="font-semibold text-foreground">
+                      {group.company} · {primary.location}
+                    </p>
+                    <p className="text-xs text-muted-foreground">
+                      {companyTenure(group.roles)}
+                    </p>
+                  </div>
 
-                  <div className="mt-3 flex flex-col gap-5 border-l border-black/10 pl-4 dark:border-white/10">
+                  <div className="mt-3 flex flex-col gap-5 border-l border-border pl-4">
                     {group.roles.map((role) => (
                       <div key={role.role}>
                         <h3 className="font-semibold text-foreground">
@@ -66,7 +76,7 @@ export default function Article() {
       <Divider />
 
       <section>
-        <h2 className="mb-3 text-xs font-bold tracking-[0.3em] text-violet-600 uppercase dark:text-violet-400">
+        <h2 className="mb-3 text-xs font-medium tracking-[0.3em] text-muted-foreground uppercase">
           Formação Acadêmica
         </h2>
 
@@ -78,12 +88,14 @@ export default function Article() {
                 alt={item.school}
                 width={48}
                 height={48}
-                className="h-12 w-12 rounded-xl border border-black/10 object-cover dark:border-white/10"
+                className="h-12 w-12 rounded-xl border border-border object-cover"
               />
               <div>
                 <p className="font-semibold text-foreground">{item.degree}</p>
                 <p className="text-muted-foreground">{item.school}</p>
-                <p className="text-muted-foreground">{item.period}</p>
+                <p className="text-muted-foreground">
+                  {formatEducationPeriod(item.start, item.end, item.yearOnly)}
+                </p>
                 <p className="mt-1 text-muted-foreground">
                   {item.description}
                 </p>
@@ -96,7 +108,7 @@ export default function Article() {
       <Divider />
 
       <section>
-        <h2 className="mb-3 text-xs font-bold tracking-[0.3em] text-violet-600 uppercase dark:text-violet-400">
+        <h2 className="mb-3 text-xs font-medium tracking-[0.3em] text-muted-foreground uppercase">
           Competências &amp; Idiomas
         </h2>
 
@@ -104,7 +116,7 @@ export default function Article() {
           {profile.topSkills.map((skill) => (
             <span
               key={skill}
-              className="rounded-full bg-violet-500/10 px-3 py-1 text-xs font-medium text-violet-600 dark:text-violet-400"
+              className="rounded-md bg-blue-500/10 px-3 py-1 text-xs font-medium text-blue-700 dark:text-blue-400"
             >
               {skill}
             </span>
@@ -121,7 +133,7 @@ export default function Article() {
                 {category.skills.map((skill) => (
                   <span
                     key={skill}
-                    className="rounded-full border border-black/10 px-3 py-1 text-xs text-muted-foreground dark:border-white/10"
+                    className="rounded-md border border-border px-3 py-1 text-xs text-muted-foreground"
                   >
                     {skill}
                   </span>
@@ -146,7 +158,7 @@ export default function Article() {
       <Divider />
 
       <section>
-        <h2 className="mb-3 text-xs font-bold tracking-[0.3em] text-violet-600 uppercase dark:text-violet-400">
+        <h2 className="mb-3 text-xs font-medium tracking-[0.3em] text-muted-foreground uppercase">
           Certificações &amp; Cursos
         </h2>
 
@@ -172,7 +184,7 @@ export default function Article() {
       <Divider />
 
       <section>
-        <h2 className="mb-3 text-xs font-bold tracking-[0.3em] text-violet-600 uppercase dark:text-violet-400">
+        <h2 className="mb-3 text-xs font-medium tracking-[0.3em] text-muted-foreground uppercase">
           Projetos
         </h2>
         <ul className="list-disc space-y-1 pl-5 text-sm text-muted-foreground">
@@ -190,7 +202,7 @@ export default function Article() {
       <div className="hiddenPrint flex justify-end">
         <button
           onClick={generatePDF}
-          className="mt-10 inline-flex cursor-pointer items-center gap-2 rounded-full bg-violet-500 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-violet-400"
+          className="mt-10 inline-flex cursor-pointer items-center gap-2 rounded-full bg-foreground px-5 py-2.5 text-sm font-medium text-background transition-opacity hover:opacity-85"
         >
           <Download size={16} />
           Baixar currículo (PDF)

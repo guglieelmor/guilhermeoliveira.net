@@ -17,7 +17,7 @@ export default function Blog() {
         </p>
       </Reveal>
 
-      <div className="mt-14 mb-14 h-px bg-black/10 dark:bg-white/10" />
+      <div className="mt-14 mb-14 h-px bg-border" />
 
       <ListPosts />
     </Container>

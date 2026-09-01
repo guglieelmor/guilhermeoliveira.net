@@ -15,7 +15,7 @@ export const profile = {
     alura: "https://cursos.alura.com.br/user/guglieelmor",
     auraLabel: "cursos.alura.com.br/user/guglieelmor",
   },
-  summary: `Como Tech Lead na Brudam, lidero iniciativas técnicas estratégicas, colaborando com equipes multifuncionais no desenvolvimento de sistemas robustos, escaláveis e orientados a resultados. Atuo de forma ativa em todas as etapas do ciclo de desenvolvimento, desde a definição de arquiteturas e tomada de decisões técnicas até a implementação de soluções inovadoras que atendem às demandas do setor de transporte e logística. Sou graduado em Tecnólogo em Sistemas para Internet pelo Instituto Federal Sul-rio-grandense e aplico de forma prática meus conhecimentos em programação e tecnologia para otimizar processos e entregar soluções alinhadas às necessidades do mercado. Minha experiência abrange desenvolvimento back-end, front-end e ciência de dados, sempre com foco em inovação, performance e colaboração entre equipes. Atualmente, também atuo como professor substituto no Instituto Federal Sul-rio-grandense - Campus Charqueadas, ministrando disciplinas técnicas voltadas ao desenvolvimento de software, contribuindo para a formação de novos profissionais na área de tecnologia. Além disso, tenho pós-graduação em Arquitetura e Infraestrutura de TI, com o objetivo de aprofundar meus conhecimentos em sistemas distribuídos, escalabilidade e boas práticas de engenharia de software.`,
+  summary: `Como Tech Lead na Brudam, lidero as decisões de arquitetura e a execução técnica de sistemas para o setor de transporte e logística, atuando de ponta a ponta — da concepção à implementação. Sou Tecnólogo em Sistemas para Internet pelo Instituto Federal Sul-rio-grandense, com pós-graduação em Arquitetura e Infraestrutura de TI, e transito entre back-end, front-end e ciência de dados. Também sou professor substituto no IFSUL - Campus Charqueadas, formando novos desenvolvedores em disciplinas de engenharia e desenvolvimento de software.`,
   summaryShort:
     "Tech Lead na Brudam, conduzindo decisões de arquitetura e liderança técnica no setor de transporte e logística. Professor substituto no IFSUL, formando novos desenvolvedores. Pós-graduado em Arquitetura e Infraestrutura de TI.",
   bioHome:
@@ -140,20 +140,21 @@ export const profile = {
       company: "Brudam - Software TMS",
       image: "/images/brudam.jpeg",
       role: "Full Stack Developer",
-      start: new Date(2020, 1, 16),
+      start: new Date(2020, 2, 1),
       end: new Date(2021, 11, 1),
-      location: "Eldorado do Sul, Rio Grande do Sul, Brasil",
+      location: "Eldorado do Sul, Rio Grande do Sul",
       description:
-        "Responsável pelo desenvolvimento de soluções completas, atuando no front-end, no back-end e colaborando em tarefas de ciência de dados, com foco em estratégia, performance e boa experiência para o usuário.",
+        "Responsável pelo desenvolvimento de soluções completas, atuando no front-end, no back-end e colaborando em tarefas de ciência de dados. Participei da coordenação de novos projetos e da integração de sistemas multiplataforma, sempre com foco em estratégia, performance e boa experiência para o usuário.",
       tags: ["PHP", "Laravel", "MySQL", "jQuery", "Vue.js", "AngularJS", "Phalcon"],
     },
   ],
   education: [
     {
       school: "FAAL - Faculdade Alcance",
-      image: "/images/ifsul.jpeg",
+      image: "/images/faal.jpeg",
       degree: "Pós-graduação Arquitetura e Infraestrutura de T.I - Especialização",
-      period: "março de 2026",
+      start: new Date(2026, 2, 1),
+      end: new Date(2026, 8, 1),
       description:
         "Especialização em Information Technology, com foco em sistemas distribuídos, escalabilidade e boas práticas de engenharia de software.",
     },
@@ -161,7 +162,8 @@ export const profile = {
       school: "IFSUL - Instituto Federal Sul-rio-grandense",
       image: "/images/ifsul.jpeg",
       degree: "Tecnólogo, Sistemas para Internet",
-      period: "janeiro de 2020 – julho de 2025",
+      start: new Date(2020, 0, 1),
+      end: new Date(2025, 6, 1),
       description:
         "Formação focada em desenvolvimento full-stack, arquitetura de sistemas, bancos de dados, redes, testes e manutenção de sistemas.",
     },
@@ -169,7 +171,9 @@ export const profile = {
       school: "IFSUL - Instituto Federal Sul-rio-grandense",
       image: "/images/ifsul.jpeg",
       degree: "Técnico, Informática",
-      period: "2016 – 2019",
+      start: new Date(2016, 0, 1),
+      end: new Date(2019, 11, 1),
+      yearOnly: true,
       description:
         "Formação prática em suporte técnico, programação, infraestrutura de TI e redes locais.",
     },
