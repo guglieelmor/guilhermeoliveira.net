@@ -1,15 +1,16 @@
 {
   "posts": [
     {
-      "title": "Teste do teste",
-      "date": "2026-01-26T09:15:00-03:00",
-      "path": "/2026/01/26/teste-do-teste",
-      "description": "Teste do teste.",
+      "title": "Inteligência artificial - a história por trás da revolução que chegou ao dia a dia",
+      "date": "2026-09-01T09:00:00-03:00",
+      "path": "/2026/09/01/inteligencia-artificial-historia-e-atualidade",
+      "description": "Da Conferência de Dartmouth em 1956 aos agentes de IA escrevendo código em produção: a história completa da inteligência artificial, seus invernos, suas reviravoltas e o que realmente mudou até hoje.",
       "tags": [
-        "nextjs",
-        "frontend",
-        "javascript"
-      ]
+        "inteligência artificial",
+        "machine learning",
+        "tecnologia"
+      ],
+      "readingMinutes": 7
     }
   ]
 }

@@ -2,7 +2,6 @@
 
 import { navLinks } from "@/lib/nav-links";
 import { profile } from "@/lib/profile";
-import FooterScene from "./footer-scene";
 import {
   ArrowUp,
   ArrowUpRight,
@@ -12,7 +11,6 @@ import {
   Mail,
 } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 
 const socials = [
   { href: profile.contact.linkedin, label: "LinkedIn", icon: Linkedin },
@@ -27,46 +25,18 @@ const socials = [
 
 export default function Footer() {
   const year = new Date().getFullYear();
-  const [time, setTime] = useState("--:--");
-
-  useEffect(() => {
-    const update = () =>
-      setTime(
-        new Date().toLocaleTimeString("pt-BR", {
-          hour: "2-digit",
-          minute: "2-digit",
-          timeZone: "America/Sao_Paulo",
-        }),
-      );
-    update();
-    const id = setInterval(update, 30_000);
-    return () => clearInterval(id);
-  }, []);
 
   const scrollToTop = () =>
     window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
-    <footer className="hiddenPrint relative mt-32 overflow-hidden bg-gradient-to-b from-background via-muted/40 to-muted/70">
-      <div className="relative z-10 mx-auto h-px max-w-5xl bg-gradient-to-r from-transparent via-violet-500/40 to-transparent" />
-
-      <FooterScene />
-
-      <div className="relative z-10 mx-auto max-w-5xl px-6 md:px-10">
+    <footer className="hiddenPrint relative mt-32 overflow-hidden border-t border-border">
+      <div className="mx-auto max-w-5xl px-6 md:px-10">
         <div className="grid gap-14 py-20 md:grid-cols-[1.3fr_1fr_1fr_1fr] md:gap-8">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-2 text-[0.65rem] tracking-[0.2em] text-muted-foreground uppercase">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-violet-400 opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-violet-500" />
-              </span>
-              Brasil · {time}
-            </div>
-            <p className="font-display mt-6 text-sm leading-loose text-foreground">
-              Guilherme
-              <br />
-              Oliveira
+            <p className="text-sm font-medium text-foreground">
+              Guilherme Oliveira
             </p>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
               Tech Lead, professor e desenvolvedor full stack construindo
@@ -76,7 +46,7 @@ export default function Footer() {
 
           {/* Navegação */}
           <div>
-            <h3 className="font-display text-[0.6rem] tracking-[0.2em] text-violet-600 uppercase dark:text-violet-400">
+            <h3 className="text-xs tracking-[0.2em] text-muted-foreground uppercase">
               Navegação
             </h3>
             <ul className="mt-6 space-y-3 text-sm">
@@ -99,7 +69,7 @@ export default function Footer() {
 
           {/* Contato */}
           <div>
-            <h3 className="font-display text-[0.6rem] tracking-[0.2em] text-violet-600 uppercase dark:text-violet-400">
+            <h3 className="text-xs tracking-[0.2em] text-muted-foreground uppercase">
               Contato
             </h3>
             <ul className="mt-6 space-y-3 text-sm">
@@ -125,25 +95,19 @@ export default function Footer() {
           <div className="flex items-start justify-start md:justify-end">
             <button
               onClick={scrollToTop}
-              className="group relative cursor-pointer border-2 border-foreground/70 bg-background/95 px-4 py-2.5 text-[0.6rem] tracking-[0.15em] uppercase transition-colors hover:text-violet-600 dark:hover:text-violet-400"
+              className="group inline-flex cursor-pointer items-center gap-2 rounded-full border border-border px-4 py-2 text-xs text-muted-foreground transition-colors hover:border-foreground/30 hover:text-foreground"
               aria-label="Voltar ao topo"
             >
-              <span className="absolute -top-[3px] -left-[3px] h-[6px] w-[6px] bg-foreground/70" />
-              <span className="absolute -top-[3px] -right-[3px] h-[6px] w-[6px] bg-foreground/70" />
-              <span className="absolute -bottom-[3px] -left-[3px] h-[6px] w-[6px] bg-foreground/70" />
-              <span className="absolute -bottom-[3px] -right-[3px] h-[6px] w-[6px] bg-foreground/70" />
-              <span className="font-display flex items-center gap-2">
-                <ArrowUp
-                  size={12}
-                  className="transition-transform group-hover:-translate-y-1"
-                />
-                Topo
-              </span>
+              <ArrowUp
+                size={12}
+                className="transition-transform group-hover:-translate-y-0.5"
+              />
+              Topo
             </button>
           </div>
         </div>
 
-        <div className="flex flex-col items-center justify-between gap-6 border-t border-black/5 pt-10 pb-8 text-xs text-muted-foreground md:flex-row dark:border-white/5">
+        <div className="flex flex-col items-center justify-between gap-6 border-t border-border pt-10 pb-8 text-xs text-muted-foreground md:flex-row">
           <p>
             © {year} {profile.name}. Todos os direitos reservados.
           </p>
@@ -155,7 +119,7 @@ export default function Footer() {
                   href={social.href}
                   target={social.href.startsWith("mailto:") ? undefined : "_blank"}
                   aria-label={social.label}
-                  className="inline-block text-muted-foreground transition-all hover:-translate-y-0.5 hover:text-violet-500 dark:hover:text-violet-400"
+                  className="inline-block text-muted-foreground transition-all hover:-translate-y-0.5 hover:text-foreground"
                 >
                   <social.icon size={18} />
                 </Link>
@@ -164,6 +128,13 @@ export default function Footer() {
           </ul>
         </div>
       </div>
+
+      <p
+        aria-hidden="true"
+        className="pointer-events-none -mb-[0.12em] w-full overflow-hidden text-center font-display text-[19vw] leading-none whitespace-nowrap text-foreground/[0.04] select-none"
+      >
+        GUILHERME
+      </p>
     </footer>
   );
 }

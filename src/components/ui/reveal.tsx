@@ -3,9 +3,9 @@
 import { motion } from "motion/react";
 
 const OFFSETS = {
-  up: { x: 0, y: 24 },
-  left: { x: -32, y: 0 },
-  right: { x: 32, y: 0 },
+  up: { x: 0, y: 14 },
+  left: { x: -18, y: 0 },
+  right: { x: 18, y: 0 },
 };
 
 export function Reveal({
