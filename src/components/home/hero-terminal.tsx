@@ -20,10 +20,14 @@ export default function HeroTerminal({
   host,
   yearsOfExperience,
   stackLines,
+  location,
+  certifications,
 }: {
   host: string;
   yearsOfExperience: number;
   stackLines: [string, string];
+  location: string;
+  certifications: number;
 }) {
   const script: Line[] = [
     { type: "command", text: "whoami" },
@@ -35,6 +39,15 @@ export default function HeroTerminal({
     { type: "command", text: "stack --list" },
     { type: "output", text: stackLines[0] },
     { type: "output", text: stackLines[1] },
+    { type: "blank" },
+    { type: "command", text: "cat certifications.txt | wc -l" },
+    { type: "output", text: `${certifications} certificações` },
+    { type: "blank" },
+    { type: "command", text: "echo $LOCATION" },
+    { type: "output", text: location },
+    { type: "blank" },
+    { type: "command", text: "echo $STATUS" },
+    { type: "output", text: "disponível_para_novos_desafios" },
   ];
 
   const [completed, setCompleted] = useState<Line[]>([]);
@@ -93,7 +106,7 @@ export default function HeroTerminal({
   return (
     <div
       aria-hidden="true"
-      className="w-full max-w-md overflow-hidden rounded-xl border border-zinc-800 bg-zinc-950 shadow-2xl shadow-black/40"
+      className="w-full max-w-lg overflow-hidden rounded-xl border border-zinc-800 bg-zinc-950 shadow-2xl shadow-black/40"
     >
       <div className="flex items-center gap-1.5 border-b border-zinc-800 bg-zinc-900/60 px-4 py-2.5">
         <span className="h-2.5 w-2.5 rounded-full bg-red-500/70" />
@@ -104,7 +117,7 @@ export default function HeroTerminal({
         </span>
       </div>
 
-      <div className="min-h-[15rem] px-5 py-5 font-mono text-[13px] leading-relaxed">
+      <div className="min-h-[23rem] px-5 py-5 font-mono text-[13px] leading-relaxed">
         {completed.map((line, i) => (
           <div key={i}>
             {line.type === "command" && (
