@@ -51,7 +51,7 @@ export default function Index({ posts }: { posts: PostMeta[] }) {
       >
         <HeroGlow />
 
-        <div className="relative mx-auto grid max-w-6xl gap-16 lg:grid-cols-[1fr_420px] lg:items-center">
+        <div className="relative mx-auto grid max-w-6xl gap-16 lg:grid-cols-[1fr_480px] lg:items-center">
           <div className="max-w-3xl">
             <Reveal>
               <div className="inline-flex items-center gap-2 font-mono text-xs tracking-[0.15em] text-blue-600 uppercase dark:text-blue-400">
@@ -149,6 +149,8 @@ export default function Index({ posts }: { posts: PostMeta[] }) {
                 "TypeScript · Next.js · AWS",
                 "Docker · MySQL · Redis",
               ]}
+              location={profile.location}
+              certifications={profile.certifications.length}
             />
           </Reveal>
         </div>
@@ -169,7 +171,7 @@ export default function Index({ posts }: { posts: PostMeta[] }) {
                   alt={profile.name}
                   fill
                   sizes="220px"
-                  className="object-cover grayscale transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-background via-background/70 to-transparent px-4 pt-10 pb-4">
                   <p className="font-mono text-[10px] tracking-[0.2em] text-foreground uppercase">
