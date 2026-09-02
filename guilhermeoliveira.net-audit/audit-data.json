@@ -1,0 +1,233 @@
+{
+  "summary": {
+    "health_score": 43,
+    "business_type": "Marca pessoal / portfólio com blog (perfil próximo de publisher)",
+    "top_findings": [
+      "Sem robots.txt nem sitemap.xml (ambos retornam 404) — nenhum direcionamento de rastreamento para buscadores",
+      "www e sem-www servem o mesmo conteúdo (200) sem canonical nem redirect — duplicidade de conteúdo em nível de host",
+      "Home, /blog e /sobre compartilham o mesmo <title> e <meta description> — zero diferenciação entre páginas",
+      "Nenhum dado estruturado JSON-LD no site, apesar de já existir dados de Person/CV prontos em src/lib/profile.ts",
+      "O único post do blog está sem meta description porque o frontmatter do index.md não tem o campo `description` (o posts.json tem, mas o template do post não lê de lá)"
+    ],
+    "quick_wins": [
+      "Adicionar app/robots.ts e app/sitemap.ts (trivial no Next.js App Router, resolve indexabilidade de imediato)",
+      "Adicionar `description:` no frontmatter do index.md do post",
+      "Adicionar metadata única para /blog e /sobre (via server component ou layout.tsx próprio)",
+      "Definir metadataBase no layout raiz e resolver o redirect www ↔ apex",
+      "Adicionar JSON-LD de Person usando os dados já existentes em profile.ts — esforço quase zero, ganho direto em rich results e citabilidade por IA"
+    ]
+  },
+  "categories": [
+    {
+      "name": "SEO Técnico",
+      "score": 35,
+      "what_works": [
+        "HTTPS forçado com HSTS (max-age=63072000)",
+        "http:// e o domínio sem www redirecionam corretamente (308) para https://guilhermeoliveira.net/",
+        "Páginas são pré-renderizadas estaticamente (x-nextjs-prerender: 1) e servidas pelo cache de borda da Vercel — HTML rápido e rastreável, sem depender de renderização client-side para o conteúdo principal",
+        "Nenhum erro de console durante a renderização; HTML limpo"
+      ],
+      "findings": [
+        {
+          "title": "robots.txt retorna 404",
+          "severity": "Critical",
+          "description": "GET https://guilhermeoliveira.net/robots.txt retorna HTTP 404 (a página 404 customizada do Next.js). Não existe src/app/robots.ts no repositório.",
+          "recommendation": "Adicionar src/app/robots.ts usando a Metadata Files API do Next.js para gerar um robots.txt válido com uma diretiva Sitemap:."
+        },
+        {
+          "title": "sitemap.xml retorna 404",
+          "severity": "Critical",
+          "description": "GET https://guilhermeoliveira.net/sitemap.xml retorna HTTP 404. Não existe src/app/sitemap.ts. Os buscadores não têm uma lista autoritativa de URLs (home, /blog, /sobre e cada post) para descobrir e priorizar.",
+          "recommendation": "Adicionar src/app/sitemap.ts gerando entradas para /, /blog, /sobre e todos os caminhos de post a partir de public/_content/posts.json."
+        },
+        {
+          "title": "www e domínio raiz respondem sem redirect nem canonical",
+          "severity": "Critical",
+          "description": "https://www.guilhermeoliveira.net/ retorna HTTP 200 com conteúdo idêntico (mesmo ETag) a https://guilhermeoliveira.net/, e não existe <link rel=\"canonical\"> em nenhuma página do site. É um caso clássico de duplicidade de conteúdo em nível de host — duas origens indexáveis para cada URL.",
+          "recommendation": "Escolher um host canônico (o profile.ts já declara https://www.guilhermeoliveira.net/ como o site canônico, mas o deploy está na raiz — é preciso reconciliar isso) e adicionar um redirect permanente do outro host nas configurações de domínio da Vercel. Definir também metadataBase + canonical como camada extra de proteção."
+        },
+        {
+          "title": "manifest.json ausente",
+          "severity": "Low",
+          "description": "GET /manifest.json retorna 404. Não bloqueia indexação, mas afeta sinais de instalabilidade PWA e algumas verificações de Boas Práticas do Lighthouse.",
+          "recommendation": "Adicionar src/app/manifest.ts com name, icons, theme_color."
+        },
+        {
+          "title": "Nenhum header de segurança além do HSTS",
+          "severity": "Low",
+          "description": "Os headers de resposta não incluem X-Content-Type-Options, Referrer-Policy nem Permissions-Policy. next.config.ts não tem bloco headers().",
+          "recommendation": "Adicionar uma função headers() em next.config.ts para hardening básico; contribui para a pontuação de Boas Práticas do Lighthouse."
+        }
+      ]
+    },
+    {
+      "name": "SEO On-Page",
+      "score": 40,
+      "what_works": [
+        "As páginas de post do blog (src/app/blog/[year]/[month]/[day]/[slug]/page.tsx) usam corretamente generateMetadata() para títulos únicos e relevantes por post",
+        "Um único H1 bem escrito por página (home: 'Lidero engenharia. Formo engenheiros.'; a página de CV tem seu próprio H1); sem conflito de múltiplos H1",
+        "Ordem semântica de headings consistente (H1 → H2 de rótulos de seção → H3 de itens) na home"
+      ],
+      "findings": [
+        {
+          "title": "Home, /blog e /sobre compartilham título e meta description idênticos",
+          "severity": "Critical",
+          "description": "Confirmado via HTML renderizado: título e descrição são exatamente 'Guilherme Oliveira - Tech Lead | Software Engineer | Full Stack | SRE' em /, /blog e /sobre. Causa raiz: src/app/page.tsx e src/app/sobre/page.tsx são Client Components sem export de metadata, e src/app/blog/page.tsx também é Client Component — as três herdam silenciosamente a metadata do layout raiz.",
+          "recommendation": "Dar a /blog e /sobre sua própria metadata. Como ambos os page.tsx são 'use client', mover a lógica client para um componente filho e transformar o page.tsx em server component com metadata exportada, ou adicionar metadata via um layout.tsx próprio em cada segmento de rota."
+        },
+        {
+          "title": "Post do blog está sem meta description",
+          "severity": "High",
+          "description": "generateMetadata() na página do post lê `data.description` do frontmatter do index.md, mas public/_content/2026/09/01/.../index.md não tem campo `description:` — só title, date, slug, tags. O texto da descrição existe, mas só em public/_content/posts.json, que o template do post nunca lê. Confirmado: o <head> da página do post ao vivo não tem nenhuma tag <meta name=\"description\">.",
+          "recommendation": "Adicionar `description:` no frontmatter do post (e dos próximos). No médio prazo, fazer o posts.json ser gerado a partir do frontmatter de cada post (ou vice-versa) para os dois nunca mais divergirem."
+        },
+        {
+          "title": "<html lang=\"en\"> mas todo o conteúdo visível é em português (pt-BR)",
+          "severity": "Medium",
+          "description": "src/app/layout.tsx tem lang=\"en\" fixo, mas os rótulos de navegação ('Início', 'Currículo'), o texto do rodapé, a página 404 e todos os posts do blog estão em português. Buscadores usam esse atributo como sinal de idioma para servir os resultados corretos.",
+          "recommendation": "Trocar lang=\"en\" para lang=\"pt-BR\" na tag <html> raiz."
+        },
+        {
+          "title": "Nenhuma tag canonical em nenhuma página",
+          "severity": "High",
+          "description": "Confirmado ausente nas 4 páginas amostradas. Agrava o problema de duplicidade www/apex acima.",
+          "recommendation": "Definir metadataBase: new URL('https://guilhermeoliveira.net') na metadata do layout raiz; o Next.js passa a emitir a tag canonical automaticamente, ou definir alternates.canonical explicitamente por rota."
+        }
+      ]
+    },
+    {
+      "name": "Qualidade de Conteúdo",
+      "score": 55,
+      "what_works": [
+        "Conteúdo genuinamente autoral, em primeira pessoa, com diferencial claro ('Artigos legitimamente escritos por mim, sem a adição de IA') — um sinal forte e verificável de E-E-A-T/confiança num momento em que a busca está sendo inundada de conteúdo gerado por IA",
+        "Credenciais e experiência reais aparecem no texto: Tech Lead na Brudam, professor no IFSUL, escopo técnico e tempo de atuação específicos",
+        "O post amostrado (história da IA) é longo, estruturado com subtítulos reais e substancial — não é conteúdo raso"
+      ],
+      "findings": [
+        {
+          "title": "O blog tem apenas um post publicado",
+          "severity": "Info",
+          "description": "public/_content/posts.json contém uma única entrada. Está abaixo de qualquer limiar significativo de autoridade temática, mas é um blog em estágio inicial — não é uma violação de quality gate.",
+          "recommendation": "Nenhuma correção imediata necessária; sinalizado como nota de estágio de crescimento. Cadência de publicação, não um defeito."
+        }
+      ]
+    },
+    {
+      "name": "Schema / Dados Estruturados",
+      "score": 0,
+      "what_works": [],
+      "findings": [
+        {
+          "title": "Nenhum dado estruturado JSON-LD no site inteiro",
+          "severity": "High",
+          "description": "Confirmado via extração de dados estruturados (structured_data.block_count: 0) na home e por grep no código-fonte em src/ — apesar de src/lib/profile.ts já ter dados de Person limpos e prontos para uso (name, role, headline, links de contato, skills, experiência).",
+          "recommendation": "Adicionar um bloco JSON-LD de Person (name, jobTitle, url, sameAs: [linkedin, github], worksFor) na home/sobre, e JSON-LD de BlogPosting (headline, datePublished, author, description) em cada post. Não adicionar FAQPage — o Google aposentou os rich results de FAQ para todos os sites; não se aplica aqui de qualquer forma."
+        }
+      ]
+    },
+    {
+      "name": "Performance (CWV)",
+      "score": 65,
+      "what_works": [
+        "Páginas pré-renderizadas estaticamente e servidas pelo cache de borda da Vercel (x-nextjs-prerender: 1, x-vercel-cache: HIT) — boa base para LCP",
+        "Imagens usam next/image com remotePatterns configurado (avatar vem do CDN do GitHub) e as imagens locais já são pequenas (4–32KB)",
+        "Compressão brotli habilitada nas respostas"
+      ],
+      "findings": [
+        {
+          "title": "Nenhum dado de Core Web Vitals de campo ou de laboratório coletado",
+          "severity": "Info",
+          "description": "Não havia credenciais de API do Google configuradas neste ambiente (PageSpeed Insights / CrUX), então LCP/INP/CLS não puderam ser medidos diretamente nesta auditoria. Os sinais estruturais (pré-renderização, cache de borda, imagens pequenas) sugerem boa performance, mas isso não substitui uma medição real.",
+          "recommendation": "Rodar o PageSpeed Insights manualmente em https://pagespeed.web.dev/ para a home e um post do blog, ou configurar uma chave de API do Google e rodar novamente `/seo google` / `/seo technical` para dados de campo via CrUX."
+        }
+      ]
+    },
+    {
+      "name": "Prontidão para Busca por IA",
+      "score": 40,
+      "what_works": [
+        "A postura explícita de 'sem IA neste conteúdo' é um diferencial genuíno e verificável para engines de resposta de IA",
+        "Conteúdo é tematicamente coerente (engenharia de software, IA, liderança técnica), o que ajuda na recuperação por trecho conforme o volume cresce"
+      ],
+      "findings": [
+        {
+          "title": "Sem llms.txt",
+          "severity": "Low",
+          "description": "GET /llms.txt retorna 404. É uma convenção emergente e não padronizada, sem benefício confirmado de ranqueamento ou citação em nenhuma plataforma de IA relevante — opcional, não é uma lacuna prioritária.",
+          "recommendation": "Opcional. Não recomendado como item prioritário; sem benefício confirmado."
+        },
+        {
+          "title": "Ausência de dados estruturados de autor/Person limita a confiança de citação por IA",
+          "severity": "Medium",
+          "description": "Sobrepõe o achado de Schema acima — AI Overviews e engines de resposta se apoiam em dados estruturados de autoria e entidade ao decidir se citam/atribuem conteúdo a uma pessoa nomeada.",
+          "recommendation": "Mesma correção da recomendação de JSON-LD de Person acima; essa única mudança atende tanto schema clássico quanto citabilidade por IA."
+        }
+      ]
+    },
+    {
+      "name": "Imagens",
+      "score": 85,
+      "what_works": [
+        "next/image usado de forma consistente (6 ocorrências) com width/height corretos",
+        "Texto alternativo (alt) é significativo e específico em quase todos os casos (profile.name, group.company, item.school, title)",
+        "Imagens locais são pequenas e bem otimizadas (4–32KB)"
+      ],
+      "findings": [
+        {
+          "title": "Um alt=\"image\" genérico em componente reutilizável de hover",
+          "severity": "Low",
+          "description": "src/components/ui/direction-aware-hover.tsx:91 usa alt=\"image\" fixo em vez de uma descrição recebida via prop.",
+          "recommendation": "Aceitar uma prop `alt` no componente DirectionAwareHover e passar um valor significativo em cada uso."
+        }
+      ]
+    }
+  ],
+  "action_plan": {
+    "phases": [
+      {
+        "name": "Fase 1: Correções Críticas",
+        "timeframe": "Semana 1",
+        "items": [
+          "Adicionar src/app/robots.ts",
+          "Adicionar src/app/sitemap.ts cobrindo /, /blog, /sobre e todos os caminhos de post",
+          "Resolver a duplicidade de host www vs raiz (redirecionar um para o outro na Vercel)",
+          "Definir metadataBase e adicionar canonical por rota",
+          "Dar metadata única de título + descrição para /blog e /sobre"
+        ]
+      },
+      {
+        "name": "Fase 2: Melhorias de Alto Impacto",
+        "timeframe": "Semanas 2-3",
+        "items": [
+          "Adicionar `description:` no frontmatter do post do blog (corrige a meta description ausente)",
+          "Mover a listagem de posts do /blog para carregamento de dados no servidor, para o conteúdo estar presente no HTML inicial",
+          "Corrigir lang=\"en\" para lang=\"pt-BR\" no layout raiz",
+          "Adicionar JSON-LD de Person (home) e BlogPosting (posts) a partir dos dados já existentes em profile.ts"
+        ]
+      },
+      {
+        "name": "Fase 3: Conteúdo e Autoridade",
+        "timeframe": "Mês 2",
+        "items": [
+          "Adicionar metadata de Open Graph e Twitter Card em todo o site para preview em compartilhamentos sociais",
+          "Adicionar src/app/manifest.ts",
+          "Adicionar headers de segurança (X-Content-Type-Options, Referrer-Policy, Permissions-Policy) via next.config.ts",
+          "Continuar publicando para construir profundidade temática além do post único atual"
+        ]
+      },
+      {
+        "name": "Fase 4: Monitoramento e Iteração",
+        "timeframe": "Contínuo",
+        "items": [
+          "Configurar o Google Search Console para o host canônico escolhido e enviar o novo sitemap",
+          "Rodar /seo audit novamente após as correções da Fase 1-2 irem ao ar, para confirmar a melhora na nota",
+          "Rodar o PageSpeed Insights manualmente para obter números reais de CWV"
+        ]
+      }
+    ]
+  },
+  "artifacts": {
+    "findings_dir": "findings/",
+    "screenshots_dir": "screenshots/"
+  }
+}

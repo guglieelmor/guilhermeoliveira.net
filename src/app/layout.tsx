@@ -6,6 +6,8 @@ import { ThemeProvider } from "@/components/theme-provider";
 import Script from "next/script";
 import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
+import { SITE_URL } from "@/lib/site";
+import { profile } from "@/lib/profile";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,11 +19,48 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const TITLE =
+  "Guilherme Oliveira - Tech Lead | Software Engineer | Full Stack | SRE";
+const DESCRIPTION =
+  "Guilherme Oliveira - Tech Lead | Software Engineer | Full Stack | SRE";
+
 export const metadata: Metadata = {
-  title:
-    "Guilherme Oliveira - Tech Lead | Software Engineer | Full Stack | SRE",
-  description:
-    "Guilherme Oliveira - Tech Lead | Software Engineer | Full Stack | SRE",
+  metadataBase: new URL(SITE_URL),
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "pt_BR",
+    url: SITE_URL,
+    siteName: profile.name,
+    title: TITLE,
+    description: DESCRIPTION,
+    images: [profile.avatar],
+  },
+  twitter: {
+    card: "summary",
+    title: TITLE,
+    description: DESCRIPTION,
+    images: [profile.avatar],
+  },
+};
+
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: profile.name,
+  jobTitle: profile.role,
+  description: profile.bioHome,
+  url: SITE_URL,
+  image: profile.avatar,
+  sameAs: [profile.contact.linkedin, profile.contact.github, profile.contact.alura],
+  worksFor: {
+    "@type": "Organization",
+    name: "Brudam - Software TMS",
+  },
 };
 
 export default function RootLayout({
@@ -30,7 +69,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="pt-BR" suppressHydrationWarning>
       <Script
         src="https://www.googletagmanager.com/gtag/js?id=G-JTP5KZ6L2C"
         strategy="afterInteractive"
@@ -46,6 +85,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

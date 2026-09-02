@@ -1,17 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import { Reveal } from "@/components/ui/reveal";
-
-type Post = {
-  title: string;
-  date: string;
-  path: string;
-  description: string;
-  tags: string[];
-  readingMinutes?: number;
-};
+import type { PostMeta } from "@/lib/posts";
 
 function formatLongDate(date: string) {
   return new Date(date).toLocaleDateString("pt-BR", {
@@ -22,24 +13,15 @@ function formatLongDate(date: string) {
 }
 
 export default function ListPosts({
+  posts: allPosts,
   limit = 5,
   compact = false,
 }: {
+  posts: PostMeta[];
   limit?: number;
   compact?: boolean;
 }) {
-  const [dados, setDados] = useState<{ posts: Post[] } | null>(null);
-
-  useEffect(() => {
-    fetch("/_content/posts.json")
-      .then((res) => res.json())
-      .then((data) => setDados(data));
-  }, []);
-
-  const posts = dados?.posts
-    ?.slice()
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-    .slice(0, limit);
+  const posts = allPosts.slice(0, limit);
 
   if (!posts?.length) {
     return (

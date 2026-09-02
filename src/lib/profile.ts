@@ -10,7 +10,7 @@ export const profile = {
     linkedinLabel: "linkedin.com/in/guglieelmor",
     github: "https://github.com/guglieelmor",
     githubLabel: "github.com/guglieelmor",
-    site: "https://www.guilhermeoliveira.net/",
+    site: "https://guilhermeoliveira.net/",
     siteLabel: "guilhermeoliveira.net",
     alura: "https://cursos.alura.com.br/user/guglieelmor",
     auraLabel: "cursos.alura.com.br/user/guglieelmor",

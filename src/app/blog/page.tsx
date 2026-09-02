@@ -1,10 +1,32 @@
-"use client";
-
+import type { Metadata } from "next";
 import ListPosts from "@/components/blog/list-posts";
 import Container from "@/components/layout/container";
 import { Reveal } from "@/components/ui/reveal";
+import { getAllPosts } from "@/lib/posts";
+
+const TITLE = "Blog - Guilherme Oliveira";
+const DESCRIPTION =
+  "Artigos legitimamente escritos por mim, sem a adição de IA. Opiniões e insights sobre desenvolvimento web, design e tecnologia.";
+
+export const metadata: Metadata = {
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: {
+    canonical: "/blog",
+  },
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+  },
+  twitter: {
+    title: TITLE,
+    description: DESCRIPTION,
+  },
+};
 
 export default function Blog() {
+  const posts = getAllPosts();
+
   return (
     <Container>
       <Reveal>
@@ -19,7 +41,7 @@ export default function Blog() {
 
       <div className="mt-14 mb-14 h-px bg-border" />
 
-      <ListPosts />
+      <ListPosts posts={posts} />
     </Container>
   );
 }

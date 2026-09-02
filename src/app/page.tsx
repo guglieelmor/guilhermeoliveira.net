@@ -1,7 +1,7 @@
-"use client";
-
 import Index from "@/components";
+import { getAllPosts } from "@/lib/posts";
 
 export default function Home() {
-  return <Index />;
+  const posts = getAllPosts();
+  return <Index posts={posts} />;
 }

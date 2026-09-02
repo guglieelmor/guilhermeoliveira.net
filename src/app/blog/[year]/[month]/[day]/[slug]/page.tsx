@@ -10,6 +10,8 @@ import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import type { Metadata } from "next";
 import Container from "@/components/layout/container";
 import { profile } from "@/lib/profile";
+import { SITE_URL } from "@/lib/site";
+import { getAllPosts } from "@/lib/posts";
 
 const POSTS_DIRECTORY = path.join(process.cwd(), "/public/_content");
 
@@ -21,22 +23,6 @@ type BlogProps = {
     slug: string;
   }>;
 };
-
-type PostMeta = {
-  title: string;
-  date: string;
-  path: string;
-  description: string;
-  tags: string[];
-  readingMinutes?: number;
-};
-
-function readPostsIndex(): PostMeta[] {
-  const indexPath = path.join(POSTS_DIRECTORY, "posts.json");
-  if (!fs.existsSync(indexPath)) return [];
-  const raw = fs.readFileSync(indexPath, "utf8");
-  return JSON.parse(raw).posts ?? [];
-}
 
 function readingTimeFor(content: string) {
   const words = content.trim().split(/\s+/).length;
@@ -58,9 +44,27 @@ export async function generateMetadata({
   const filePath = path.join(POSTS_DIRECTORY, year, month, day, slug, "index.md");
   if (!fs.existsSync(filePath)) return {};
   const { data } = matter(fs.readFileSync(filePath, "utf8"));
+  const title = `${data.title} - Guilherme Oliveira`;
+  const canonicalPath = `/blog/${year}/${month}/${day}/${slug}`;
   return {
-    title: `${data.title} - Guilherme Oliveira`,
+    title,
     description: data.description,
+    alternates: {
+      canonical: canonicalPath,
+    },
+    openGraph: {
+      type: "article",
+      title,
+      description: data.description,
+      publishedTime: data.date,
+      authors: [profile.name],
+      images: [profile.avatar],
+    },
+    twitter: {
+      title,
+      description: data.description,
+      images: [profile.avatar],
+    },
   };
 }
 
@@ -93,13 +97,32 @@ export default async function Blog({ params }: BlogProps) {
   const tags: string[] = data.tags ?? [];
   const [category, ...restTags] = tags;
 
-  const relatedPosts = readPostsIndex()
+  const relatedPosts = getAllPosts()
     .filter((post) => post.path !== currentPath)
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, 3);
+
+  const canonicalUrl = `${SITE_URL}/blog${currentPath}`;
+  const blogPostingJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: data.title,
+    description: data.description,
+    datePublished: data.date,
+    url: canonicalUrl,
+    mainEntityOfPage: canonicalUrl,
+    author: {
+      "@type": "Person",
+      name: profile.name,
+      url: SITE_URL,
+    },
+  };
 
   return (
     <Container className="max-w-3xl">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostingJsonLd) }}
+      />
       <Link
         href="/blog"
         className="group inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"

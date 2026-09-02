@@ -2,6 +2,7 @@
 title: Inteligência artificial - a história por trás da revolução que chegou ao dia a dia
 date: '2026-09-01T09:00:00-03:00'
 slug: inteligencia-artificial-historia-e-atualidade
+description: "Da Conferência de Dartmouth em 1956 aos agentes de IA escrevendo código em produção: a história completa da inteligência artificial, seus invernos, suas reviravoltas e o que realmente mudou até hoje."
 tags:
 - inteligência artificial
 - machine learning
