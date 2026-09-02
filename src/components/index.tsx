@@ -160,29 +160,51 @@ export default function Index({ posts }: { posts: PostMeta[] }) {
           <Reveal>
             <SectionLabel label="Sobre" />
           </Reveal>
-          <Reveal delay={0.1}>
-            <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground">
-              {profile.bioHome}
-            </p>
-          </Reveal>
 
-          <Reveal delay={0.2} className="md:col-start-2">
-            <div className="flex flex-wrap divide-x divide-border border-t border-border pt-10">
-              {stats.map((stat) => (
-                <div
-                  key={stat.label}
-                  className="min-w-[8rem] flex-1 px-6 first:pl-0 last:pr-0"
-                >
-                  <p className="font-display text-3xl text-foreground md:text-4xl">
-                    <Counter value={stat.value} suffix={stat.suffix} />
-                  </p>
-                  <p className="mt-2 text-xs tracking-[0.15em] text-muted-foreground uppercase">
-                    {stat.label}
+          <div className="grid gap-10 sm:grid-cols-[220px_1fr] sm:items-start sm:gap-14">
+            <Reveal delay={0.1}>
+              <div className="group relative mx-auto aspect-[4/5] w-full max-w-[220px] overflow-hidden rounded-2xl border border-border transition-colors duration-300 hover:border-blue-500/40 dark:hover:border-blue-400/40">
+                <Image
+                  src={profile.avatar}
+                  alt={profile.name}
+                  fill
+                  sizes="220px"
+                  className="object-cover grayscale transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0"
+                />
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-background via-background/70 to-transparent px-4 pt-10 pb-4">
+                  <p className="font-mono text-[10px] tracking-[0.2em] text-foreground uppercase">
+                    {profile.location}
                   </p>
                 </div>
-              ))}
+              </div>
+            </Reveal>
+
+            <div className="flex flex-col gap-8">
+              <Reveal delay={0.15}>
+                <p className="leading-relaxed text-muted-foreground">
+                  {profile.bioHome}
+                </p>
+              </Reveal>
+
+              <Reveal delay={0.25}>
+                <dl className="flex flex-col border-t border-border pt-2">
+                  {stats.map((stat) => (
+                    <div
+                      key={stat.label}
+                      className="flex items-baseline justify-between gap-4 border-b border-border/60 py-4 last:border-0"
+                    >
+                      <dt className="text-xs tracking-[0.15em] text-muted-foreground uppercase">
+                        {stat.label}
+                      </dt>
+                      <dd className="font-display text-2xl text-foreground">
+                        <Counter value={stat.value} suffix={stat.suffix} />
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+              </Reveal>
             </div>
-          </Reveal>
+          </div>
         </div>
       </section>
 
