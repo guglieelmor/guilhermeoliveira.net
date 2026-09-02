@@ -112,7 +112,7 @@ export const profile = {
       role: "Tech Lead",
       start: new Date(2021, 11, 1),
       end: null,
-      location: "Eldorado do Sul, Rio Grande do Sul",
+      location: "Instituto Caldeira, Porto Alegre",
       description:
         "Líder técnico e desenvolvedor em projetos estratégicos de desenvolvimento de software, conduzindo decisões arquiteturais e técnicas críticas, organizando as tarefas da equipe e garantindo que as entregas estejam alinhadas aos objetivos do produto para o setor de transporte e logística.",
       tags: [
@@ -142,7 +142,7 @@ export const profile = {
       role: "Full Stack Developer",
       start: new Date(2020, 2, 1),
       end: new Date(2021, 11, 1),
-      location: "Eldorado do Sul, Rio Grande do Sul",
+      location: "Instituto Caldeira, Porto Alegre",
       description:
         "Responsável pelo desenvolvimento de soluções completas, atuando no front-end, no back-end e colaborando em tarefas de ciência de dados. Participei da coordenação de novos projetos e da integração de sistemas multiplataforma, sempre com foco em estratégia, performance e boa experiência para o usuário.",
       tags: ["PHP", "Laravel", "MySQL", "jQuery", "Vue.js", "AngularJS", "Phalcon"],
