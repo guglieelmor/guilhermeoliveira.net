@@ -8,6 +8,7 @@ import { Reveal } from "@/components/ui/reveal";
 import { Card } from "@/components/ui/card";
 import { Counter } from "@/components/ui/counter";
 import HeroGlow from "@/components/home/hero-glow";
+import HeroTerminal from "@/components/home/hero-terminal";
 import ListPosts from "@/components/blog/list-posts";
 import { profile } from "@/lib/profile";
 import type { PostMeta } from "@/lib/posts";
@@ -54,87 +55,105 @@ export default function Index({ posts }: { posts: PostMeta[] }) {
       >
         <HeroGlow />
 
-        <div className="relative mx-auto max-w-3xl">
-          <Reveal>
-            <div className="inline-flex items-center gap-2 font-mono text-xs tracking-[0.15em] text-blue-600 uppercase dark:text-blue-400">
-              <span className="relative flex h-1.5 w-1.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-blue-400 opacity-75" />
-                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-blue-500" />
-              </span>
-              Disponível para novos desafios
-            </div>
-          </Reveal>
-
-          <Reveal delay={0.1}>
-            <h1 className="font-display mt-6 text-4xl leading-[1.1] tracking-tight text-foreground sm:text-5xl md:text-6xl">
-              Lidero engenharia.
-              <br />
-              <span className="text-muted-foreground">Formo engenheiros.</span>
-            </h1>
-          </Reveal>
-
-          <Reveal delay={0.2}>
-            <div className="mt-8 flex items-center gap-3">
-              <Image
-                alt={profile.name}
-                src={profile.avatar}
-                width={32}
-                height={32}
-                className="h-8 w-8 rounded-full border border-border object-cover"
-              />
-              <p className="text-sm text-muted-foreground">
-                <span className="font-medium text-foreground">
-                  {profile.name}
-                </span>{" "}
-                — {profile.headline}
-              </p>
-            </div>
-          </Reveal>
-
-          <Reveal delay={0.3}>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-              {profile.summaryShort}
-            </p>
-          </Reveal>
-
-          <Reveal delay={0.4}>
-            <div className="mt-10 flex flex-wrap items-center gap-3">
-              <motion.div whileHover={{ y: -1 }} whileTap={{ scale: 0.97 }}>
-                <Link
-                  href="/sobre"
-                  className="inline-block rounded-full bg-foreground px-5 py-2.5 text-sm font-medium text-background transition-opacity hover:opacity-85"
-                >
-                  Ver currículo
-                </Link>
-              </motion.div>
-              <motion.div whileHover={{ y: -1 }} whileTap={{ scale: 0.97 }}>
-                <Link
-                  href={profile.contact.linkedin}
-                  target="_blank"
-                  className="inline-block rounded-full border border-border px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-foreground/30 hover:bg-foreground/5"
-                >
-                  Fale comigo
-                </Link>
-              </motion.div>
-              <div className="ml-1 flex items-center gap-4 text-muted-foreground">
-                <Link
-                  href={profile.contact.linkedin}
-                  target="_blank"
-                  aria-label="LinkedIn"
-                  className="transition-colors hover:text-foreground"
-                >
-                  <Linkedin size={18} />
-                </Link>
-                <Link
-                  href={profile.contact.github}
-                  target="_blank"
-                  aria-label="GitHub"
-                  className="transition-colors hover:text-foreground"
-                >
-                  <Github size={18} />
-                </Link>
+        <div className="relative mx-auto grid max-w-6xl gap-16 lg:grid-cols-[1fr_420px] lg:items-center">
+          <div className="max-w-3xl">
+            <Reveal>
+              <div className="inline-flex items-center gap-2 font-mono text-xs tracking-[0.15em] text-blue-600 uppercase dark:text-blue-400">
+                <span className="relative flex h-1.5 w-1.5">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-blue-400 opacity-75" />
+                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-blue-500" />
+                </span>
+                Disponível para novos desafios
               </div>
-            </div>
+            </Reveal>
+
+            <Reveal delay={0.1}>
+              <h1 className="font-display mt-6 text-4xl leading-[1.1] tracking-tight text-foreground sm:text-5xl md:text-6xl">
+                Lidero engenharia.
+                <br />
+                <span className="text-muted-foreground">
+                  Formo engenheiros.
+                </span>
+              </h1>
+            </Reveal>
+
+            <Reveal delay={0.2}>
+              <div className="mt-8 flex items-center gap-3">
+                <Image
+                  alt={profile.name}
+                  src={profile.avatar}
+                  width={32}
+                  height={32}
+                  className="h-8 w-8 rounded-full border border-border object-cover"
+                />
+                <p className="text-sm text-muted-foreground">
+                  <span className="font-medium text-foreground">
+                    {profile.name}
+                  </span>{" "}
+                  — {profile.headline}
+                </p>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.3}>
+              <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
+                {profile.summaryShort}
+              </p>
+            </Reveal>
+
+            <Reveal delay={0.4}>
+              <div className="mt-10 flex flex-wrap items-center gap-3">
+                <motion.div whileHover={{ y: -1 }} whileTap={{ scale: 0.97 }}>
+                  <Link
+                    href="/sobre"
+                    className="inline-block rounded-full bg-foreground px-5 py-2.5 text-sm font-medium text-background transition-opacity hover:opacity-85"
+                  >
+                    Ver currículo
+                  </Link>
+                </motion.div>
+                <motion.div whileHover={{ y: -1 }} whileTap={{ scale: 0.97 }}>
+                  <Link
+                    href={profile.contact.linkedin}
+                    target="_blank"
+                    className="inline-block rounded-full border border-border px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-foreground/30 hover:bg-foreground/5"
+                  >
+                    Fale comigo
+                  </Link>
+                </motion.div>
+                <div className="ml-1 flex items-center gap-4 text-muted-foreground">
+                  <Link
+                    href={profile.contact.linkedin}
+                    target="_blank"
+                    aria-label="LinkedIn"
+                    className="transition-colors hover:text-foreground"
+                  >
+                    <Linkedin size={18} />
+                  </Link>
+                  <Link
+                    href={profile.contact.github}
+                    target="_blank"
+                    aria-label="GitHub"
+                    className="transition-colors hover:text-foreground"
+                  >
+                    <Github size={18} />
+                  </Link>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+
+          <Reveal
+            delay={0.5}
+            className="justify-self-center lg:justify-self-end"
+          >
+            <HeroTerminal
+              host="guilherme@brudam"
+              yearsOfExperience={yearsOfExperience}
+              stackLines={[
+                "TypeScript · Next.js · AWS",
+                "Docker · MySQL · Redis",
+              ]}
+            />
           </Reveal>
         </div>
       </section>
