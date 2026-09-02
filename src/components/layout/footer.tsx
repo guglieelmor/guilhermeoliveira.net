@@ -109,7 +109,13 @@ export default function Footer() {
 
         <div className="flex flex-col items-center justify-between gap-6 border-t border-border pt-10 pb-8 text-xs text-muted-foreground md:flex-row">
           <p>
-            © {year} {profile.name}. Todos os direitos reservados.
+            © {year} {profile.name}. Todos os direitos reservados. ·{" "}
+            <Link
+              href="/privacidade"
+              className="transition-colors hover:text-foreground"
+            >
+              Privacidade
+            </Link>
           </p>
 
           <ul className="flex items-center gap-5">

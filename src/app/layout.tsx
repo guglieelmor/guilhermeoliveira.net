@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import Script from "next/script";
 import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
+import CookieConsent from "@/components/cookie-consent";
 import { SITE_URL } from "@/lib/site";
 import { profile } from "@/lib/profile";
 
@@ -98,6 +99,7 @@ export default function RootLayout({
           <Navbar />
           {children}
           <Footer />
+          <CookieConsent />
         </ThemeProvider>
       </body>
     </html>
