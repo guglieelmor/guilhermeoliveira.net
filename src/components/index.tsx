@@ -9,15 +9,11 @@ import { Card } from "@/components/ui/card";
 import { Counter } from "@/components/ui/counter";
 import HeroGlow from "@/components/home/hero-glow";
 import HeroTerminal from "@/components/home/hero-terminal";
+import ExperienceTimeline from "@/components/home/experience-timeline";
 import ListPosts from "@/components/blog/list-posts";
 import { profile } from "@/lib/profile";
 import type { PostMeta } from "@/lib/posts";
-import {
-  companyTenure,
-  diffYearsAndMonths,
-  formatPeriod,
-  groupByCompany,
-} from "@/lib/utils";
+import { cn, diffYearsAndMonths, groupByCompany } from "@/lib/utils";
 
 const experienceGroups = groupByCompany(profile.experience);
 const skillCategories = profile.skillCategories;
@@ -147,7 +143,7 @@ export default function Index({ posts }: { posts: PostMeta[] }) {
             className="justify-self-center lg:justify-self-end"
           >
             <HeroTerminal
-              host="guilherme@brudam"
+              host="gulliver"
               yearsOfExperience={yearsOfExperience}
               stackLines={[
                 "TypeScript · Next.js · AWS",
@@ -171,10 +167,13 @@ export default function Index({ posts }: { posts: PostMeta[] }) {
           </Reveal>
 
           <Reveal delay={0.2} className="md:col-start-2">
-            <div className="grid grid-cols-3 gap-6 border-t border-border pt-10">
+            <div className="flex flex-wrap divide-x divide-border border-t border-border pt-10">
               {stats.map((stat) => (
-                <div key={stat.label}>
-                  <p className="font-display text-2xl text-foreground md:text-3xl">
+                <div
+                  key={stat.label}
+                  className="min-w-[8rem] flex-1 px-6 first:pl-0 last:pr-0"
+                >
+                  <p className="font-display text-3xl text-foreground md:text-4xl">
                     <Counter value={stat.value} suffix={stat.suffix} />
                   </p>
                   <p className="mt-2 text-xs tracking-[0.15em] text-muted-foreground uppercase">
@@ -199,69 +198,8 @@ export default function Index({ posts }: { posts: PostMeta[] }) {
             <SectionLabel label="Experiência" />
           </Reveal>
 
-          <div className="flex flex-col gap-6">
-            {experienceGroups.map((group, index) => (
-              <Reveal key={group.company} delay={index * 0.08}>
-                <Card>
-                  <div className="flex gap-5">
-                    <Image
-                      src={group.roles[0].image}
-                      alt={group.company}
-                      width={40}
-                      height={40}
-                      className="h-10 w-10 shrink-0 rounded-lg border border-border object-cover"
-                    />
-                    <div className="flex-1">
-                      <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
-                        <p className="text-sm font-medium text-foreground">
-                          {group.company} · {group.roles[0].location}
-                        </p>
-                        <p className="font-mono text-xs text-muted-foreground">
-                          {companyTenure(group.roles)}
-                        </p>
-                      </div>
-
-                      <div className="mt-5 flex flex-col gap-6 border-l border-border pl-5">
-                        {group.roles.map((role) => (
-                          <div key={role.role}>
-                            <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                              <h3 className="font-display text-sm text-foreground md:text-base">
-                                {role.role}
-                              </h3>
-                              <span
-                                className={`font-mono text-[0.6rem] tracking-[0.1em] uppercase ${
-                                  role.end
-                                    ? "text-muted-foreground/60"
-                                    : "text-blue-600 dark:text-blue-400"
-                                }`}
-                              >
-                                {role.end ? "concluído" : "em andamento"}
-                              </span>
-                            </div>
-                            <p className="text-sm text-muted-foreground">
-                              {formatPeriod(role.start, role.end)}
-                            </p>
-                            <p className="mt-3 leading-relaxed text-muted-foreground">
-                              {role.description}
-                            </p>
-                            <div className="mt-3 flex flex-wrap gap-2">
-                              {role.tags.slice(0, 6).map((tag) => (
-                                <span
-                                  key={tag}
-                                  className="rounded-md border border-border px-2.5 py-1 text-xs text-muted-foreground transition-colors hover:border-foreground/30 hover:text-foreground"
-                                >
-                                  {tag}
-                                </span>
-                              ))}
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </Card>
-              </Reveal>
-            ))}
+          <div className="flex flex-col gap-10">
+            <ExperienceTimeline groups={experienceGroups} />
 
             <Reveal>
               <Link
@@ -306,9 +244,15 @@ export default function Index({ posts }: { posts: PostMeta[] }) {
             </Reveal>
 
             <Reveal delay={0.1}>
-              <div className="grid gap-8 sm:grid-cols-2">
+              <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
                 {skillCategories.map((category) => (
-                  <div key={category.label}>
+                  <div
+                    key={category.label}
+                    className={cn(
+                      "rounded-lg border border-border p-5 transition-colors hover:border-foreground/20",
+                      category.skills.length > 5 && "col-span-2",
+                    )}
+                  >
                     <h3 className="text-xs font-medium tracking-[0.15em] text-muted-foreground/70 uppercase">
                       {category.label}
                     </h3>
@@ -375,23 +319,24 @@ export default function Index({ posts }: { posts: PostMeta[] }) {
             <SectionLabel label="Projetos" />
           </Reveal>
 
-          <div className="flex flex-col gap-8">
+          <div className="grid gap-6 sm:grid-cols-2">
             {profile.projects.map((project, index) => (
-              <Reveal key={project.name} delay={index * 0.1}>
-                <div className="flex items-start gap-4">
-                  <FolderGit2
-                    size={16}
-                    className="mt-1 shrink-0 text-muted-foreground"
-                  />
-                  <div>
-                    <h3 className="font-display text-sm text-foreground md:text-base">
-                      {project.name}
-                    </h3>
-                    <p className="mt-2 leading-relaxed text-muted-foreground">
-                      {project.description}
-                    </p>
-                  </div>
-                </div>
+              <Reveal key={project.name} delay={index * 0.1} className="h-full">
+                <motion.div whileHover={{ y: -3 }} className="h-full">
+                  <Card className="flex h-full flex-col gap-4">
+                    <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-500/10 text-blue-600 dark:text-blue-400">
+                      <FolderGit2 size={18} />
+                    </span>
+                    <div>
+                      <h3 className="font-display text-lg text-foreground">
+                        {project.name}
+                      </h3>
+                      <p className="mt-2 leading-relaxed text-muted-foreground">
+                        {project.description}
+                      </p>
+                    </div>
+                  </Card>
+                </motion.div>
               </Reveal>
             ))}
           </div>
