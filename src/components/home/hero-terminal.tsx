@@ -2,52 +2,82 @@
 
 import { useEffect, useRef, useState } from "react";
 
+type Mood = "normal" | "happy" | "wink";
+
 type Line =
   | { type: "command"; text: string }
   | { type: "output"; text: string }
-  | { type: "blank" };
+  | { type: "blank" }
+  | { type: "mascot"; mood: Mood; message: string };
 
 const TYPE_SPEED_MS = 32;
 const PAUSE_AFTER_COMMAND_MS = 280;
 const PAUSE_AFTER_OUTPUT_MS = 420;
 const PAUSE_AFTER_BLANK_MS = 80;
+const PAUSE_AFTER_MASCOT_MS = 620;
+
+const MASCOT_EARS = "/\\_/\\";
+const MASCOT_FACES: Record<Mood, string> = {
+  normal: "( o.o )",
+  happy: "( ^ᴗ^ )",
+  wink: "( ^‿~ )",
+};
 
 function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+function Mascot({ mood, message }: { mood: Mood; message: string }) {
+  return (
+    <div className="my-2 flex items-start gap-2.5">
+      <pre className="leading-[1.1] text-amber-400/90 select-none">
+        {MASCOT_EARS}
+        {"\n"}
+        {MASCOT_FACES[mood]}
+      </pre>
+      <div className="relative mt-0.5 rounded-lg bg-zinc-800/80 px-2.5 py-1.5 text-zinc-300">
+        <span
+          aria-hidden="true"
+          className="absolute top-2.5 -left-1 h-2 w-2 rotate-45 bg-zinc-800/80"
+        />
+        {message}
+      </div>
+    </div>
+  );
 }
 
 export default function HeroTerminal({
   host,
   yearsOfExperience,
   stackLines,
-  location,
-  certifications,
 }: {
   host: string;
   yearsOfExperience: number;
   stackLines: [string, string];
-  location: string;
-  certifications: number;
 }) {
   const script: Line[] = [
+    {
+      type: "mascot",
+      mood: "normal",
+      message: "opa, bem-vindo(a) 👋",
+    },
     { type: "command", text: "whoami" },
-    { type: "output", text: "Tech Lead · SRE · Full Stack" },
-    { type: "blank" },
-    { type: "command", text: "uptime --experiencia" },
-    { type: "output", text: `${yearsOfExperience}+ anos em produção` },
+    {
+      type: "output",
+      text: `Tech Lead · SRE · Full Stack · ${yearsOfExperience}+ anos`,
+    },
     { type: "blank" },
     { type: "command", text: "stack --list" },
     { type: "output", text: stackLines[0] },
     { type: "output", text: stackLines[1] },
     { type: "blank" },
-    { type: "command", text: "cat certifications.txt | wc -l" },
-    { type: "output", text: `${certifications} certificações` },
-    { type: "blank" },
-    { type: "command", text: "echo $LOCATION" },
-    { type: "output", text: location },
-    { type: "blank" },
     { type: "command", text: "echo $STATUS" },
     { type: "output", text: "disponível_para_novos_desafios" },
+    {
+      type: "mascot",
+      mood: "wink",
+      message: "bora trabalhar juntos? 🚀",
+    },
   ];
 
   const [completed, setCompleted] = useState<Line[]>([]);
@@ -87,7 +117,9 @@ export default function HeroTerminal({
           await sleep(
             block.type === "blank"
               ? PAUSE_AFTER_BLANK_MS
-              : PAUSE_AFTER_OUTPUT_MS,
+              : block.type === "mascot"
+                ? PAUSE_AFTER_MASCOT_MS
+                : PAUSE_AFTER_OUTPUT_MS,
           );
         }
       }
@@ -117,7 +149,7 @@ export default function HeroTerminal({
         </span>
       </div>
 
-      <div className="min-h-[23rem] px-5 py-5 font-mono text-[13px] leading-relaxed">
+      <div className="h-[22rem] overflow-hidden px-5 py-5 font-mono text-[13px] leading-relaxed">
         {completed.map((line, i) => (
           <div key={i}>
             {line.type === "command" && (
@@ -129,6 +161,9 @@ export default function HeroTerminal({
               <p className="text-zinc-400">{line.text}</p>
             )}
             {line.type === "blank" && <div className="h-4" />}
+            {line.type === "mascot" && (
+              <Mascot mood={line.mood} message={line.message} />
+            )}
           </div>
         ))}
 

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/layout/container";
-import { profile } from "@/lib/profile";
 
 const TITLE = "Privacidade e Cookies - Guilherme Oliveira";
 const DESCRIPTION =
@@ -74,20 +73,6 @@ export default function Privacidade() {
               target="_blank"
             >
               complemento de desativação do Google Analytics
-            </Link>
-            .
-          </p>
-        </section>
-
-        <section>
-          <h2 className="font-display text-lg text-foreground">Contato</h2>
-          <p className="mt-3 leading-relaxed text-muted-foreground">
-            Dúvidas sobre este aviso podem ser enviadas para{" "}
-            <Link
-              href={`mailto:${profile.contact.email}`}
-              className="text-foreground underline underline-offset-2 hover:text-muted-foreground"
-            >
-              {profile.contact.email}
             </Link>
             .
           </p>

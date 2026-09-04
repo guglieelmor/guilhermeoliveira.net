@@ -173,6 +173,20 @@
   );
 }
 
+.hero-glow {
+  animation: hue-drift 16s ease-in-out infinite;
+}
+
+@keyframes hue-drift {
+  0%,
+  100% {
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    filter: hue-rotate(30deg);
+  }
+}
+
 @keyframes drift-a {
   0%,
   100% {
@@ -203,6 +217,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .hero-glow,
   .hero-glow *,
   .skill-marquee * {
     animation: none !important;
