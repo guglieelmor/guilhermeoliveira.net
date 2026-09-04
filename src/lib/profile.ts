@@ -181,11 +181,13 @@ export const profile = {
   projects: [
     {
       name: "COMOBIS – Ecossistema SaaS para Corretores Imobiliários",
+      tag: "SaaS · Mercado imobiliário",
       description:
         "Plataforma online que cria perfis para usuários do mercado imobiliário. Cada usuário pode ter um endereço único dentro do sistema onde apresenta seus dados e propriedades.",
     },
     {
       name: "Automatic Fact Checker",
+      tag: "Extensão acadêmica",
       description:
         "Projeto de extensão voltado ao desenvolvimento de uma solução tecnológica capaz de analisar automaticamente a veracidade de informações, auxiliando no combate à desinformação em ambientes digitais.",
     },

@@ -2,7 +2,13 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, FolderGit2, Github, Linkedin } from "lucide-react";
+import {
+  ArrowRight,
+  Building2,
+  Github,
+  Linkedin,
+  ShieldCheck,
+} from "lucide-react";
 import { motion } from "motion/react";
 import { Reveal } from "@/components/ui/reveal";
 import { Card } from "@/components/ui/card";
@@ -39,6 +45,19 @@ const stats = [
   { label: "Anos de experiência", value: yearsOfExperience, suffix: "+" },
   { label: "Tecnologias", value: profile.techSkills.length, suffix: "+" },
   { label: "Certificações", value: profile.certifications.length, suffix: "" },
+];
+
+const projectAccents = [
+  {
+    icon: Building2,
+    badgeColor: "bg-blue-500/10 text-blue-600 dark:text-blue-400",
+    numberColor: "text-blue-500/10",
+  },
+  {
+    icon: ShieldCheck,
+    badgeColor: "bg-violet-500/10 text-violet-600 dark:text-violet-400",
+    numberColor: "text-violet-500/10",
+  },
 ];
 
 export default function Index({ posts }: { posts: PostMeta[] }) {
@@ -149,8 +168,6 @@ export default function Index({ posts }: { posts: PostMeta[] }) {
                 "TypeScript · Next.js · AWS",
                 "Docker · MySQL · Redis",
               ]}
-              location={profile.location}
-              certifications={profile.certifications.length}
             />
           </Reveal>
         </div>
@@ -175,7 +192,7 @@ export default function Index({ posts }: { posts: PostMeta[] }) {
                 />
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-background via-background/70 to-transparent px-4 pt-10 pb-4">
                   <p className="font-mono text-[10px] tracking-[0.2em] text-foreground uppercase">
-                    {profile.location}
+                    {profile.name}
                   </p>
                 </div>
               </div>
@@ -344,25 +361,50 @@ export default function Index({ posts }: { posts: PostMeta[] }) {
           </Reveal>
 
           <div className="grid gap-6 sm:grid-cols-2">
-            {profile.projects.map((project, index) => (
-              <Reveal key={project.name} delay={index * 0.1} className="h-full">
-                <motion.div whileHover={{ y: -3 }} className="h-full">
-                  <Card className="flex h-full flex-col gap-4">
-                    <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-500/10 text-blue-600 dark:text-blue-400">
-                      <FolderGit2 size={18} />
-                    </span>
-                    <div>
-                      <h3 className="font-display text-lg text-foreground">
-                        {project.name}
-                      </h3>
-                      <p className="mt-2 leading-relaxed text-muted-foreground">
-                        {project.description}
-                      </p>
-                    </div>
-                  </Card>
-                </motion.div>
-              </Reveal>
-            ))}
+            {profile.projects.map((project, index) => {
+              const accent = projectAccents[index % projectAccents.length];
+              const Icon = accent.icon;
+              return (
+                <Reveal
+                  key={project.name}
+                  delay={index * 0.1}
+                  className="h-full"
+                >
+                  <motion.div whileHover={{ y: -3 }} className="h-full">
+                    <Card className="group relative flex h-full flex-col gap-4 overflow-hidden">
+                      <span
+                        aria-hidden="true"
+                        className={cn(
+                          "pointer-events-none absolute -top-3 right-2 font-mono text-7xl font-bold select-none",
+                          accent.numberColor,
+                        )}
+                      >
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      <span
+                        className={cn(
+                          "flex h-9 w-9 items-center justify-center rounded-lg transition-transform duration-200 group-hover:scale-110",
+                          accent.badgeColor,
+                        )}
+                      >
+                        <Icon size={18} />
+                      </span>
+                      <div className="relative">
+                        <p className="font-mono text-[11px] tracking-[0.15em] text-muted-foreground/70 uppercase">
+                          {project.tag}
+                        </p>
+                        <h3 className="font-display mt-1 text-lg text-foreground">
+                          {project.name}
+                        </h3>
+                        <p className="mt-2 leading-relaxed text-muted-foreground">
+                          {project.description}
+                        </p>
+                      </div>
+                    </Card>
+                  </motion.div>
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>
