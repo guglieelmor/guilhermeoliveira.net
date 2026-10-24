@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Guilherme Oliveira - Tech Lead | Software Engineer | Full Stack | SRE",
+    name: "Guilherme Oliveira · Tech Lead, professor e engenheiro",
     short_name: "Guilherme Oliveira",
     description:
       "Tech Lead, professor e desenvolvedor full stack construindo produtos robustos e escaláveis.",

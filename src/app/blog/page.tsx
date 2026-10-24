@@ -1,47 +1,50 @@
 import type { Metadata } from "next";
-import ListPosts from "@/components/blog/list-posts";
-import Container from "@/components/layout/container";
-import { Reveal } from "@/components/ui/reveal";
+import Link from "next/link";
+import { getDict } from "@/lib/prefs";
 import { getAllPosts } from "@/lib/posts";
 
-const TITLE = "Blog - Guilherme Oliveira";
-const DESCRIPTION =
-  "Artigos legitimamente escritos por mim, sem a adição de IA. Opiniões e insights sobre desenvolvimento web, design e tecnologia.";
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getDict();
+  return {
+    title: t.blogPage.metaTitle,
+    description: t.blogPage.metaDescription,
+    alternates: { canonical: "/blog" },
+    openGraph: { title: t.blogPage.metaTitle, description: t.blogPage.metaDescription, url: "/blog", images: ["/opengraph-image"] },
+    twitter: { title: t.blogPage.metaTitle, description: t.blogPage.metaDescription },
+  };
+}
 
-export const metadata: Metadata = {
-  title: TITLE,
-  description: DESCRIPTION,
-  alternates: {
-    canonical: "/blog",
-  },
-  openGraph: {
-    title: TITLE,
-    description: DESCRIPTION,
-  },
-  twitter: {
-    title: TITLE,
-    description: DESCRIPTION,
-  },
-};
-
-export default function Blog() {
+export default async function Blog() {
+  const t = await getDict();
   const posts = getAllPosts();
 
   return (
-    <Container>
-      <Reveal>
-        <h1 className="font-display text-3xl leading-tight text-foreground md:text-4xl">
-          Blog
-        </h1>
-        <p className="mt-4 max-w-xl text-lg text-muted-foreground">
-          Artigos legitimamente escritos por mim, sem a adição de IA. Opiniões
-          e insights sobre desenvolvimento web, design e tecnologia.
-        </p>
-      </Reveal>
+    <main className="pagina">
+      <header className="pagina-topo">
+        <h1>{t.blog.title}</h1>
+        <p>{t.blog.text}</p>
+      </header>
 
-      <div className="mt-14 mb-14 h-px bg-border" />
-
-      <ListPosts posts={posts} />
-    </Container>
+      {posts.length === 0 ? (
+        <p>{t.blog.none}</p>
+      ) : (
+        <ul className="lista-posts">
+          {posts.map((post) => (
+            <li key={post.path}>
+              <Link href={`/blog${post.path}`}>
+                <h2>{post.title}</h2>
+                <p>{post.description}</p>
+                <p className="nota">
+                  <time dateTime={post.date}>
+                    {new Date(post.date).toLocaleDateString(t.locale, { day: "numeric", month: "long", year: "numeric" })}
+                  </time>
+                  {post.readingMinutes ? ` · ${t.blog.minutes(post.readingMinutes)}` : ""}
+                </p>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
+    </main>
   );
 }

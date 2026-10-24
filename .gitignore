@@ -44,3 +44,10 @@ next-env.d.ts
 .claude/
 .agents/
 skills-lock.json
+# Playwright CLI output (may contain credentials)
+.playwright-cli/
+
+# design tooling output
+.taste-skill/
+.playwright/
+agent/
