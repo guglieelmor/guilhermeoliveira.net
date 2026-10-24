@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <style>
+    .olho { animation: piscar 3.6s infinite; transform-box: fill-box; transform-origin: center; }
+    @keyframes piscar { 0%, 94%, 100% { transform: scaleY(1); } 97% { transform: scaleY(0.1); } }
+    @media (prefers-reduced-motion: reduce) { .olho { animation: none; } }
+  </style>
+  <rect width="64" height="64" rx="14" fill="#cdbf22"/>
+  <ellipse class="olho" cx="22" cy="27" rx="6" ry="9" fill="#0a0a0a"/>
+  <ellipse class="olho" cx="42" cy="27" rx="6" ry="9" fill="#0a0a0a"/>
+  <path d="M22 44q10 8 20 0" fill="none" stroke="#0a0a0a" stroke-width="5" stroke-linecap="round"/>
+</svg>

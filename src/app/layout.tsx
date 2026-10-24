@@ -6,6 +6,7 @@ import Header from "@/components/header";
 import Footer from "@/components/footer";
 import Cookies from "@/components/cookies";
 import Reveal from "@/components/reveal";
+import Favicon from "@/components/favicon";
 import { PersonSchema } from "@/components/schema";
 import { getPrefs } from "@/lib/prefs";
 import { SITE } from "@/lib/profile";
@@ -66,6 +67,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
         <Footer t={t} />
         <Cookies lang={lang} initialOpen={consent === null} />
         <Reveal />
+        <Favicon />
         {consent === "todos" && (
           <>
             <Script src={`https://www.googletagmanager.com/gtag/js?id=${SITE.gaId}`} strategy="afterInteractive" />
