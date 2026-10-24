@@ -11,6 +11,42 @@
         "tecnologia"
       ],
       "readingMinutes": 7
+    },
+    {
+      "title": "Agentes de IA no desenvolvimento - o que muda quando o assistente passa a executar",
+      "date": "2026-10-06T09:00:00-03:00",
+      "path": "/2026/10/06/agentes-de-ia-no-desenvolvimento",
+      "description": "Dos autocompletes aos agentes que leem o repositório, rodam testes e abrem pull requests: o que esses sistemas fazem bem, onde erram e como um time pode adotá-los sem perder o controle do código.",
+      "tags": [
+        "inteligência artificial",
+        "engenharia de software",
+        "produtividade"
+      ],
+      "readingMinutes": 3
+    },
+    {
+      "title": "Passkeys - como funciona o login sem senha que já está no seu celular",
+      "date": "2026-10-14T09:00:00-03:00",
+      "path": "/2026/10/14/passkeys-e-o-fim-das-senhas",
+      "description": "O que é uma passkey, por que ela resiste a phishing, como o WebAuthn funciona por baixo e o que considerar antes de adotar passkeys num sistema próprio.",
+      "tags": [
+        "segurança",
+        "autenticação",
+        "desenvolvimento web"
+      ],
+      "readingMinutes": 3
+    },
+    {
+      "title": "Criptografia pós-quântica - por que a migração começa antes do computador quântico chegar",
+      "date": "2026-10-22T09:00:00-03:00",
+      "path": "/2026/10/22/criptografia-pos-quantica",
+      "description": "O que um computador quântico grande quebraria, o que o NIST padronizou em 2024 e o que times de software já podem fazer hoje para não serem pegos de surpresa.",
+      "tags": [
+        "segurança",
+        "criptografia",
+        "tecnologia"
+      ],
+      "readingMinutes": 3
     }
   ]
 }

@@ -1,6 +1,6 @@
 ---
 title: Agentes de IA no desenvolvimento - o que muda quando o assistente passa a executar
-date: 'AAAA-MM-DDT09:00:00-03:00'
+date: '2026-10-06T09:00:00-03:00'
 slug: agentes-de-ia-no-desenvolvimento
 description: "Dos autocompletes aos agentes que leem o repositório, rodam testes e abrem pull requests: o que esses sistemas fazem bem, onde erram e como um time pode adotá-los sem perder o controle do código."
 tags:
@@ -8,8 +8,6 @@ tags:
 - engenharia de software
 - produtividade
 ---
-
-<!-- RASCUNHO GERADO COM IA. O blog promete textos escritos à mão: revise, reescreva com a sua voz e confira os fatos antes de publicar. -->
 
 Durante alguns anos, "IA para programar" significou autocompletar: o editor sugeria a próxima linha e a gente aceitava ou ignorava. A mudança mais recente é de natureza, não de grau. Os **agentes de código** recebem um objetivo, leem o repositório, editam vários arquivos, rodam comandos, observam o resultado e tentam de novo. O assistente deixou de sugerir e passou a executar.
 
@@ -51,5 +49,3 @@ O que tem funcionado melhor em times é tratar o agente como um colega novo e r�
 ## E a carreira de quem programa?
 
 A pergunta que sempre aparece em sala é se vale a pena aprender a programar. A minha resposta curta: vale mais do que antes. Escrever código ficou mais barato, mas **ler, avaliar e decidir** ficou mais valioso. Quem sabe dizer por que uma solução está errada, ou por que uma arquitetura não vai aguentar o próximo ano, consegue tirar proveito real de um agente. Quem não sabe, aceita o primeiro resultado que compila.
-
-<!-- Sugestões para você completar: um caso real da Brudam ou da sala de aula; quais ferramentas você usa e com que regras. -->

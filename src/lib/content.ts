@@ -14,7 +14,7 @@ const pt = {
   meta: {
     title: "Guilherme Oliveira · Tech Lead, professor e engenheiro",
     description:
-      "Tech Lead na Brudam, software TMS para logística em Porto Alegre, e professor substituto no IFSUL Charqueadas. Currículo, projetos e um blog escrito sem IA.",
+      "Tech Lead na Brudam, software TMS para logística em Porto Alegre, e professor substituto no IFSUL Charqueadas. Currículo, projetos e um blog sobre engenharia de software.",
     ogAlt: "Guilherme Oliveira: lidero engenharia, formo engenheiros.",
   },
   nav: {
@@ -75,7 +75,7 @@ const pt = {
         ", como professor substituto no campus Charqueadas.",
       ],
       [
-        "Gosto de sistemas que aguentam o dia a dia, de turmas que fazem perguntas difíceis e de textos escritos sem pressa. O blog aqui embaixo é escrito à mão, sem IA.",
+        "Gosto de sistemas que aguentam o dia a dia, de turmas que fazem perguntas difíceis e de textos escritos sem pressa. No blog aqui embaixo, escrevo sobre o que aprendo no trabalho e em sala.",
       ],
       ["Se você tem um projeto, uma vaga ou uma turma em mente, me escreva."],
     ] as Seg[][],
@@ -154,8 +154,8 @@ const pt = {
     cat: ["miau. bora trabalhar juntos?"],
   },
   blog: {
-    title: "Escrito sem IA",
-    text: "Artigos escritos à mão, sem texto gerado por IA, sobre engenharia de software, tecnologia e o que aprendo em sala.",
+    title: "Blog",
+    text: "Artigos sobre engenharia de software, tecnologia e o que aprendo em sala.",
     readMore: "Ler o post",
     all: "Todos os posts",
     minutes: (n: number) => `${n} min de leitura`,
@@ -186,8 +186,8 @@ const pt = {
         a: "No dia a dia, TypeScript, JavaScript, Next.js, Vue.js, Node.js, PHP e Laravel. Na infraestrutura, Docker, AWS, Linux, Nginx e Cloudflare. Nos dados, MySQL, MongoDB e Redis. Como prática, CI/CD, testes com TDD e SEO técnico, que aplico também neste site.",
       },
       {
-        q: "Os posts do blog usam IA?",
-        a: "Não. Os textos do blog são escritos por mim, sem geração de texto por IA. Escrevo sobre engenharia de software, tecnologia e temas que aparecem em sala de aula. Os posts ficam em português, mesmo quando o resto do site está em inglês.",
+        q: "Sobre o que você escreve no blog?",
+        a: "Sobre engenharia de software, segurança, inteligência artificial e temas que aparecem em sala de aula, sempre com um olhar prático: o que muda para quem desenvolve e como aplicar no dia a dia. Os posts ficam em português, mesmo quando o resto do site está em inglês.",
       },
       {
         q: "Por que Gulliver?",
@@ -224,11 +224,14 @@ const pt = {
     ],
   },
   footer: {
-    line: "Site pessoal de Guilherme Oliveira",
+    line: "Site pessoal de Guilherme Oliveira, Tech Lead e professor.",
+    made: "Feito no Rio Grande do Sul, com Next.js.",
+    top: "Voltar ao topo",
+    siteLabel: "Site",
+    elsewhere: "Em outros lugares",
+    legal: "Privacidade e cookies",
     privacy: "Privacidade",
     cookies: "Preferências de cookies",
-    credits:
-      "Gravura de J. J. Grandville (1838), em domínio público.",
     rights: (y: number) => `© ${y}`,
   },
   consent: {
@@ -392,7 +395,7 @@ const pt = {
   blogPage: {
     metaTitle: "Blog · Guilherme Oliveira",
     metaDescription:
-      "Artigos escritos à mão, sem IA, sobre engenharia de software, tecnologia e sala de aula, por Guilherme Oliveira.",
+      "Artigos sobre engenharia de software, tecnologia e sala de aula, por Guilherme Oliveira.",
     title: "Blog",
     back: "Voltar para o blog",
     by: "Escrito por",
@@ -422,7 +425,7 @@ const en: Dict = {
   meta: {
     title: "Guilherme Oliveira · Tech Lead, teacher and engineer",
     description:
-      "Tech Lead at Brudam, TMS logistics software in Porto Alegre, Brazil, and substitute professor at IFSUL Charqueadas. CV, projects and a blog written without AI.",
+      "Tech Lead at Brudam, TMS logistics software in Porto Alegre, Brazil, and substitute professor at IFSUL Charqueadas. CV, projects and a blog on software engineering.",
     ogAlt: "Guilherme Oliveira: I lead engineering, I teach engineers.",
   },
   nav: {
@@ -483,7 +486,7 @@ const en: Dict = {
         ", as a substitute professor at the Charqueadas campus.",
       ],
       [
-        "I like systems that hold up day to day, classes that ask hard questions and writing done without hurry. The blog below is written by hand, without AI.",
+        "I like systems that hold up day to day, classes that ask hard questions and writing done without hurry. On the blog below, I write about what I learn at work and in class.",
       ],
       ["If you have a project, a role or a class in mind, write to me."],
     ],
@@ -562,8 +565,8 @@ const en: Dict = {
     cat: ["meow. shall we work together?"],
   },
   blog: {
-    title: "Written without AI",
-    text: "Articles written by hand, with no AI-generated text, on software engineering, technology and what I learn in class. Posts are in Portuguese.",
+    title: "Blog",
+    text: "Articles on software engineering, technology and what I learn in class. Posts are in Portuguese.",
     readMore: "Read the post",
     all: "All posts",
     minutes: (n: number) => `${n} min read`,
@@ -594,8 +597,8 @@ const en: Dict = {
         a: "Day to day, TypeScript, JavaScript, Next.js, Vue.js, Node.js, PHP and Laravel. For infrastructure, Docker, AWS, Linux, Nginx and Cloudflare. For data, MySQL, MongoDB and Redis. As practice, CI/CD, test-driven development and technical SEO, which this site applies too.",
       },
       {
-        q: "Do the blog posts use AI?",
-        a: "No. The blog posts are written by me, with no AI-generated text. I write about software engineering, technology and topics that come up in class. The posts are in Portuguese, even when the rest of the site is shown in English.",
+        q: "What do you write about on the blog?",
+        a: "Software engineering, security, artificial intelligence and topics that come up in class, always from a practical angle: what changes for developers and how to apply it day to day. The posts are in Portuguese, even when the rest of the site is shown in English.",
       },
       {
         q: "Why Gulliver?",
@@ -628,11 +631,14 @@ const en: Dict = {
     rows: pt.contact.rows,
   },
   footer: {
-    line: "Personal site of Guilherme Oliveira",
+    line: "Personal site of Guilherme Oliveira, Tech Lead and teacher.",
+    made: "Made in Rio Grande do Sul, Brazil, with Next.js.",
+    top: "Back to top",
+    siteLabel: "Site",
+    elsewhere: "Elsewhere",
+    legal: "Privacy and cookies",
     privacy: "Privacy",
     cookies: "Cookie preferences",
-    credits:
-      "Engraving by J. J. Grandville (1838), public domain.",
     rights: (y: number) => `© ${y}`,
   },
   consent: {
@@ -739,7 +745,7 @@ const en: Dict = {
   blogPage: {
     metaTitle: "Blog · Guilherme Oliveira",
     metaDescription:
-      "Articles written by hand, without AI, on software engineering, technology and teaching, by Guilherme Oliveira. Posts in Portuguese.",
+      "Articles on software engineering, technology and teaching, by Guilherme Oliveira. Posts in Portuguese.",
     title: "Blog",
     back: "Back to the blog",
     by: "Written by",

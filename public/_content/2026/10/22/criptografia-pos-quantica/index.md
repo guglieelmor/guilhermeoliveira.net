@@ -1,6 +1,6 @@
 ---
 title: Criptografia pós-quântica - por que a migração começa antes do computador quântico chegar
-date: 'AAAA-MM-DDT09:00:00-03:00'
+date: '2026-10-22T09:00:00-03:00'
 slug: criptografia-pos-quantica
 description: "O que um computador quântico grande quebraria, o que o NIST padronizou em 2024 e o que times de software já podem fazer hoje para não serem pegos de surpresa."
 tags:
@@ -8,8 +8,6 @@ tags:
 - criptografia
 - tecnologia
 ---
-
-<!-- RASCUNHO GERADO COM IA. O blog promete textos escritos à mão: revise, reescreva com a sua voz e confira os fatos antes de publicar. -->
 
 Quase toda conexão segura na internet depende de dois tipos de matemática: a dificuldade de fatorar números grandes (RSA) e a dificuldade do logaritmo discreto em curvas elípticas (ECDH, ECDSA). Em 1994, Peter Shor mostrou que um computador quântico suficientemente grande resolveria os dois problemas com eficiência. Esse computador ainda não existe. Mesmo assim, governos e empresas já estão trocando a criptografia, e o motivo é bem prático.
 
@@ -46,5 +44,3 @@ A troca de chaves foi a primeira a migrar, justamente por causa do "colha agora,
 ## Fechando
 
 A criptografia pós-quântica é um raro problema de segurança em que dá para se preparar com calma, desde que a preparação comece cedo. O computador quântico pode demorar, e as migrações de criptografia sempre demoraram mais do que o planejado.
-
-<!-- Confira as datas e os nomes dos padrões no site do NIST antes de publicar; acrescente um exemplo do seu dia a dia, como integrações no TMS ou autenticação. -->

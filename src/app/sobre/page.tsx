@@ -34,12 +34,9 @@ export default async function Sobre() {
   return (
     <main className="pagina">
       <header className="cv-topo">
-        <h1>
-          Guilherme{" "}
-          <Image className="cv-foto" src={SITE.avatar} alt="" width={160} height={160} priority />
-          Oliveira
-        </h1>
+        <h1>Guilherme Oliveira</h1>
         <div className="cv-topo-info">
+          <Image className="cv-foto" src={SITE.avatar} alt={SITE.name} width={144} height={144} priority />
           <p className="forte">{cv.role}</p>
           <p>{cv.location}</p>
           <p>

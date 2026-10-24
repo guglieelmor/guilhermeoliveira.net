@@ -1,6 +1,6 @@
 ---
 title: Passkeys - como funciona o login sem senha que já está no seu celular
-date: 'AAAA-MM-DDT09:00:00-03:00'
+date: '2026-10-14T09:00:00-03:00'
 slug: passkeys-e-o-fim-das-senhas
 description: "O que é uma passkey, por que ela resiste a phishing, como o WebAuthn funciona por baixo e o que considerar antes de adotar passkeys num sistema próprio."
 tags:
@@ -8,8 +8,6 @@ tags:
 - autenticação
 - desenvolvimento web
 ---
-
-<!-- RASCUNHO GERADO COM IA. O blog promete textos escritos à mão: revise, reescreva com a sua voz e confira os fatos antes de publicar. -->
 
 Senha é um segredo que o usuário inventa, esquece, reutiliza e digita em qualquer página que pareça a certa. Boa parte dos incidentes de segurança começa aí: vazamento de uma base, reutilização em outro serviço, phishing bem feito. As **passkeys** propõem trocar esse segredo compartilhado por um par de chaves criptográficas, e já estão disponíveis nos principais sistemas operacionais, navegadores e gerenciadores de senha.
 
@@ -47,5 +45,3 @@ Do lado do desenvolvedor, o navegador expõe `navigator.credentials.create()` pa
 ## Fechando
 
 Passkeys não acabam com todo o problema de identidade, mas eliminam as duas maiores fontes de dor: senhas fracas reutilizadas e phishing. Para quem desenvolve, é uma das raras melhorias de segurança que também deixam o login mais rápido para o usuário.
-
-<!-- Sugestão: um relato seu sobre adotar ou testar passkeys, ou como isso entra em sala na disciplina de Front-end. -->
