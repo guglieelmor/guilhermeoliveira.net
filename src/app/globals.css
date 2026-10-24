@@ -2293,40 +2293,133 @@ li[data-aberta] .faq-resposta p {
   transform: translate(4px, -4px) rotate(0deg);
 }
 
-/* ---------- rodapé: uma linha ---------- */
+/* ---------- rodapé: colunas, o apelido gigante e uma linha de pé ---------- */
 
 .rodape {
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: baseline;
-  gap: 16px 24px;
-  padding: 20svh var(--m) 30px;
+  gap: 48px;
+  padding: 120px var(--m) 28px;
+  overflow: hidden;
   font-size: var(--step-small);
+}
+
+.rodape-grade {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 32px;
+}
+
+.rodape-sobre {
+  display: grid;
+  align-content: start;
+  justify-items: start;
+  gap: 6px;
+  font-size: var(--step-body);
+}
+
+.rodape-topo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  margin-top: 18px;
+  padding: 0 16px;
+  border-radius: var(--raio);
+  background: var(--surface);
+  font-size: var(--step-small);
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.rodape-topo span {
+  transition: transform 0.35s var(--ease);
+}
+
+.rodape-topo:hover {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.rodape-topo:hover span {
+  transform: translateY(-3px);
+}
+
+.rodape-rotulo {
+  margin-bottom: 12px;
+  color: var(--muted);
+  font-size: var(--step-small);
+  font-weight: 400;
 }
 
 .rodape ul {
-  display: flex;
-  gap: 24px;
+  display: grid;
+  gap: 8px;
 }
 
-.rodape a {
+.rodape ul a,
+.rodape ul .link-texto {
+  font-size: var(--step-body);
   text-decoration: none;
+  transition: color 0.2s ease;
 }
 
-.rodape a:hover {
-  text-decoration: underline;
+.rodape ul .link-texto {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
 }
 
-.rodape-direita {
+.rodape ul a:hover,
+.rodape ul .link-texto:hover {
+  color: var(--accent-texto);
+}
+
+/* O apelido ocupa a largura toda e afunda um pouco na borda de baixo. */
+.rodape-marca {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 -0.02em;
+  font-size: clamp(5rem, 23.5vw, 26rem);
+  font-weight: 200;
+  letter-spacing: -0.04em;
+  line-height: 0.8;
+  user-select: none;
+}
+
+.rodape-marca span {
+  transition: font-weight 0.25s ease-out, color 0.3s ease;
+}
+
+@media (hover: hover) {
+  .rodape-marca:hover span {
+    color: var(--accent-texto);
+  }
+}
+
+.js .rodape-marca span {
+  animation: sobe-letra 1s var(--ease) both;
+  animation-delay: calc(var(--i) * 60ms);
+  animation-timeline: view();
+  animation-range: entry 0% entry 80%;
+}
+
+@keyframes sobe-letra {
+  from {
+    opacity: 0;
+    transform: translateY(40%);
+  }
+}
+
+.rodape-pe {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-end;
-  gap: 16px;
-}
-
-.rodape-creditos {
-  grid-column: 1 / -1;
-  font-size: var(--step-small);
+  justify-content: space-between;
+  gap: 8px 24px;
+  color: var(--muted);
 }
 
 /* ---------- aviso de cookies ---------- */
@@ -2427,23 +2520,20 @@ li[data-aberta] .faq-resposta p {
   letter-spacing: -0.05em;
 }
 
-/* A foto entra no nome como uma palavra, pequena e levemente torta, como na carta da home. */
+/* Retrato pequeno ao lado dos dados: cinza em repouso, ganha cor ao passar o mouse. */
 .cv-foto {
-  display: inline-block;
-  width: 0.72em;
-  height: 0.5em;
-  margin-right: 0.1em;
+  width: 72px;
+  height: 72px;
+  margin-bottom: 10px;
   object-fit: cover;
-  vertical-align: 0.32em;
-  border-radius: 0.2em;
-  filter: grayscale(0.6);
-  transform: rotate(-4deg);
-  transition: transform 0.4s var(--ease), filter 0.4s ease;
+  border-radius: var(--raio);
+  filter: grayscale(1);
+  transition: filter 0.4s ease, transform 0.4s var(--ease);
 }
 
 .cv-foto:hover {
   filter: none;
-  transform: rotate(3deg) scale(1.08);
+  transform: rotate(-3deg);
 }
 
 .cv-topo-info {
@@ -2993,18 +3083,15 @@ li[data-aberta] .faq-resposta p {
   }
 
   .rodape {
-    grid-template-columns: 1fr;
-    gap: 8px;
-    padding-top: 20svh;
+    padding-top: 80px;
   }
 
-  .rodape ul {
-    flex-wrap: wrap;
-    gap: 8px 20px;
+  .rodape-grade {
+    grid-template-columns: 1fr 1fr;
   }
 
-  .rodape-direita {
-    justify-content: flex-start;
+  .rodape-sobre {
+    grid-column: 1 / -1;
   }
 
   .pagina {
