@@ -1,7 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { DICTS, type Lang } from "@/lib/content";
+import { SITE } from "@/lib/profile";
 
 type Align = "left" | "center" | "right";
 type Paint = "tinta" | "destaque" | "contorno";
@@ -222,7 +224,10 @@ export default function Hero({ lang }: { lang: Lang }) {
           </div>
 
           <div className="hero-centro">
-            <p className="hero-sub">{t.sub}</p>
+            <p className="hero-sub">
+              <Image className="hero-foto" src={SITE.avatar} alt="" width={64} height={64} priority />
+              {t.sub}
+            </p>
             <div className="hero-acoes">
               <button type="button" className="hero-acao" onClick={shuffle}>
                 {t.shuffle}
