@@ -121,23 +121,32 @@ export default async function Post({ params }: BlogProps) {
           </div>
         </div>
 
-        {related.length > 0 && (
-          <section aria-labelledby="mais-posts">
-            <h2 id="mais-posts" className="titulo">
-              {t.blogPage.more}
-            </h2>
-            <ul className="lista-posts">
-              {related.map((p) => (
-                <li key={p.path}>
-                  <Link href={`/blog${p.path}`}>
-                    <h3>{p.title}</h3>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </section>
-        )}
       </div>
+
+      {related.length > 0 && (
+        <section className="continue" aria-labelledby="mais-posts">
+          <h2 id="mais-posts" className="titulo">
+            {t.blogPage.more}
+          </h2>
+          <ul className="continue-lista">
+            {related.map((p, i) => (
+              <li key={p.path} style={{ "--i": i } as React.CSSProperties}>
+                <Link href={`/blog${p.path}`}>
+                  <span className="continue-meta">
+                    {new Date(p.date).toLocaleDateString(t.locale, { day: "numeric", month: "short", year: "numeric" })}
+                    {p.readingMinutes ? ` · ${t.blog.minutes(p.readingMinutes)}` : ""}
+                  </span>
+                  <h3>{p.title.split(" - ")[0]}</h3>
+                  <span className="continue-sub">{p.title.split(" - ").slice(1).join(" - ")}</span>
+                  <span className="continue-seta" aria-hidden="true">
+                    →
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
     </main>
   );
 }

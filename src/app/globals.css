@@ -2752,7 +2752,104 @@ li[data-aberta] .faq-resposta p {
   gap: 20px;
   align-items: center;
   padding: 24px;
+  border-radius: var(--raio);
   background: var(--surface);
+}
+
+/* Continue lendo: cartões lado a lado; o que está sob o cursor sobe e vira destaque. */
+.continue {
+  margin-top: 120px;
+}
+
+.continue h2 {
+  margin-bottom: 32px;
+}
+
+.continue-lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 12px;
+}
+
+.continue-lista a {
+  display: grid;
+  grid-template-rows: auto 1fr auto auto;
+  gap: 12px;
+  height: 100%;
+  min-height: 300px;
+  padding: 28px;
+  border-radius: 16px;
+  background: var(--surface);
+  text-decoration: none;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.4s var(--ease);
+}
+
+.continue-sub::first-letter {
+  text-transform: uppercase;
+}
+
+@media (max-width: 720px) {
+  .continue-lista a {
+    min-height: 220px;
+  }
+}
+
+.continue-lista a:focus-visible {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+@media (hover: hover) {
+  .continue-lista a:hover {
+    background: var(--accent);
+    color: var(--accent-ink);
+    transform: translateY(-6px) rotate(-0.6deg);
+  }
+}
+
+.continue-meta {
+  color: var(--muted);
+  font-size: var(--step-small);
+  font-variant-numeric: tabular-nums;
+}
+
+.continue-lista h3 {
+  align-self: end;
+  font-size: clamp(1.5rem, 1.1rem + 1.2vw, 2.25rem);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+}
+
+.continue-sub {
+  color: var(--muted);
+  font-size: var(--step-body);
+  line-height: 1.35;
+}
+
+.continue-lista a:hover .continue-meta,
+.continue-lista a:hover .continue-sub {
+  color: inherit;
+}
+
+.continue-seta {
+  justify-self: end;
+  font-size: var(--step-lead);
+  transition: transform 0.35s var(--ease);
+}
+
+.continue-lista a:hover .continue-seta {
+  transform: translateX(6px);
+}
+
+.continue-lista li {
+  animation: aparece 0.6s var(--ease) both;
+  animation-delay: calc(var(--i) * 80ms);
+  animation-timeline: view();
+  animation-range: entry 0% entry 60%;
 }
 
 .cartao-autor img {
