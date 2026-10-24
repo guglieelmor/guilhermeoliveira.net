@@ -1,197 +1,68 @@
-export const profile = {
+// Fatos que não mudam com o idioma: datas, links e nomes próprios.
+// Datas são objetos Date reais; durações são calculadas, nunca digitadas.
+
+export const SITE = {
+  url: "https://guilhermeoliveira.net",
   name: "Guilherme Oliveira",
-  role: "Tech Lead | Software Engineer | Full Stack | SRE",
-  headline: "Tech Lead at Brudam · Professor at IFSUL",
-  location: "Rio Grande do Sul, Brasil",
+  handle: "Gulliver",
   avatar: "https://avatars.githubusercontent.com/u/52608353?v=5",
-  contact: {
-    email: "guglieelmor@gmail.com",
-    linkedin: "https://www.linkedin.com/in/guglieelmor/",
-    linkedinLabel: "linkedin.com/in/guglieelmor",
-    github: "https://github.com/guglieelmor",
-    githubLabel: "github.com/guglieelmor",
-    site: "https://guilhermeoliveira.net/",
-    siteLabel: "guilhermeoliveira.net",
-    alura: "https://cursos.alura.com.br/user/guglieelmor",
-    auraLabel: "cursos.alura.com.br/user/guglieelmor",
-  },
-  summary: `Como Tech Lead na Brudam, lidero as decisões de arquitetura e a execução técnica de sistemas para o setor de transporte e logística, atuando de ponta a ponta — da concepção à implementação. Sou Tecnólogo em Sistemas para Internet pelo Instituto Federal Sul-rio-grandense, com pós-graduação em Arquitetura e Infraestrutura de TI, e transito entre back-end, front-end e ciência de dados. Também sou professor substituto no IFSUL - Campus Charqueadas, formando novos desenvolvedores em disciplinas de engenharia e desenvolvimento de software.`,
-  summaryShort:
-    "Tech Lead na Brudam, conduzindo decisões de arquitetura e liderança técnica no setor de transporte e logística. Professor substituto no IFSUL, formando novos desenvolvedores. Pós-graduado em Arquitetura e Infraestrutura de TI.",
-  bioHome:
-    "Tecnólogo em Sistemas para Internet, pós-graduado em Arquitetura e Infraestrutura de TI. Transito entre back-end, front-end e ciência de dados, unindo arquitetura sólida e liderança técnica a resultados reais de negócio.",
-  topSkills: ["DevOps", "Desenvolvimento de produtos", "Marketing"],
-  skillCategories: [
-    {
-      label: "Linguagens & Frameworks",
-      skills: [
-        "TypeScript",
-        "JavaScript",
-        "Next.js",
-        "Vue.js",
-        "Node.js",
-        "PHP",
-        "Laravel",
-      ],
-    },
-    {
-      label: "Infraestrutura & Cloud",
-      skills: ["Docker", "AWS", "Linux", "Nginx"],
-    },
-    { label: "Dados", skills: ["MySQL", "MongoDB", "Redis"] },
-    {
-      label: "Práticas & Processos",
-      skills: ["CI/CD", "SEO", "Scrum", "TDD"],
-    },
-  ],
-  techSkills: [
-    "TypeScript",
-    "JavaScript",
-    "Next.js",
-    "Vue.js",
-    "Node.js",
-    "PHP",
-    "Laravel",
-    "Docker",
-    "AWS",
-    "Linux",
-    "Nginx",
-    "MySQL",
-    "MongoDB",
-    "Redis",
-    "CI/CD",
-    "SEO",
-    "Scrum",
-    "TDD",
-  ],
-  languages: [
-    { name: "Português", level: "Nativo" },
-    { name: "Inglês", level: "Professional Working" },
-    { name: "Espanhol", level: "Elementary" },
-  ],
-  certifications: [
-    "Formação Laravel: crie aplicações web em PHP",
-    "Formação Gestão da biblioteca de infraestrutura de TI",
-    "AWS Academy Graduate - AWS Academy Cloud Foundations",
-    "Formação SEO",
-    "Technical Support Fundamentals",
-  ],
-  courses: [
-    "Formação Vue.js — 2021 (52h)",
-    "Formação Vue.js 2 — 2021 (49h)",
-    "Formação Melhore sua experiência de desenvolvimento com TypeScript — 2022 (31h)",
-    "Formação SEO — 2024 (36h)",
-    "Formação Gestão da biblioteca de infraestrutura de TI — 2024 (43h)",
-    "Formação Tráfego Pago — 2024 (63h)",
-    "Formação Laravel: crie aplicações web em PHP — 2024 (40h)",
-    "Formação Melhore sua experiência JavaScript com Svelte — 2025 (27h)",
-    "Formação Começando em DevOps — 2026 (33h)",
-    "AWS Academy Cloud Foundations — 2023",
-    "AWS Fundamentals: Going Cloud-Native — 2021",
-  ],
-  experience: [
-    {
-      company: "IFSUL - Instituto Federal Sul-rio-grandense",
-      image: "/images/ifsul.jpeg",
-      role: "Professor Substituto",
-      start: new Date(2026, 2, 1),
-      end: null,
-      location: "Charqueadas, RS",
-      description:
-        "Experiência docente no ensino técnico e superior em Tecnologia da Informação. No ensino técnico, ministrei Desenvolvimento de Aplicações, Construção de Páginas Web e Programação Orientada a Objetos. No ensino superior, lecionei Introdução à Informática, Desenvolvimento de Interfaces Gráficas, Desenvolvimento Front-end, Engenharia de Software e Metodologia da Pesquisa Científica.",
-      tags: [
-        "Docência",
-        "Engenharia de Software",
-        "Desenvolvimento Front-end",
-        "POO",
-      ],
-    },
-    {
-      company: "Brudam - Software TMS",
-      image: "/images/brudam.jpeg",
-      role: "Tech Lead",
-      start: new Date(2021, 11, 1),
-      end: null,
-      location: "Instituto Caldeira, Porto Alegre",
-      description:
-        "Líder técnico e desenvolvedor em projetos estratégicos de desenvolvimento de software, conduzindo decisões arquiteturais e técnicas críticas, organizando as tarefas da equipe e garantindo que as entregas estejam alinhadas aos objetivos do produto para o setor de transporte e logística.",
-      tags: [
-        "JavaScript",
-        "Laravel",
-        "Node.js",
-        "AWS",
-        "Docker",
-        "Linux",
-        "MySQL",
-        "Vue.js",
-        "PHP",
-        "MongoDB",
-        "TypeScript",
-        "Next.js",
-        "TDD",
-        "SEO",
-        "Cloudflare",
-        "Nginx",
-        "Redis",
-        "CI/CD",
-      ],
-    },
-    {
-      company: "Brudam - Software TMS",
-      image: "/images/brudam.jpeg",
-      role: "Full Stack Developer",
-      start: new Date(2020, 2, 1),
-      end: new Date(2021, 11, 1),
-      location: "Instituto Caldeira, Porto Alegre",
-      description:
-        "Responsável pelo desenvolvimento de soluções completas, atuando no front-end, no back-end e colaborando em tarefas de ciência de dados. Participei da coordenação de novos projetos e da integração de sistemas multiplataforma, sempre com foco em estratégia, performance e boa experiência para o usuário.",
-      tags: ["PHP", "Laravel", "MySQL", "jQuery", "Vue.js", "AngularJS", "Phalcon"],
-    },
-  ],
-  education: [
-    {
-      school: "FAAL - Faculdade Alcance",
-      image: "/images/faal.jpeg",
-      degree: "Pós-graduação Arquitetura e Infraestrutura de T.I - Especialização",
-      start: new Date(2026, 2, 1),
-      end: new Date(2026, 8, 1),
-      description:
-        "Especialização em Information Technology, com foco em sistemas distribuídos, escalabilidade e boas práticas de engenharia de software.",
-    },
-    {
-      school: "IFSUL - Instituto Federal Sul-rio-grandense",
-      image: "/images/ifsul.jpeg",
-      degree: "Tecnólogo, Sistemas para Internet",
-      start: new Date(2020, 0, 1),
-      end: new Date(2025, 6, 1),
-      description:
-        "Formação focada em desenvolvimento full-stack, arquitetura de sistemas, bancos de dados, redes, testes e manutenção de sistemas.",
-    },
-    {
-      school: "IFSUL - Instituto Federal Sul-rio-grandense",
-      image: "/images/ifsul.jpeg",
-      degree: "Técnico, Informática",
-      start: new Date(2016, 0, 1),
-      end: new Date(2019, 11, 1),
-      yearOnly: true,
-      description:
-        "Formação prática em suporte técnico, programação, infraestrutura de TI e redes locais.",
-    },
-  ],
-  projects: [
-    {
-      name: "COMOBIS – Ecossistema SaaS para Corretores Imobiliários",
-      tag: "SaaS · Mercado imobiliário",
-      description:
-        "Plataforma online que cria perfis para usuários do mercado imobiliário. Cada usuário pode ter um endereço único dentro do sistema onde apresenta seus dados e propriedades.",
-    },
-    {
-      name: "Automatic Fact Checker",
-      tag: "Extensão acadêmica",
-      description:
-        "Projeto de extensão voltado ao desenvolvimento de uma solução tecnológica capaz de analisar automaticamente a veracidade de informações, auxiliando no combate à desinformação em ambientes digitais.",
-    },
-  ],
+  gaId: "G-JTP5KZ6L2C",
 };
 
-export type Profile = typeof profile;
+export const CONTACT = {
+  linkedin: "https://www.linkedin.com/in/guglieelmor/",
+  linkedinLabel: "linkedin.com/in/guglieelmor",
+  github: "https://github.com/guglieelmor",
+  githubLabel: "github.com/guglieelmor",
+  alura: "https://cursos.alura.com.br/user/guglieelmor",
+  aluraLabel: "cursos.alura.com.br/user/guglieelmor",
+};
+
+export const TIMELINE = {
+  brudamStart: new Date(2020, 2, 1),
+  techLeadStart: new Date(2021, 11, 1),
+  ifsulTeachingStart: new Date(2026, 2, 1),
+};
+
+export const STACK = [
+  "TypeScript",
+  "JavaScript",
+  "Next.js",
+  "Vue.js",
+  "Node.js",
+  "PHP",
+  "Laravel",
+  "Docker",
+  "AWS",
+  "Linux",
+  "Nginx",
+  "Cloudflare",
+  "MySQL",
+  "MongoDB",
+  "Redis",
+  "CI/CD",
+  "TDD",
+  "SEO",
+];
+
+export function yearsSince(start: Date, now = new Date()) {
+  let years = now.getFullYear() - start.getFullYear();
+  if (
+    now.getMonth() < start.getMonth() ||
+    (now.getMonth() === start.getMonth() && now.getDate() < start.getDate())
+  ) {
+    years--;
+  }
+  return years;
+}
+
+export function diffYearsAndMonths(start: Date, end: Date) {
+  let years = end.getFullYear() - start.getFullYear();
+  let months = end.getMonth() - start.getMonth();
+  if (end.getDate() < start.getDate()) months--;
+  if (months < 0) {
+    years--;
+    months += 12;
+  }
+  return { years, months };
+}

@@ -1,106 +1,79 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
-
+import type { Metadata, Viewport } from "next";
+import { Geist, Geist_Mono } from "next/font/google"; // taste-skill-ignore: mono só em <pre>/<code>
 import Script from "next/script";
-import Navbar from "@/components/layout/navbar";
-import Footer from "@/components/layout/footer";
-import CookieConsent from "@/components/cookie-consent";
-import { SITE_URL } from "@/lib/site";
-import { profile } from "@/lib/profile";
+import "./globals.css";
+import Header from "@/components/header";
+import Footer from "@/components/footer";
+import Cookies from "@/components/cookies";
+import Reveal from "@/components/reveal";
+import { PersonSchema } from "@/components/schema";
+import { getPrefs } from "@/lib/prefs";
+import { SITE } from "@/lib/profile";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+// Geist variável (sem pesos fixos) para os controles do hero mexerem no eixo de peso.
+const geist = Geist({ variable: "--font-geist", subsets: ["latin"], display: "swap" });
+const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"], display: "swap" }); // taste-skill-ignore: mono só em <pre>/<code>
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+export async function generateMetadata(): Promise<Metadata> {
+  const { t } = await getPrefs();
+  return {
+    metadataBase: new URL(SITE.url),
+    title: t.meta.title,
+    description: t.meta.description,
+    alternates: { canonical: "/" },
+    openGraph: {
+      type: "website",
+      locale: t.lang === "en" ? "en_US" : "pt_BR",
+      url: SITE.url,
+      siteName: SITE.name,
+      title: t.meta.title,
+      description: t.meta.description,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t.meta.title,
+      description: t.meta.description,
+    },
+  };
+}
 
-const TITLE =
-  "Guilherme Oliveira - Tech Lead | Software Engineer | Full Stack | SRE";
-const DESCRIPTION =
-  "Guilherme Oliveira - Tech Lead | Software Engineer | Full Stack | SRE";
-
-export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
-  title: TITLE,
-  description: DESCRIPTION,
-  alternates: {
-    canonical: "/",
-  },
-  openGraph: {
-    type: "website",
-    locale: "pt_BR",
-    url: SITE_URL,
-    siteName: profile.name,
-    title: TITLE,
-    description: DESCRIPTION,
-    images: [profile.avatar],
-  },
-  twitter: {
-    card: "summary",
-    title: TITLE,
-    description: DESCRIPTION,
-    images: [profile.avatar],
-  },
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+    { media: "(prefers-color-scheme: light)", color: "#fafafa" },
+  ],
 };
 
-const personJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  name: profile.name,
-  jobTitle: profile.role,
-  description: profile.bioHome,
-  url: SITE_URL,
-  image: profile.avatar,
-  sameAs: [profile.contact.linkedin, profile.contact.github, profile.contact.alura],
-  worksFor: {
-    "@type": "Organization",
-    name: "Brudam - Software TMS",
-  },
-};
+export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  const { lang, theme, consent, t } = await getPrefs();
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
   return (
-    <html lang="pt-BR" suppressHydrationWarning>
-      <Script
-        src="https://www.googletagmanager.com/gtag/js?id=G-JTP5KZ6L2C"
-        strategy="afterInteractive"
-      />
-      <Script id="google-analytics" strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-JTP5KZ6L2C');
-        `}
-      </Script>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
-        />
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Navbar />
-          {children}
-          <Footer />
-          <CookieConsent />
-        </ThemeProvider>
+    <html
+      lang={t.locale}
+      data-theme={theme ?? undefined}
+      className={`${geist.variable} ${geistMono.variable}`}
+      suppressHydrationWarning
+    >
+      <body>
+        {/* Marca que há JS antes da primeira pintura: só então as entradas animadas escondem conteúdo. */}
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+        <PersonSchema t={t} />
+        <a className="pular" href="#conteudo">
+          {t.nav.skip}
+        </a>
+        <Header lang={lang} theme={theme} />
+        <div id="conteudo">{children}</div>
+        <Footer t={t} />
+        <Cookies lang={lang} initialOpen={consent === null} />
+        <Reveal />
+        {consent === "todos" && (
+          <>
+            <Script src={`https://www.googletagmanager.com/gtag/js?id=${SITE.gaId}`} strategy="afterInteractive" />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${SITE.gaId}');`}
+            </Script>
+          </>
+        )}
       </body>
     </html>
   );

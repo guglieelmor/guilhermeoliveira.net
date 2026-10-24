@@ -1,1 +1,3 @@
-export const SITE_URL = "https://guilhermeoliveira.net";
+import { SITE } from "./profile";
+
+export const SITE_URL = SITE.url;
