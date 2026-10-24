@@ -27,7 +27,7 @@ const START: Type = {
   align: "center",
   paint: "tinta",
   caps: false,
-  wave: false,
+  wave: true,
 };
 
 function pick<T>(list: readonly T[]) {
