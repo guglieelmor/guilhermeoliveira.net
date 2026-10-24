@@ -656,6 +656,7 @@ body:has(.barra-menu[open]) {
 
 .hero-palco {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 28px;
 }
 
@@ -3031,6 +3032,11 @@ li[data-aberta] .faq-resposta p {
 
   .hero-titulo {
     font-size: calc(8.6vw * var(--tamanho, 1));
+  }
+
+  /* A onda passa pelo peso 900, que alarga as letras: no celular o título encolhe um pouco para caber. */
+  .hero-titulo[data-onda] {
+    font-size: calc(7.4vw * var(--tamanho, 1));
   }
 
   .hero-titulo[data-caixa="alta"] {
