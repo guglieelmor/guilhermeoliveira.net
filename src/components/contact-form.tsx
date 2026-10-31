@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import { DICTS, type Lang } from "@/lib/content";
 import { CONTACT } from "@/lib/profile";
 
-// Sem backend e sem e-mail exposto: escolhe-se o assunto, escreve-se a mensagem, ela vai para a área de
-// transferência e o LinkedIn abre para colar.
+// Sem backend: escolhe-se o assunto, escreve-se a mensagem e o programa de e-mail abre com tudo preenchido.
+// A mensagem também vai para a área de transferência, caso não haja programa de e-mail configurado.
 export default function ContactForm({ lang }: { lang: Lang }) {
   const t = DICTS[lang].contact;
   const [topic, setTopic] = useState<number | null>(null);
@@ -28,11 +28,13 @@ export default function ContactForm({ lang }: { lang: Lang }) {
         setCopied(false);
       }
     }
-    window.open(CONTACT.linkedin, "_blank", "noopener,noreferrer");
+    const subject = topic === null ? t.title : t.topics[topic].label;
+    const query = new URLSearchParams({ subject, body: text.trim() }).toString().replace(/\+/g, "%20");
+    window.location.href = `mailto:${CONTACT.email}?${query}`;
   }
 
   return (
-    <form className="carta-form" data-ui onSubmit={send} action={CONTACT.linkedin} target="_blank">
+    <form className="carta-form" data-ui onSubmit={send} action={`mailto:${CONTACT.email}`} method="post" encType="text/plain">
       <div className="assuntos" role="group" aria-label={t.topicLabel}>
         {t.topics.map((tp, i) => (
           <button key={tp.label} type="button" aria-pressed={topic === i} onClick={() => choose(i)}>

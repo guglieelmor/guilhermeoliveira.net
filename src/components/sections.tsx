@@ -69,7 +69,7 @@ export function Contact({ t }: { t: Dict }) {
           <ul className="contato-links">
             {c.rows.map((r) => (
               <li key={r.label}>
-                <a href={r.href} target="_blank" rel="noopener noreferrer">
+                <a href={r.href} {...(r.href.startsWith("mailto:") ? {} : { target: "_blank", rel: "noopener noreferrer" })}>
                   <span className="contato-rede">{r.label}</span>
                   <span className="contato-end">{r.value}</span>
                   <span className="contato-seta" aria-hidden="true">
