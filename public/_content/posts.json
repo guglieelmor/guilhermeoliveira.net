@@ -47,6 +47,42 @@
         "tecnologia"
       ],
       "readingMinutes": 3
+    },
+    {
+      "title": "Code review - como revisar código sem travar o time",
+      "date": "2026-10-26T09:00:00-03:00",
+      "path": "/2026/10/26/code-review-que-ajuda-o-time",
+      "description": "Para que serve uma revisão de código, o que vale olhar com atenção, o que deixar para as ferramentas e como escrever comentários que melhoram o código sem desgastar quem escreveu.",
+      "tags": [
+        "engenharia de software",
+        "liderança técnica",
+        "produtividade"
+      ],
+      "readingMinutes": 3
+    },
+    {
+      "title": "Índices em banco de dados - por que aquela consulta ficou lenta",
+      "date": "2026-10-28T09:00:00-03:00",
+      "path": "/2026/10/28/indices-em-banco-de-dados",
+      "description": "Como um índice B-tree funciona, como ler um plano de execução com EXPLAIN, por que a ordem das colunas num índice composto importa e quando um índice atrapalha em vez de ajudar.",
+      "tags": [
+        "banco de dados",
+        "performance",
+        "engenharia de software"
+      ],
+      "readingMinutes": 3
+    },
+    {
+      "title": "Observabilidade - logs, métricas e traces com OpenTelemetry",
+      "date": "2026-10-30T09:00:00-03:00",
+      "path": "/2026/10/30/observabilidade-com-opentelemetry",
+      "description": "A diferença entre monitorar e observar, o papel de logs, métricas e traces, como o OpenTelemetry padronizou a coleta desses dados e por onde começar a instrumentar uma aplicação.",
+      "tags": [
+        "observabilidade",
+        "engenharia de software",
+        "infraestrutura"
+      ],
+      "readingMinutes": 3
     }
   ]
 }
