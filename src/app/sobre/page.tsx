@@ -158,7 +158,17 @@ export default async function Sobre() {
           {cv.projects.map((p) => (
             <article key={p.id} id={p.id} className="cv-projeto">
               <h3>{p.name}</h3>
-              <p className="nota">{p.tag}</p>
+              <p className="nota">
+                {p.tag}
+                {p.url ? (
+                  <>
+                    {" · "}
+                    <a href={p.url} target="_blank" rel="noopener noreferrer">
+                      {p.urlLabel}
+                    </a>
+                  </>
+                ) : null}
+              </p>
               <p>{p.description}</p>
             </article>
           ))}

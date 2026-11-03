@@ -11,6 +11,8 @@ export const SITE = {
 
 export const CONTACT = {
   email: "contato@guilmor.com",
+  guilmor: "https://guilmor.com",
+  guilmorLabel: "guilmor.com",
   linkedin: "https://www.linkedin.com/in/guglieelmor/",
   linkedinLabel: "linkedin.com/in/guglieelmor",
   github: "https://github.com/guglieelmor",

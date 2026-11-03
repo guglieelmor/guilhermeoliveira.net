@@ -14,6 +14,8 @@ type Commit = {
   stack: string[];
   big: string;
   branch: boolean;
+  url?: string;
+  urlLabel?: string;
 };
 
 // Hash curto e estável a partir do id, só para o painel parecer um git log de verdade.
@@ -48,6 +50,8 @@ function commits(lang: Lang): Commit[] {
     stack: [],
     big: p.name,
     branch: true,
+    url: p.url,
+    urlLabel: p.urlLabel,
   }));
   return [...roles, ...projects];
 }
@@ -121,7 +125,17 @@ export default function Trajetoria({ lang }: { lang: Lang }) {
                   {"\n\n"}
                 </code>
               </pre>
-              <p className="commit-corpo">{c.body}</p>
+              <p className="commit-corpo">
+                {c.body}
+                {c.url ? (
+                  <>
+                    {" "}
+                    <a href={c.url} target="_blank" rel="noopener noreferrer" tabIndex={i === active ? undefined : -1}>
+                      {c.urlLabel}
+                    </a>
+                  </>
+                ) : null}
+              </p>
               {c.stack.length > 0 && (
                 <pre className="commit-stack">
                   <code>

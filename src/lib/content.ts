@@ -146,7 +146,7 @@ const pt = {
       "2016–2019   Técnico em Informática · IFSUL",
     ],
     projetos: [
-      "Guilmor: empresa que fundei, de agentes de IA e automação",
+      `Guilmor: empresa que fundei, de agentes de IA e automação · ${CONTACT.guilmorLabel}`,
       "Comobis: SaaS com perfis e imóveis para corretores",
       "Automatic Fact Checker: checagem automática de informações",
     ],
@@ -374,6 +374,8 @@ const pt = {
       {
         id: "guilmor",
         name: "Guilmor",
+        url: CONTACT.guilmor,
+        urlLabel: CONTACT.guilmorLabel,
         role: "fundador",
         tag: "Empresa de tecnologia · Fundador",
         description:
@@ -562,7 +564,7 @@ const en: Dict = {
       "2016–2019   IT technician · IFSUL",
     ],
     projetos: [
-      "Guilmor: the company I founded, AI agents and automation",
+      `Guilmor: the company I founded, AI agents and automation · ${CONTACT.guilmorLabel}`,
       "Comobis: SaaS with profiles and listings for real estate agents",
       "Automatic Fact Checker: automatic checking of information",
     ],

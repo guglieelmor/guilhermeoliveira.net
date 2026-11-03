@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { DICTS, type Lang } from "@/lib/content";
+import { CONTACT } from "@/lib/profile";
 
 // Nomes em português e inglês levam à mesma resposta.
 const ALIASES: Record<string, string> = {
@@ -25,6 +26,19 @@ type Entry = { id: number; cmd: string; lines: string[] };
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 // Um terminal que conversa sozinho: digita um comando, responde, passa ao próximo. Quem clica assume o teclado.
+// Transforma "guilmor.com" numa linha do terminal em link (mas não dentro de um e-mail como contato@guilmor.com).
+function linkify(line: string) {
+  return line.split(/(?<!@)\b(guilmor\.com)\b/).map((part, i) =>
+    i % 2 ? (
+      <a key={i} href={CONTACT.guilmor} target="_blank" rel="noopener noreferrer">
+        {part}
+      </a>
+    ) : (
+      part
+    ),
+  );
+}
+
 export default function Ask({ lang, latestPost }: { lang: Lang; latestPost: { title: string; href: string } | null }) {
   const dict = DICTS[lang];
   const t = dict.ask;
@@ -199,7 +213,7 @@ export default function Ask({ lang, latestPost }: { lang: Lang; latestPost: { ti
                 <code>
                   {entry.lines.map((line, i) => (
                     <span key={i} style={{ "--i": i } as React.CSSProperties}>
-                      {line || " "}
+                      {line ? linkify(line) : " "}
                       {"\n"}
                     </span>
                   ))}
