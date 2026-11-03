@@ -25,8 +25,8 @@ export default function OpengraphImage() {
             color: "#fafafa",
           }}
         >
-          <span>Lidero engenharia.</span>
-          <span style={{ color: "#0a0a0a" }}>Formo engenheiros.</span>
+          <span>Lidero times.</span>
+          <span style={{ color: "#0a0a0a" }}>Formo devs.</span>
         </div>
         <div style={{ position: "absolute", left: 64, bottom: 48, fontSize: 28, color: "#0a0a0a", display: "flex" }}>
           Tech Lead na Brudam · Professor no IFSUL

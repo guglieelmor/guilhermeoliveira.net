@@ -3,7 +3,8 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { DICTS, type Lang } from "@/lib/content";
-import { ALURA, CONTACT } from "@/lib/profile";
+import { ALURA_COURSES, ALURA_EXERCISES, ALURA_PATHS, aluraYear, pathCourses } from "@/lib/alura";
+import { CONTACT } from "@/lib/profile";
 
 const FIRST = 2016;
 const LAST = 2026;
@@ -11,12 +12,43 @@ const YEARS = Array.from({ length: LAST - FIRST + 1 }, (_, i) => FIRST + i);
 const LEVEL: Record<string, number> = { nativo: 100, native: 100, profissional: 72, "professional working": 72, básico: 30, elementary: 30 };
 
 type Item = { key: string; name: string; meta: string };
+type Block = Item & { year: number; hours: number };
 
-function parseCourse(c: string) {
-  // "Formação SEO · 2024 (36h)" vira { name: "Formação SEO", year: 2024, hours: 36 }.
-  const [name, rest = ""] = c.split(" · ");
-  const m = rest.match(/(\d{4})(?:\s*\((\d+)h\))?/);
-  return { name, year: m ? Number(m[1]) : LAST, hours: m?.[2] ? Number(m[2]) : 0 };
+const sum = (cs: typeof ALURA_COURSES) => cs.reduce((n, c) => n + c.hours, 0);
+
+// Um bloco por formação (as que têm os mesmos cursos viram uma só, como Vue.js e Vue.js 2),
+// um bloco por ano com os cursos avulsos e um bloco para cada curso de outra plataforma.
+function blocks(t: (typeof DICTS)[Lang]): Block[] {
+  const out: Block[] = [];
+  const groups = new Map<string, { names: string[]; courses: typeof ALURA_COURSES }>();
+  for (const p of ALURA_PATHS) {
+    const courses = pathCourses(p.id);
+    const key = courses.map((c) => c.slug).join(",");
+    const g = groups.get(key);
+    if (g) g.names.push(p.name);
+    else groups.set(key, { names: [p.name], courses });
+  }
+  for (const [key, g] of groups) {
+    const year = Math.max(...g.courses.map(aluraYear));
+    const hours = sum(g.courses);
+    out.push({
+      key: `p-${key}`,
+      name: t.cv.pathLabel(g.names.join(" + ")),
+      meta: `${year} · ${t.cv.courseCount(g.courses.length, hours)}`,
+      year,
+      hours,
+    });
+  }
+  const loose = ALURA_COURSES.filter((c) => c.paths.length === 0);
+  for (const year of new Set(loose.map(aluraYear))) {
+    const cs = loose.filter((c) => aluraYear(c) === year);
+    const hours = sum(cs);
+    out.push({ key: `l-${year}`, name: t.list.loose(cs.length), meta: `${year} · ${hours}h`, year, hours });
+  }
+  for (const c of t.cv.otherCourses) {
+    out.push({ key: `o-${c.name}`, name: c.name, meta: String(c.year), year: c.year, hours: 0 });
+  }
+  return out;
 }
 
 // Contador que sobe do zero quando a seção aparece.
@@ -46,17 +78,13 @@ export default function Study({ lang }: { lang: Lang }) {
   const chart = useRef<HTMLDivElement>(null);
   const [seen, setSeen] = useState(false);
 
-  const courses = cv.courses.map(parseCourse);
-  const total = courses.reduce((sum, c) => sum + c.hours, 0);
+  const courses = blocks(t);
+  const total = sum(ALURA_COURSES);
   const firstCourse = Math.min(...courses.map((c) => c.year));
   const count = useCount(total, seen);
 
   const latest = courses.reduce((a, b) => (b.year >= a.year && b.hours ? b : a));
-  const [active, setActive] = useState<Item>({
-    key: `c-${latest.name}`,
-    name: latest.name,
-    meta: `${latest.year} · ${latest.hours}h`,
-  });
+  const [active, setActive] = useState<Item>({ key: latest.key, name: latest.name, meta: latest.meta });
 
   // No celular o gráfico rola de lado; ele abre nos anos mais recentes.
   useEffect(() => {
@@ -99,7 +127,7 @@ export default function Study({ lang }: { lang: Lang }) {
             <span>{s.hours(firstCourse)}</span>
           </p>
           <a className="estudo-alura" href={CONTACT.alura} target="_blank" rel="noopener noreferrer">
-            {s.alura(ALURA.courses, ALURA.paths, ALURA.exercises)}
+            {s.alura(ALURA_COURSES.length, ALURA_PATHS.length, ALURA_EXERCISES)}
             <span aria-hidden="true"> ↗</span>
           </a>
         </div>
@@ -113,10 +141,10 @@ export default function Study({ lang }: { lang: Lang }) {
                 {courses
                   .filter((c) => c.year === year)
                   .map((c, i) => {
-                    const item = { key: `c-${c.name}`, name: c.name, meta: c.hours ? `${year} · ${c.hours}h` : `${year}` };
+                    const item = { key: c.key, name: c.name, meta: c.meta };
                     return (
                       <button
-                        key={c.name}
+                        key={c.key}
                         type="button"
                         className="curso"
                         style={{ "--h": c.hours || 18, "--d": (year - FIRST) * 60 + i * 90 } as React.CSSProperties}

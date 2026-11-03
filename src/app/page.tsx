@@ -5,6 +5,7 @@ import { FaqSchema } from "@/components/schema";
 import { Blog, Contact, Gulliver } from "@/components/sections";
 import Letter from "@/components/letter";
 import Faixa from "@/components/faixa";
+import Github from "@/components/github";
 import Study from "@/components/study";
 import Trajetoria from "@/components/trajetoria";
 import { getDict } from "@/lib/prefs";
@@ -23,6 +24,7 @@ export default async function Home() {
       <Faixa />
       <Trajetoria lang={t.lang} />
       <Study lang={t.lang} />
+      <Github t={t} />
       <Gulliver t={t} />
       <Ask lang={t.lang} latestPost={latest} />
       <Blog t={t} posts={posts} />

@@ -3,6 +3,7 @@ import Image from "next/image";
 import PrintButton from "@/components/print-button";
 import { formatEducationPeriod, formatPeriod, formatTenure, type Dict } from "@/lib/content";
 import { getDict } from "@/lib/prefs";
+import { ALURA_COURSES, ALURA_PATHS, pathCertificate, pathCourses } from "@/lib/alura";
 import { CONTACT, SITE } from "@/lib/profile";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -25,6 +26,23 @@ function byCompany(items: Dict["cv"]["experience"]) {
     else groups.push({ company: item.company, roles: [item] });
   }
   return groups;
+}
+
+// Cursos avulsos: os mais recentes ficam à vista, o resto abre no "ver mais".
+const VISIBLE = 8;
+const loose = ALURA_COURSES.filter((c) => c.paths.length === 0)
+  .slice()
+  .sort((a, b) => b.date.localeCompare(a.date));
+
+function LooseCourse({ c }: { c: (typeof ALURA_COURSES)[number] }) {
+  return (
+    <li>
+      {c.title}{" "}
+      <span className="nota">
+        · {c.date.slice(0, 4)} · {c.hours}h
+      </span>
+    </li>
+  );
 }
 
 export default async function Sobre() {
@@ -145,11 +163,57 @@ export default async function Sobre() {
       <section className="bloco" id="cursos" aria-labelledby="cursos-titulo">
         <h2 id="cursos-titulo">{cv.coursesTitle}</h2>
         <div className="bloco-corpo">
-          <ul className="cv-lista">
-            {cv.courses.map((c) => (
-              <li key={c}>{c}</li>
-            ))}
-          </ul>
+          <div className="cv-cursos">
+            <h3>{cv.aluraPaths}</h3>
+            <ul className="cv-lista">
+              {ALURA_PATHS.map((p) => {
+                const cs = pathCourses(p.id);
+                const year = cs.map((c) => c.date.slice(0, 4)).sort().at(-1);
+                return (
+                  <li key={p.id}>
+                    <a href={pathCertificate(p)} target="_blank" rel="noopener noreferrer">
+                      {cv.pathLabel(p.name)}
+                    </a>{" "}
+                    <span className="nota">
+                      · {year} · {cv.courseCount(cs.length, cs.reduce((n, c) => n + c.hours, 0))}
+                    </span>
+                    <span className="cv-cursos-itens">{cs.map((c) => c.title).join(" · ")}</span>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+          <div className="cv-cursos">
+            <h3>{cv.aluraLoose}</h3>
+            <ul className="cv-lista">
+              {loose.slice(0, VISIBLE).map((c) => (
+                <LooseCourse key={c.slug} c={c} />
+              ))}
+            </ul>
+            {loose.length > VISIBLE && (
+              <details className="cv-mais">
+                <summary>
+                  <span className="cv-mais-abrir">{cv.showMore(loose.length - VISIBLE)}</span>
+                  <span className="cv-mais-fechar">{cv.showLess}</span>
+                </summary>
+                <ul className="cv-lista">
+                  {loose.slice(VISIBLE).map((c) => (
+                    <LooseCourse key={c.slug} c={c} />
+                  ))}
+                </ul>
+              </details>
+            )}
+          </div>
+          <div className="cv-cursos">
+            <h3>{cv.otherCoursesTitle}</h3>
+            <ul className="cv-lista">
+              {cv.otherCourses.map((c) => (
+                <li key={c.name}>
+                  {c.name} <span className="nota">· {c.year}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 

@@ -21,9 +21,6 @@ export const CONTACT = {
   aluraLabel: "cursos.alura.com.br/user/guglieelmor",
 };
 
-// Números do perfil público na Alura (cursos.alura.com.br/user/guglieelmor), conferidos em 3 nov. 2026.
-export const ALURA = { courses: 89, paths: 9, exercises: 1928 };
-
 export const TIMELINE = {
   brudamStart: new Date(2020, 2, 1),
   techLeadStart: new Date(2021, 11, 1),
