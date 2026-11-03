@@ -92,6 +92,8 @@ const pt = {
     title: "Formação e estudo",
     groups: { study: "Formação", certs: "Certificações", courses: "Cursos", langs: "Idiomas" },
     hours: (year: number) => `horas de cursos desde ${year}, fora a graduação`,
+    alura: (c: number, p: number, e: number) =>
+      `${c} cursos e ${p} formações concluídos na Alura, ${e.toLocaleString("pt-BR")} exercícios resolvidos`,
   },
   ask: {
     title: "Pergunte ao terminal",
@@ -358,17 +360,20 @@ const pt = {
       "Technical Support Fundamentals",
     ],
     courses: [
-      "Formação Vue.js · 2021 (52h)",
+      "Formação Vue.js · 2021 (60h)",
       "Formação Vue.js 2 · 2021 (49h)",
+      "AWS Fundamentals: Going Cloud-Native · 2021",
       "Formação TypeScript · 2022 (31h)",
-      "Formação SEO · 2024 (36h)",
+      "Angular 14: aplique os conceitos e desenvolva seu primeiro CRUD · 2023 (10h)",
+      "Amazon Lightsail: descomplicando a nuvem · 2023 (8h)",
+      "Amazon VPC: configurando redes na AWS · 2023 (8h)",
+      "AWS Academy Cloud Foundations · 2023",
+      "Formação SEO · 2024 (37h)",
       "Formação Gestão da biblioteca de infraestrutura de TI · 2024 (43h)",
       "Formação Tráfego Pago · 2024 (63h)",
-      "Formação Laravel · 2024 (40h)",
+      "Formação Laravel · 2024 (42h)",
       "Formação Svelte · 2025 (27h)",
       "Formação Começando em DevOps · 2026 (33h)",
-      "AWS Academy Cloud Foundations · 2023",
-      "AWS Fundamentals: Going Cloud-Native · 2021",
     ],
     projects: [
       {
@@ -510,6 +515,8 @@ const en: Dict = {
     title: "Education and study",
     groups: { study: "Education", certs: "Certifications", courses: "Courses", langs: "Languages" },
     hours: (year: number) => `hours of courses since ${year}, on top of the degrees`,
+    alura: (c: number, p: number, e: number) =>
+      `${c} courses and ${p} learning paths completed on Alura, ${e.toLocaleString("en-GB")} exercises solved`,
   },
   ask: {
     title: "Ask the terminal",
@@ -787,6 +794,19 @@ export function formatPeriod(t: Dict, start: Date, end: Date | null) {
   }
   const label = (d: Date) => `${t.cv.months[d.getMonth()]}${t.cv.of ? ` ${t.cv.of}` : ""} ${d.getFullYear()}`;
   return `${label(start)} – ${end ? label(end) : t.cv.now} · ${t.cv.duration(years, months)}`;
+}
+
+// Tempo total numa empresa: do primeiro cargo até o fim do último (ou até hoje, se ainda estiver lá).
+export function formatTenure(t: Dict, roles: { start: Date; end: Date | null }[]) {
+  const start = new Date(Math.min(...roles.map((r) => r.start.getTime())));
+  const end = roles.some((r) => !r.end) ? new Date() : new Date(Math.max(...roles.map((r) => r.end!.getTime())));
+  let years = end.getFullYear() - start.getFullYear();
+  let months = end.getMonth() - start.getMonth();
+  if (months < 0) {
+    years--;
+    months += 12;
+  }
+  return t.cv.duration(years, months);
 }
 
 export function formatEducationPeriod(t: Dict, start: Date, end: Date | null, yearOnly: boolean) {

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import PrintButton from "@/components/print-button";
-import { formatEducationPeriod, formatPeriod, type Dict } from "@/lib/content";
+import { formatEducationPeriod, formatPeriod, formatTenure, type Dict } from "@/lib/content";
 import { getDict } from "@/lib/prefs";
 import { CONTACT, SITE } from "@/lib/profile";
 
@@ -75,6 +75,7 @@ export default async function Sobre() {
               <Image src={group.roles[0].image} alt="" width={48} height={48} />
               <div>
                 <p className="cv-empresa">{group.company}</p>
+                <p className="nota">{formatTenure(t, group.roles)}</p>
                 <p className="nota">{group.roles[0].location}</p>
                 <div className="cv-papeis">
                   {group.roles.map((role) => (

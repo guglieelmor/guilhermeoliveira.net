@@ -1400,6 +1400,21 @@ mark {
   color: var(--muted);
 }
 
+.estudo-resumo {
+  display: grid;
+  gap: 12px;
+}
+
+.estudo-alura {
+  max-width: 40ch;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.estudo-alura:hover {
+  color: var(--ink);
+}
+
 .estudo-numero {
   color: var(--ink);
   font-size: var(--step-display);

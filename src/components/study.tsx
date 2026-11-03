@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { DICTS, type Lang } from "@/lib/content";
+import { ALURA, CONTACT } from "@/lib/profile";
 
 const FIRST = 2016;
 const LAST = 2026;
@@ -92,10 +93,16 @@ export default function Study({ lang }: { lang: Lang }) {
         <h2 id="estudo-titulo" className="titulo">
           {s.title}
         </h2>
-        <p className="estudo-total">
-          <span className="estudo-numero">{count}</span>
-          <span>{s.hours(firstCourse)}</span>
-        </p>
+        <div className="estudo-resumo">
+          <p className="estudo-total">
+            <span className="estudo-numero">{count}</span>
+            <span>{s.hours(firstCourse)}</span>
+          </p>
+          <a className="estudo-alura" href={CONTACT.alura} target="_blank" rel="noopener noreferrer">
+            {s.alura(ALURA.courses, ALURA.paths, ALURA.exercises)}
+            <span aria-hidden="true"> ↗</span>
+          </a>
+        </div>
       </div>
 
       <div className="grafico" data-ui ref={chart}>
