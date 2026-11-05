@@ -140,6 +140,8 @@ const pt = {
       "Superior  Desenvolvimento Front-end",
       "Superior  Engenharia de Software",
       "Superior  Metodologia Científica",
+      "Superior  POO · Eng. de Controle e Automação",
+      "Superior  POO · Sistemas para Internet",
     ],
     unknown: (cmd: string) => `comando não encontrado: ${cmd}. Tente ajuda.`,
     help: [
@@ -201,7 +203,7 @@ const pt = {
       },
       {
         q: "Onde e o que você ensina?",
-        a: "Sou professor substituto no IFSUL, campus Charqueadas, desde março de 2026. No ensino técnico, dou Desenvolvimento de Aplicações, Construção de Páginas Web e Programação Orientada a Objetos. No superior, Introdução à Informática, Interfaces Gráficas, Front-end, Engenharia de Software e Metodologia Científica.",
+        a: "Sou professor substituto no IFSUL, campus Charqueadas, desde março de 2026. No ensino técnico, dou Desenvolvimento de Aplicações, Construção de Páginas Web e Programação Orientada a Objetos. No superior, Introdução à Informática, Interfaces Gráficas, Front-end, Engenharia de Software e Metodologia Científica, além de Programação Orientada a Objetos nos cursos de Engenharia de Controle e Automação e de Sistemas para Internet.",
       },
       {
         q: "Qual é a sua formação?",
@@ -306,7 +308,7 @@ const pt = {
         end: null as Date | null,
         location: "Charqueadas, RS",
         description:
-          "Docência no ensino técnico e superior em Tecnologia da Informação. No técnico, Desenvolvimento de Aplicações, Construção de Páginas Web e Programação Orientada a Objetos. No superior, Introdução à Informática, Desenvolvimento de Interfaces Gráficas, Desenvolvimento Front-end, Engenharia de Software e Metodologia da Pesquisa Científica.",
+          "Docência no ensino técnico e superior em Tecnologia da Informação. No técnico, Desenvolvimento de Aplicações, Construção de Páginas Web e Programação Orientada a Objetos. No superior, Introdução à Informática, Desenvolvimento de Interfaces Gráficas, Desenvolvimento Front-end, Engenharia de Software e Metodologia da Pesquisa Científica, além de Programação Orientada a Objetos nas graduações presenciais de Engenharia de Controle e Automação e de Sistemas para Internet.",
         tags: ["Docência", "Engenharia de Software", "Front-end", "POO"],
       },
       {
@@ -586,6 +588,8 @@ const en: Dict = {
       "Degree     Front-end Development",
       "Degree     Software Engineering",
       "Degree     Research Methods",
+      "Degree     OOP · Control and Automation Eng.",
+      "Degree     OOP · Internet Systems",
     ],
     unknown: (cmd: string) => `command not found: ${cmd}. Try help.`,
     help: [
@@ -643,7 +647,7 @@ const en: Dict = {
       },
       {
         q: "Where and what do you teach?",
-        a: "I have been a substitute professor at IFSUL, Charqueadas campus, since March 2026. On the technical course I teach Application Development, Building Web Pages and Object-Oriented Programming. On the degree, Introduction to Computing, Graphical Interfaces, Front end, Software Engineering and Research Methods.",
+        a: "I have been a substitute professor at IFSUL, Charqueadas campus, since March 2026. On the technical course I teach Application Development, Building Web Pages and Object-Oriented Programming. On the degree, Introduction to Computing, Graphical Interfaces, Front end, Software Engineering and Research Methods, plus Object-Oriented Programming on the Control and Automation Engineering and Internet Systems degrees.",
       },
       {
         q: "What is your education?",
@@ -738,7 +742,7 @@ const en: Dict = {
         ...pt.cv.experience[0],
         role: "Substitute Professor",
         description:
-          "Teaching technical and degree courses in Information Technology. On the technical course, Application Development, Building Web Pages and Object-Oriented Programming. On the degree, Introduction to Computing, Graphical Interface Development, Front-end Development, Software Engineering and Research Methods.",
+          "Teaching technical and degree courses in Information Technology. On the technical course, Application Development, Building Web Pages and Object-Oriented Programming. On the degree, Introduction to Computing, Graphical Interface Development, Front-end Development, Software Engineering and Research Methods, plus Object-Oriented Programming on the on-campus Control and Automation Engineering and Internet Systems degrees.",
         tags: ["Teaching", "Software Engineering", "Front end", "OOP"],
       },
       {
